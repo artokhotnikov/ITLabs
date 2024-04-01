@@ -1,0 +1,26 @@
+@import 'fonts';
+@import 'base';
+@import 'variables';
+@import 'null';
+@import 'animation';
+@import 'typography';
+
+#app {
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  flex: 1 1 auto;
+}
+
+body {
+  &.lock {
+    overflow: hidden;
+  }
+}
+
+svg {
+  width: 24px;
+  height: 24px;
+}
