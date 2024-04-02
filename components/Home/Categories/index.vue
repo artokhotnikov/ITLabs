@@ -1,0 +1,59 @@
+<script setup lang="ts">
+const data = [
+  {
+    id: 1,
+    title: 'Desktop',
+    list: [
+      'ПО для интерактивного оборудования',
+      'Работы по интеграции',
+      'Готовые решения',
+    ],
+    to: '/',
+    image: '/img/home_categories/desktop.png',
+  },
+  {
+    id: 2,
+    title: 'Web',
+    list: [
+      'Корпоративные порталы и сайты',
+      'Интернет-магазины',
+      'CRM и ERP системы',
+    ],
+    to: '/',
+    image: '/img/home_categories/web.png',
+  },
+  {
+    id: 3,
+    title: 'Gamedev',
+    list: [
+      'Приложения под AR/VR - дополненная и виртуальная реальность',
+      '3D контент под игровые движки',
+      'Создание решений на движках Unity и Unreal Engine',
+    ],
+    to: '/',
+    image: '/img/home_categories/gamedev.png',
+  },
+]
+</script>
+
+<template>
+  <section class="categories section">
+    <div class="container">
+      <div class="categories-list">
+        <HomeCategoriesItem v-for="cat in data" :key="cat.id" :item="cat" />
+      </div>
+    </div>
+  </section>
+</template>
+
+<style scoped lang="scss">
+.categories {
+  margin: 20px 0 0;
+
+  &-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+}
+</style>

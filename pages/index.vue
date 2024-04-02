@@ -3,6 +3,8 @@
 <template>
   <div class="page">
     <HomeSlider />
+    <HomeCategories />
+    <HomeSolutions />
   </div>
 </template>
 

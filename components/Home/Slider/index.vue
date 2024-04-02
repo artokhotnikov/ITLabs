@@ -7,6 +7,7 @@ const options = {
   arrows: false,
   autoplay: true,
   progress: true,
+  loop: true,
 }
 </script>
 
