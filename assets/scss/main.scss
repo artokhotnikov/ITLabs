@@ -5,20 +5,23 @@
 @import 'animation';
 @import 'typography';
 
-#app {
-  display: flex;
-  flex-direction: column;
-}
-
-.main {
-  flex: 1 1 auto;
-}
-
 body {
+  background: $bg-secondary;
   &.lock {
     overflow: hidden;
   }
 }
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+}
+
+.page {
+  flex: 1 1 auto;
+}
+
+
 
 svg {
   width: 24px;

@@ -22,6 +22,13 @@
       <Button color="white" outline>Button</Button>
       <Button color="white" outline disabled>Button</Button>
     </div>
+    <div class="list">
+      <!--      small  -->
+      <Button small>Button</Button>
+      <Button small disabled>Button</Button>
+      <Button small outline>Button</Button>
+      <Button small outline disabled>Button</Button>
+    </div>
   </div>
 </template>
 <style lang="scss" scoped>

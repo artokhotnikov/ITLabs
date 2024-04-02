@@ -1,0 +1,27 @@
+<script setup lang="ts">
+import { IconsBurger, IconsClose } from '#components'
+
+const emits = defineEmits(['clickHandler'])
+const clickHandler = () => {
+  emits('clickHandler')
+}
+defineProps({
+  isOpen: {
+    type: Boolean,
+    default: false,
+  },
+})
+</script>
+
+<template>
+  <div class="burger">
+    <component :is="isOpen ? IconsClose : IconsBurger" @click="clickHandler" />
+    <div class="logo">
+      <img src="@/assets/img/logo.svg" alt="Логотип" />
+    </div>
+  </div>
+</template>
+
+<style scoped lang="scss">
+@import 'Burger';
+</style>

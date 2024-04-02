@@ -27,7 +27,7 @@
 	}
 
 	&::-webkit-scrollbar-thumb {
-		background: $gray-400;
+		//background: $gray-400;
 		border: 0;
 		border-radius: 20px;
 	}
@@ -40,5 +40,35 @@
 @mixin no-scroll() {
 	&::-webkit-scrollbar {
 		display: none;
+	}
+}
+
+@mixin gradientAnimation($start, $end, $transTime) {
+	background-size: 100%;
+	//background-image: linear-gradient(to left, $start, $end);
+	position: relative;
+	z-index: 2;
+	&:before {
+		background-image: linear-gradient(to right, $end, $start);
+		content: '';
+		display: block;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
+		opacity: 0;
+		width: 100%;
+		z-index: -100;
+		transition: opacity $transTime;
+	}
+	&:hover {
+		&:before {
+			opacity: 1;
+		}
+	}
+	&:active {
+		&:before {
+			opacity: 0;
+		}
 	}
 }

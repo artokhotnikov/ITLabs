@@ -1,0 +1,114 @@
+@import '/assets/scss/variables';
+
+.menu {
+  position: absolute;
+  width: 100%;
+  padding: 40px;
+  border-radius: 40px;
+  background: $bg-white;
+  box-shadow: 0 50px 50px 0 rgba(88, 104, 124, 0.2);
+  left: 0;
+  top: calc(100% + 20px);
+
+  &-header {
+    display: flex;
+    gap: 40px;
+
+    .title {
+      color: $text-blue;
+      margin: 0 0 20px;
+
+      &:not(:first-child) {
+        margin: 26px 0 20px;
+      }
+    }
+
+    .menu-col {
+      flex: 0 1 198px;
+
+      &:nth-child(2) {
+        display: flex;
+        align-items: flex-end;
+      }
+    }
+  }
+
+  &-links {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  &-link {
+    color: $text-third;
+    transition: all 0.3s;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 120%;
+    @media (min-width: $md3 + px) {
+      &:hover {
+        color: $text-blue;
+      }
+    }
+  }
+
+  &-footer {
+    display: flex;
+    gap: 32px;
+    margin: 40px 0 0;
+
+    .subtitle {
+      color: $text-secondary;
+      margin: 0 0 16px;
+
+      a {
+        color: inherit;
+        transition: all 0.3s;
+        @media (min-width: $md3 + px) {
+          &:hover {
+            color: $text-blue;
+          }
+        }
+      }
+    }
+
+    .text {
+      color: $text-secondary;
+
+      &-medium {
+      }
+    }
+
+    .menu-col {
+      &:last-child {
+        display: flex;
+        align-items: flex-end;
+      }
+
+      @media (min-width: $md2 + px) {
+        flex: 0 1 204px;
+      }
+    }
+  }
+
+  &-social {
+    display: flex;
+    gap: 16px;
+  }
+
+  &-icon {
+    height: 32px;
+    width: 32px;
+    padding: 0;
+    border-radius: 8px;
+
+    svg {
+      flex: 0 0 20px;
+      height: 20px;
+    }
+  }
+
+  &-feedback {
+    width: 100%;
+  }
+}

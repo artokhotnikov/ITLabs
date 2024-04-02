@@ -48,13 +48,13 @@
 
 .text {
   line-height: 120%;
-  @media (min-width: $md3 + px) {
+  @media (max-width: $md3 + px) {
     font-size: 14px;
   }
 
   &-medium {
     font-size: 14px;
-    @media (min-width: $md3 + px) {
+    @media (max-width: $md3 + px) {
       font-size: 12px;
     }
   }

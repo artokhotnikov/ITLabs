@@ -1,0 +1,46 @@
+@import '/assets/scss/variables';
+
+.nav {
+	display: flex;
+	justify-content: space-between;
+	padding: 0 52px;
+	gap: 24px;
+	background: $bg-white;
+	border-radius: 16px;
+
+	&-link {
+		padding: 17px 0;
+		color: $text-secondary;
+		transition: all 0.5s;
+		position: relative;
+
+		&:after {
+			content: '';
+			display: block;
+			position: absolute;
+			width: 100%;
+			height: 4px;
+			border-radius: 4px 4px 0 0;
+			background: $text-blue;
+			left: 0;
+			bottom: -3px;
+			opacity: 0;
+			transition: all 0.3s;
+		}
+
+		@media (min-width: $md3 + px) {
+			&:hover {
+				color: $text-blue;
+
+				&:after {
+					opacity: 1;
+					bottom: 0;
+				}
+			}
+		}
+	}
+
+	@media (min-width: $md3 + px) {
+		flex: 0 1 780px;
+	}
+}
