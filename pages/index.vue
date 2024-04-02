@@ -1,7 +1,9 @@
-<script setup lang="ts"></script>
+<script setup></script>
 
 <template>
-  <div>asd</div>
+  <div class="page">
+    <HomeSlider />
+  </div>
 </template>
 
 <style scoped lang="scss">
