@@ -1,14 +1,15 @@
+// @ts-ignore
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 
 export const useGlobalStore = defineStore('globalStore', () => {
-  const isLoading = ref(false)
-  const isOpenMenu = ref(false)
+  const isLoading: Ref<Boolean> = ref(false)
+  const isOpenMenu: Ref<Boolean> = ref(false)
 
-  const toggleMenu = () => {
+  const toggleMenu = (): void => {
     isOpenMenu.value = !isOpenMenu.value
   }
-  const setIsLoading = (bool) => {
+  const setIsLoading = (bool: Boolean): void => {
     isLoading.value = bool
   }
 
