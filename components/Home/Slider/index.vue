@@ -7,7 +7,8 @@ const options = {
   arrows: false,
   autoplay: true,
   progress: true,
-  loop: true,
+  type: 'loop',
+  gap: 20,
 }
 </script>
 
