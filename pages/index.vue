@@ -5,6 +5,7 @@
     <HomeSlider />
     <HomeCategories />
     <HomeSolutions />
+    <HomeProjects />
   </div>
 </template>
 
