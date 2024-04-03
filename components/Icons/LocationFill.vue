@@ -1,1 +1,10 @@
-<script setup lang="ts"></script>
+<template>
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <g fill="currentColor" stroke="currentColor" stroke-width="0">
+      <path
+        d="M12.0001 2C7.59009 2 4.00009 5.59 4.00009 9.99C3.97009 16.44 11.7001 21.78 12.0001 22C12.0001 22 20.0301 16.44 20.0001 10C20.0001 5.59 16.4101 2 12.0001 2ZM12.0001 14C9.79009 14 8.00009 12.21 8.00009 10C8.00009 7.79 9.79009 6 12.0001 6C14.2101 6 16.0001 7.79 16.0001 10C16.0001 12.21 14.2101 14 12.0001 14Z"
+      />
+    </g>
+  </svg>
+</template>
+<script setup lang="ts"></script>
