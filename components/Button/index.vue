@@ -1,52 +1,1 @@
-<script setup lang="ts">
-defineProps({
-  outline: {
-    type: Boolean,
-    default: false,
-  },
-  large: {
-    type: Boolean,
-    default: false,
-  },
-  small: {
-    type: Boolean,
-    default: false,
-  },
-  rounded: {
-    type: Boolean,
-    default: false,
-  },
-  color: {
-    type: String,
-    default: 'primary',
-  },
-  block: {
-    type: Boolean,
-    default: false,
-  },
-})
-const emits = defineEmits(['click'])
-</script>
-
-<template>
-  <button
-    :class="[
-      'btn',
-      color,
-      {
-        outline: outline,
-        rounded: rounded,
-        large: large,
-        block: block,
-        small: small,
-      },
-    ]"
-    @click="emits('click')"
-  >
-    <slot></slot>
-  </button>
-</template>
-
-<style lang="scss" scoped>
-@import 'Button.scss';
-</style>
+<script setup lang="ts">defineProps({  outline: {    type: Boolean,    default: false  },  large: {    type: Boolean,    default: false  },  small: {    type: Boolean,    default: false  },  rounded: {    type: Boolean,    default: false  },  color: {    type: String,    default: 'primary'  },  block: {    type: Boolean,    default: false  }})const emits = defineEmits(['click'])</script><template>  <button    :class="[      'btn',      color,      {        outline: outline,        rounded: rounded,        large: large,        block: block,        small: small      }    ]"    @click="emits('click')"  >    <slot></slot>  </button></template><style lang="scss" scoped>@import 'Button.scss';</style>

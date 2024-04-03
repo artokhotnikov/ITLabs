@@ -1,11 +1,1 @@
-<script setup lang="ts"></script>
-
-<template>
-  <div class="app">
-    <Header />
-    <slot></slot>
-    <Footer />
-  </div>
-</template>
-
-<style scoped lang="scss"></style>
+<script setup lang="ts"></script><template>  <div class="app">    <Header />    <slot></slot>    <Footer />  </div></template><style scoped lang="scss"></style>

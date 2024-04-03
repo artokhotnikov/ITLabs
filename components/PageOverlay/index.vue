@@ -1,22 +1,1 @@
-<script setup lang="ts">
-const emits = defineEmits(['onClick'])
-const onClick = () => {
-  emits('onClick')
-}
-</script>
-
-<template>
-  <div class="overlay" @click.stop="onClick"></div>
-</template>
-
-<style scoped lang="scss">
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: #58687c33;
-  z-index: 5;
-}
-</style>
+<script setup lang="ts">const emits = defineEmits(['onClick'])const onClick = () => {  emits('onClick')}</script><template>  <div class="overlay" @click.stop="onClick"></div></template><style scoped lang="scss">.overlay {  position: fixed;  top: 0;  left: 0;  right: 0;  bottom: 0;  background: #58687c33;  z-index: 5;}</style>
