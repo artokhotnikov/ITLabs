@@ -14,6 +14,7 @@ defineProps<itemProps>()
 
 <template>
   <div class="item">
+    s
     <div class="item-img">
       <img :src="item.image" alt="" />
     </div>
