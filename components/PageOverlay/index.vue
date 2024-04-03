@@ -17,6 +17,6 @@ const onClick = () => {
   right: 0;
   bottom: 0;
   background: #58687c33;
-  z-index: 90;
+  z-index: 5;
 }
 </style>
