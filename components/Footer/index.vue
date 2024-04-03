@@ -32,9 +32,7 @@
         </div>
         <div class="footer-address">
           <div class="text text-md bold">Офис</div>
-          <div class="text text-md">
-            Ул. Холмогорова, 85, Ижевск, 426011
-          </div>
+          <div class="text text-md">Ул. Холмогорова, 85, Ижевск, 426011</div>
           <div class="footer-social">
             <Button color="secondary" class="footer-icon" outline>
               <IconsTelegram />

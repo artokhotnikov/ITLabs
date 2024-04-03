@@ -85,9 +85,7 @@
         </div>
         <div class="menu-col">
           <h5 class="subtitle">Офис</h5>
-          <div class="text text-md">
-            Ул. Холмогорова, 85, Ижевск, 426011
-          </div>
+          <div class="text text-md">Ул. Холмогорова, 85, Ижевск, 426011</div>
         </div>
         <div class="menu-col">
           <h5 class="subtitle">Мы в соц. сетях</h5>
