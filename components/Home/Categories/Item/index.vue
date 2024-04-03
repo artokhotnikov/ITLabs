@@ -21,7 +21,7 @@ defineProps<itemProps>()
       {{ item.title }}
     </div>
     <ul class="ul ul-disc">
-      <li v-for="text in item.list" :key="text" class="text text-medium">
+      <li v-for="text in item.list" :key="text" class="text text-md">
         {{ text }}
       </li>
     </ul>

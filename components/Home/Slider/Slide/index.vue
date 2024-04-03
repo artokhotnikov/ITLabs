@@ -8,7 +8,7 @@ import { SplideSlide } from '@splidejs/vue-splide'
       <div class="slide-content">
         <div class="text text-s medium">Desktop / Web</div>
         <h2 class="title title-s">ПО для интерактивного оборудования</h2>
-        <div class="text text-medium">
+        <div class="text text-md">
           Индивидуальная разработка и готовые решения для всех видов
           интерактивных устройств
         </div>

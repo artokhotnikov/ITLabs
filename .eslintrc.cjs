@@ -22,5 +22,6 @@ module.exports = {
     'max-depth': ['error', 3],
     'no-alert': ['error'],
     'no-var': ['error'],
+    'vue/no-v-html': 'off',
   },
 }

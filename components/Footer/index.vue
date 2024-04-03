@@ -8,7 +8,7 @@
           <div class="footer-logo">
             <img src="@/assets/img/logo.svg" alt="Логотип" />
           </div>
-          <p class="text text-medium">
+          <p class="text text-md">
             <b>ITL Лаборатория Информационных технологий</b> — ведущий
             отечественный разработчик программного обеспечения
           </p>
@@ -24,15 +24,15 @@
           <h4 class="subtitle bold">
             <a href="tel:+79511929402">+7 951 192 94 02</a>
           </h4>
-          <div class="text text-medium">Многоконтактный телефон</div>
+          <div class="text text-md">Многоконтактный телефон</div>
           <h4 class="subtitle bold">
             <a href="mailto:info@itlabs.top">info@itlabs.top</a>
           </h4>
-          <div class="text text-medium">Электронная почта</div>
+          <div class="text text-md">Электронная почта</div>
         </div>
         <div class="footer-address">
-          <div class="text text-medium bold">Офис</div>
-          <div class="text text-medium">
+          <div class="text text-md bold">Офис</div>
+          <div class="text text-md">
             Ул. Холмогорова, 85, Ижевск, 426011
           </div>
           <div class="footer-social">
@@ -46,7 +46,7 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <div class="text text-medium">
+        <div class="text text-md">
           © 2024 «Лаборатория информационных технологий»
         </div>
       </div>

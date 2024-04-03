@@ -75,17 +75,17 @@
           <h5 class="subtitle">
             <a href="tel:+79511929402">8 951 192 94 02</a>
           </h5>
-          <div class="text text-medium">Многоконтактный телефон</div>
+          <div class="text text-md">Многоконтактный телефон</div>
         </div>
         <div class="menu-col">
           <h5 class="subtitle">
             <a href="mailto:info@itlabs.top">info@itlabs.top</a>
           </h5>
-          <div class="text text-medium">Электронная почта</div>
+          <div class="text text-md">Электронная почта</div>
         </div>
         <div class="menu-col">
           <h5 class="subtitle">Офис</h5>
-          <div class="text text-medium">
+          <div class="text text-md">
             Ул. Холмогорова, 85, Ижевск, 426011
           </div>
         </div>

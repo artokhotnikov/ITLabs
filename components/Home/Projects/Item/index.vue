@@ -30,9 +30,9 @@ const onMouseEnter = () => {
       @mouseenter="onMouseEnter"
     >
       <span class="description">
-        <span class="card-subtitle text text-medium">{{ item.subtitle }}</span>
+        <span class="card-subtitle text text-md">{{ item.subtitle }}</span>
         <span class="title title-xs">{{ item.title }}</span>
-        <span class="card-text text text-medium">{{ item.text }}</span>
+        <span class="card-text text text-md">{{ item.text }}</span>
       </span>
       <span class="card-footer">
         <span class="card-idx subtitle bold">{{ +idx + 1 }}</span>
