@@ -20,8 +20,30 @@
           <NuxtLink href="/" class="footer-link medium">О компании</NuxtLink>
           <NuxtLink href="/" class="footer-link medium">Партнеры</NuxtLink>
         </nav>
-        <div class="footer-contacts"></div>
-        <div class="footer-address"></div>
+        <div class="footer-contacts">
+          <h4 class="subtitle bold">
+            <a href="tel:+79511929402">+7 951 192 94 02</a>
+          </h4>
+          <div class="text text-medium">Многоконтактный телефон</div>
+          <h4 class="subtitle bold">
+            <a href="mailto:info@itlabs.top">info@itlabs.top</a>
+          </h4>
+          <div class="text text-medium">Электронная почта</div>
+        </div>
+        <div class="footer-address">
+          <div class="text text-medium bold">Офис</div>
+          <div class="text text-medium">
+            Ул. Холмогорова, 85, Ижевск, 426011
+          </div>
+          <div class="footer-social">
+            <Button color="secondary" class="footer-icon" outline>
+              <IconsTelegram />
+            </Button>
+            <Button color="secondary" class="footer-icon" outline>
+              <IconsVK />
+            </Button>
+          </div>
+        </div>
       </div>
       <div class="footer-bottom">
         <div class="text text-medium">
@@ -42,7 +64,8 @@
 
   &-top {
     display: flex;
-    justify-content: space-between;
+    gap: 20px;
+    //justify-content: space-between;
   }
 
   &-about {
@@ -51,7 +74,7 @@
     }
 
     @media (min-width: $md2 + px) {
-      flex: 0 1 300px;
+      flex: 0 1 400px;
     }
   }
 
@@ -67,16 +90,54 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
+    @media (min-width: $md2 + px) {
+      flex: 0 1 188px;
+    }
   }
 
   &-link {
     font-size: 14px;
-    color: $text-white;
-    transition: all 0.3s;
-    @media (min-width: $md3 + px) {
-      &:hover {
-        color: $text-blue;
-      }
+  }
+
+  &-contacts {
+    .subtitle {
+      margin: 0 0 8px;
+    }
+
+    .text + .subtitle {
+      margin: 40px 0 8px;
+    }
+
+    @media (min-width: $md2 + px) {
+      flex: 0 1 290px;
+    }
+  }
+
+  &-address {
+    .text {
+      margin: 0 0 8px;
+    }
+
+    @media (min-width: $md2 + px) {
+      flex: 0 1 188px;
+    }
+  }
+
+  &-social {
+    margin: 40px 0 0;
+    display: flex;
+    gap: 16px;
+  }
+
+  &-icon {
+    height: 32px;
+    width: 32px;
+    padding: 0;
+    border-radius: 8px;
+
+    svg {
+      flex: 0 0 20px;
+      height: 20px;
     }
   }
 

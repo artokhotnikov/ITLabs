@@ -88,3 +88,12 @@
   &-disc {
   }
 }
+
+a {
+  transition: color 0.3s ease;
+  @media (min-width: $md3 + px) {
+    &:hover {
+      color: $text-blue;
+    }
+  }
+}

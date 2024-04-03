@@ -9,6 +9,7 @@
   box-shadow: 0 50px 50px 0 rgba(88, 104, 124, 0.2);
   left: 0;
   top: calc(100% + 20px);
+  color: $text-third;
 
   &-header {
     display: flex;
@@ -40,16 +41,9 @@
   }
 
   &-link {
-    color: $text-third;
-    transition: all 0.3s;
     font-size: 14px;
     font-weight: 500;
     line-height: 120%;
-    @media (min-width: $md3 + px) {
-      &:hover {
-        color: $text-blue;
-      }
-    }
   }
 
   &-footer {
@@ -60,16 +54,6 @@
     .subtitle {
       color: $text-secondary;
       margin: 0 0 16px;
-
-      a {
-        color: inherit;
-        transition: all 0.3s;
-        @media (min-width: $md3 + px) {
-          &:hover {
-            color: $text-blue;
-          }
-        }
-      }
     }
 
     .text {

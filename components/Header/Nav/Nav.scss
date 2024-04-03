@@ -7,10 +7,10 @@
 	gap: 24px;
 	background: $bg-white;
 	border-radius: 16px;
+	color: $text-secondary;
 
 	&-link {
 		padding: 17px 0;
-		color: $text-secondary;
 		transition: all 0.5s;
 		position: relative;
 
@@ -30,8 +30,6 @@
 
 		@media (min-width: $md3 + px) {
 			&:hover {
-				color: $text-blue;
-
 				&:after {
 					opacity: 1;
 					bottom: 0;
