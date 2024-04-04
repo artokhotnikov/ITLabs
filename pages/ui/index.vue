@@ -26,6 +26,7 @@ const {
   open: openDiscussion,
   toggle: toggleDiscussion
 } = useOpen()
+const inputModel = ref('')
 </script>
 <template>
   <div>
@@ -56,6 +57,16 @@ const {
       <Button small disabled>Button</Button>
       <Button small outline>Button</Button>
       <Button small outline disabled>Button</Button>
+    </div>
+    <div class="list">
+      <label for="">3 заглавные буквы [A-Z]</label>
+      <Input
+        v-model="inputModel"
+        type="text"
+        color="primary"
+        placeholder="Введите текст"
+        required
+      />
     </div>
     <div class="list">
       <Button @click="openCallSpecialist">Modal Call Specialist</Button>
