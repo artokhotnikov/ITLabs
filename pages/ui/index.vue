@@ -26,10 +26,7 @@ const {
   open: openDiscussion,
   toggle: toggleDiscussion
 } = useOpen()
-
-const inputModel = ref('')
 </script>
-
 <template>
   <div>
     <!--  primary  -->
@@ -60,17 +57,6 @@ const inputModel = ref('')
       <Button small outline>Button</Button>
       <Button small outline disabled>Button</Button>
     </div>
-
-    <div class="list">
-      <label for="">3 заглавные буквы [A-Z]</label>
-      <Input
-        v-model="inputModel"
-        type="text"
-        color="primary"
-        placeholder="Введите текст"
-        required
-      />
-    </div>
     <div class="list">
       <Button @click="openCallSpecialist">Modal Call Specialist</Button>
       <Button @click="openResultSuccessResponse">Modal Success</Button>
@@ -79,30 +65,41 @@ const inputModel = ref('')
       <Button @click="openDiscussion">Modal Discussion</Button>
     </div>
     <Teleport to="body">
-      <ModalCallSpecialist
-        :is-active="isOpenCallSpecialist"
-        @cancel="toggleCallSpecialist"
-      />
-      <ModalResultRequest
-        :is-active="isOpenResultSuccessResponse"
-        result="success"
-        @close="toggleResultSuccessResponse"
-      />
-      <ModalResultRequest
-        :is-active="isOpenResultErrorResponse"
-        result="error"
-        @close="toggleResultErrorResponse"
-      />
-      <ModalQuestionDiscussion
-        :is-active="isOpenQuestion"
-        entity="question"
-        @cancel="toggleQuestion"
-      />
-      <ModalQuestionDiscussion
-        :is-active="isOpenDiscussion"
-        entity="discussion"
-        @cancel="toggleDiscussion"
-      />
+      <transition name="fade">
+        <ModalCallSpecialist
+          v-if="isOpenCallSpecialist"
+          v-model:is-active="isOpenCallSpecialist"
+        />
+      </transition>
+      <transition name="fade">
+        <ModalResultRequest
+          v-if="isOpenResultSuccessResponse"
+          v-model:is-active="isOpenResultSuccessResponse"
+          type="success"
+        />
+      </transition>
+
+      <transition name="fade">
+        <ModalResultRequest
+          v-if="isOpenResultErrorResponse"
+          v-model:is-active="isOpenResultErrorResponse"
+          type="error"
+        />
+      </transition>
+      <transition name="fade">
+        <ModalQuestionDiscussion
+          v-if="isOpenQuestion"
+          v-model:is-active="isOpenQuestion"
+          type="question"
+        />
+      </transition>
+      <transition name="fade">
+        <ModalQuestionDiscussion
+          v-if="isOpenDiscussion"
+          v-model:is-active="isOpenDiscussion"
+          type="discussion"
+        />
+      </transition>
     </Teleport>
   </div>
 </template>

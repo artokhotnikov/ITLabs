@@ -2,14 +2,10 @@
 
 <template>
   <div class="page">
-    <!--    МБ УБРАТЬ-->
-    <ClientOnly>
-      <HomeSlider />
-    </ClientOnly>
+    <HomeSlider />
     <HomeCategories />
     <HomeSolutions />
     <HomeProjects />
-    <HomeStages />
   </div>
 </template>
 
