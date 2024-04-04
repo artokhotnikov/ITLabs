@@ -1,6 +1,7 @@
 <script setup lang="ts">
 const inputModel = ref('')
 </script>
+
 <template>
   <div>
     <!--  primary  -->
@@ -31,6 +32,7 @@ const inputModel = ref('')
       <Button small outline>Button</Button>
       <Button small outline disabled>Button</Button>
     </div>
+
     <div class="list">
       <label for="">3 заглавные буквы [A-Z]</label>
       <Input
@@ -49,6 +51,7 @@ const inputModel = ref('')
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 24px;
+
   &:nth-child(2),
   &:nth-child(3) {
     background: black;
