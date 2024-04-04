@@ -38,7 +38,6 @@ const inputModel = ref('')
         type="text"
         color="primary"
         placeholder="Введите текст"
-        :valid-regx="new RegExp('^[а-я]{}$')"
         required
       />
     </div>

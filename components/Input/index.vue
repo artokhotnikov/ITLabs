@@ -1,10 +1,8 @@
 <script setup lang="ts">
-import Close from '~/components/Icons/Close.vue'
-
 interface InputProps {
   modelValue: string
   placeholder?: string
-  validRegx: RegExp
+  validRegx?: RegExp
   type: 'text' | 'password'
   color: 'primary'
   required?: boolean
@@ -18,11 +16,24 @@ interface InputEmits {
 
 const props = defineProps<InputProps>()
 const emits = defineEmits<InputEmits>()
-const validState = computed(() => props.validRegx.test(props.modelValue))
+
+const validState = ref(true)
 const haveContent = computed(() => props.modelValue.length > 0)
-const onInput = (e: Event) =>
+
+const checkValid = () => {
+  if (!props.validRegx) return
+  validState.value = props.validRegx.test(props.modelValue)
+}
+const onInput = (e: Event) => {
   emits('update:modelValue', (e.target as HTMLInputElement).value)
-const onClear = () => emits('update:modelValue', '')
+}
+const onClear = () => {
+  emits('update:modelValue', '')
+  makeValid()
+}
+const makeValid = () => {
+  validState.value = true
+}
 </script>
 
 <template>
@@ -38,10 +49,17 @@ const onClear = () => emits('update:modelValue', '')
       :placeholder="placeholder"
       :required="required"
       :disabled="disabled"
+      :value="modelValue"
       @input="onInput"
+      @focusout="checkValid"
+      @focusin="makeValid"
     />
     <Transition name="fade">
-      <Close v-show="haveContent" class="icon icon-close" @click="onClear" />
+      <IconsClose
+        v-show="haveContent"
+        class="icon icon-close"
+        @click="onClear"
+      />
     </Transition>
   </div>
 </template>
@@ -87,13 +105,11 @@ input {
 }
 
 .error {
-  &:focus,
-  &:active {
-    border-color: #ff5741;
-  }
+  border-color: #ff5741;
   color: #ff5741;
   background-color: #ffedeb;
 }
+
 .primary {
   background-color: $bg-third;
 }
