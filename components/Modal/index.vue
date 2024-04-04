@@ -1,35 +1,39 @@
 <script setup lang="ts">
-type ModalProps = {
-  isActive: boolean
-}
+import { onMounted, onBeforeUnmount } from 'vue'
 
-defineProps<ModalProps>()
+interface ModalEmits {
+  (eventName: 'close'): void
+}
+const emits = defineEmits<ModalEmits>()
+const { lock, unlock } = useBodyLock()
+
+onMounted(lock)
+onBeforeUnmount(unlock)
 </script>
 
 <template>
-  <Transition name="fade">
-    <div v-if="isActive" class="modal">
-      <div class="modal-content">
-        <slot name="content" />
-      </div>
+  <div class="modal">
+    <div class="modal-content">
+      <slot name="content" />
     </div>
-  </Transition>
-  <PageOverlay v-if="isActive" />
+    <PageOverlay @on-click="emits('close')" />
+  </div>
 </template>
 
 <style scoped lang="scss">
 @import '/assets/scss/variables';
 
 .modal {
-  position: sticky;
+  position: fixed;
   inset: 0;
-  top: 168px;
   z-index: 6;
   display: flex;
   justify-content: center;
   align-items: center;
 
   &-content {
+    position: relative;
+    z-index: 6;
     width: 100%;
     max-width: 396px;
     border-radius: 40px;

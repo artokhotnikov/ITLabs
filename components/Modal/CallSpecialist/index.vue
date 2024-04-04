@@ -1,20 +1,20 @@
 <script setup lang="ts">
-type CallSpecialistPropsModal = {
+type CallSpecialistModalProps = {
   isActive: boolean
 }
 
-interface CallSpecialistEmitsModal {
-  (eventName: 'cancel'): void
+interface CallSpecialistModalEmits {
+  (eventName: 'confirm'): void
 
-  (eventName: 'wait-call'): void
+  (eventName: 'update:isActive', value: boolean): void
 }
 
-const emits = defineEmits<CallSpecialistEmitsModal>()
-defineProps<CallSpecialistPropsModal>()
+const emits = defineEmits<CallSpecialistModalEmits>()
+defineProps<CallSpecialistModalProps>()
 </script>
 
 <template>
-  <Modal :is-active="isActive">
+  <Modal @close="emits('update:isActive', false)">
     <template #content>
       <section class="content">
         <div class="content-head">
@@ -34,8 +34,10 @@ defineProps<CallSpecialistPropsModal>()
           </fieldset>
         </form>
         <div class="content-actions">
-          <Button outline @click="emits('cancel')">Отмена</Button>
-          <Button @click="emits('wait-call')">Жду звонка</Button>
+          <Button outline @click="emits('update:isActive', false)">
+            Отмена
+          </Button>
+          <Button @click="emits('confirm')">Жду звонка</Button>
         </div>
       </section>
     </template>

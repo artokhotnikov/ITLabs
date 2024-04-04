@@ -1,47 +1,47 @@
 <script setup lang="ts">
-type ResultRequestPropsModal = {
+type ResultRequestModalProps = {
   isActive: boolean
-  result: 'success' | 'error'
+  type: 'success' | 'error'
 }
 
-interface ResultRequestEmitsModal {
-  (eventName: 'close'): void
+interface ResultRequestModalEmits {
+  (eventName: 'update:isActive', value: boolean): void
 }
 
-const emits = defineEmits<ResultRequestEmitsModal>()
-defineProps<ResultRequestPropsModal>()
+const emits = defineEmits<ResultRequestModalEmits>()
+defineProps<ResultRequestModalProps>()
 </script>
 
 <template>
-  <Modal :is-active="isActive">
+  <Modal @close="emits('update:isActive', false)">
     <template #content>
       <section class="content">
         <div class="content-head">
-          <article v-if="result === 'success'" class="icon icon-success">
+          <article v-if="type === 'success'" class="icon icon-success">
             <IconsCheck />
           </article>
-          <article v-if="result === 'error'" class="icon icon-error">
+          <article v-if="type === 'error'" class="icon icon-error">
             <IconsClose />
           </article>
         </div>
         <div class="content-text">
           <h3
-            v-if="result === 'success'"
+            v-if="type === 'success'"
             class="text-main text-success title-md bold"
           >
             <span>Данные</span>
             успешно отправлены
           </h3>
-          <h3 v-if="result === 'error'" class="text-main text-error">Ошибка</h3>
-          <p v-if="result === 'success'" class="text-second">
+          <h3 v-if="type === 'error'" class="text-main text-error">Ошибка</h3>
+          <p v-if="type === 'success'" class="text-second">
             Мы ответим вам в ближайшее время
           </p>
-          <p v-if="result === 'error'" class="text-second">
+          <p v-if="type === 'error'" class="text-second">
             Попробуйте повторить попытку позже
           </p>
         </div>
         <div class="content-actions">
-          <Button rounded @click="emits('close')">Ок</Button>
+          <Button rounded @click="emits('update:isActive', false)">Ок</Button>
         </div>
       </section>
     </template>
