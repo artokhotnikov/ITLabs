@@ -1,15 +1,14 @@
 module.exports = {
   root: true,
-  extends: ['@nuxt/eslint-config', 'prettier'],
+  extends: ['@nuxt/eslint-config', 'plugin:prettier/recommended', 'prettier'],
   env: {
     browser: true,
-    node: true,
+    node: true
   },
   rules: {
     'no-console': 'warn',
     quotes: ['error', 'single'],
     'prefer-const': 'error',
-    indent: ['warn', 2],
     'comma-dangle': ['error', 'only-multiline'],
     semi: 'off',
     'no-duplicate-imports': 'error',
@@ -23,5 +22,7 @@ module.exports = {
     'no-alert': ['error'],
     'no-var': ['error'],
     'vue/no-v-html': 'off',
-  },
+    ident: 'off',
+    'prettier/prettier': ['error', { endOfLine: 'crlf' }]
+  }
 }

@@ -1,1 +1,99 @@
-<script setup lang="ts">export interface itemProps {  item: {    image: string    title: string    to: string    id: number    list: Array<string>  }}defineProps<itemProps>()</script><template>  <div class="item">    <div class="item-img">      <img :src="item.image" alt="" />    </div>    <div class="title title-s">      {{ item.title }}    </div>    <ul class="ul ul-disc">      <li v-for="text in item.list" :key="text" class="text text-md">        {{ text }}      </li>    </ul>    <Button class="item-btn">Подробнее</Button>  </div></template><style scoped lang="scss">@import '/assets/scss/variables';.item {  display: flex;  flex-direction: column;  padding: 40px;  border-radius: 40px;  background: $bg-white-alpha;  cursor: pointer;  transition: all 0.5s linear;  position: relative;  &:before {    content: '';    position: absolute;    top: 0;    left: 0;    width: 100%;    height: 100%;    display: block;    background: $bg-gradient;    border-radius: 40px;    z-index: -1;    opacity: 0;    transition: opacity 0.5s linear;  }  &-img {    margin-top: -120px;  }  &-btn {    margin-top: auto;    max-width: 170px;    pointer-events: none;  }  ul {    margin: 0 0 20px;  }  .title {    color: $text-blue;    margin: 0 0 20px;  }  @media (min-width: $md3 + px) {    &:hover {      background: none;      &:before {        opacity: 1;      }      .title,      .text {        color: $text-white;      }      .item-btn {        background: $bg-white;        color: $text-primary;      }    }  }}</style>
+<script setup lang="ts">
+export interface itemProps {
+  item: {
+    image: string
+    title: string
+    to: string
+    id: number
+    list: Array<string>
+  }
+}
+
+defineProps<itemProps>()
+</script>
+
+<template>
+  <div class="item">
+    <div class="item-img">
+      <img :src="item.image" alt="" />
+    </div>
+    <div class="title title-s">
+      {{ item.title }}
+    </div>
+    <ul class="ul ul-disc">
+      <li v-for="text in item.list" :key="text" class="text text-md">
+        {{ text }}
+      </li>
+    </ul>
+    <Button class="item-btn">Подробнее</Button>
+  </div>
+</template>
+
+<style scoped lang="scss">
+@import '/assets/scss/variables';
+
+.item {
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
+  border-radius: 40px;
+  background: $bg-white-alpha;
+  cursor: pointer;
+  transition: all 0.5s linear;
+  position: relative;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    background: $bg-gradient;
+    border-radius: 40px;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.5s linear;
+  }
+
+  &-img {
+    margin-top: -120px;
+  }
+
+  &-btn {
+    margin-top: auto;
+    max-width: 170px;
+    pointer-events: none;
+  }
+
+  ul {
+    margin: 0 0 20px;
+  }
+
+  .title {
+    color: $text-blue;
+    margin: 0 0 20px;
+  }
+
+  @media (min-width: $md3 + px) {
+    &:hover {
+      background: none;
+
+      &:before {
+        opacity: 1;
+      }
+
+      .title,
+      .text {
+        color: $text-white;
+      }
+
+      .item-btn {
+        background: $bg-white;
+        color: $text-primary;
+      }
+    }
+  }
+}
+</style>
