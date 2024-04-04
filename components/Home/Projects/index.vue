@@ -1,1 +1,86 @@
-<script setup lang="ts">const data = [  {    id: 1,    subtitle: 'Desktop',    title: 'VK на выставке ВДНХ',    text: 'Прикладное решение для работы с огромным интерактивным экраном на основе lidar технологии. Выставочный стенд «Музыка сердца», «VK клипы» и другое',    to: '/',    image: '/img/home_projects/vk.png'  },  {    id: 2,    subtitle: 'Desktop',    title: 'VK на выставке ВДНХ',    text: 'Прикладное решение для работы с огромным интерактивным экраном на основе lidar технологии. Выставочный стенд «Музыка сердца», «VK клипы» и другое',    to: '/',    image: '/img/home_projects/vk.png'  },  {    id: 3,    subtitle: 'Desktop',    title: 'VK на выставке ВДНХ',    text: 'Прикладное решение для работы с огромным интерактивным экраном на основе lidar технологии. Выставочный стенд «Музыка сердца», «VK клипы» и другое',    to: '/',    image: '/img/home_projects/vk.png'  },  {    id: 4,    subtitle: 'Desktop',    title: 'VK на выставке ВДНХ',    text: 'Прикладное решение для работы с огромным интерактивным экраном на основе lidar технологии. Выставочный стенд «Музыка сердца», «VK клипы» и другое',    to: '/',    image: '/img/home_projects/vk.png'  }]const active = ref(0)</script><template>  <section class="section projects">    <div class="container">      <div class="title">проекты</div>      <div class="projects-list">        <HomeProjectsItem          v-for="(cat, idx) in data"          :key="cat.id"          v-model:active="active"          :item="cat"          :idx="idx"        />        <Button class="projects-btn">Все проекты</Button>      </div>    </div>  </section></template><style scoped lang="scss">@import '/assets/scss/variables';.projects {  &-list {    display: flex;    gap: 20px;    height: 400px;    justify-content: start;    padding-right: 104px;    position: relative;  }  &-btn {    transform: rotate(90deg) translate(158px, -158px);    position: absolute !important;    top: 0;    right: 0;    width: 400px;    height: 84px;    border-radius: 40px;  }  .title {    color: $text-blue;    text-align: center;    margin: 0 0 40px;  }}</style>
+<script setup lang="ts">
+const data = [
+  {
+    id: 1,
+    subtitle: 'Desktop',
+    title: 'VK на выставке ВДНХ',
+    text: 'Прикладное решение для работы с огромным интерактивным экраном на основе lidar технологии. Выставочный стенд «Музыка сердца», «VK клипы» и другое',
+    to: '/',
+    image: '/img/home_projects/vk.png'
+  },
+  {
+    id: 2,
+    subtitle: 'Desktop',
+    title: 'VK на выставке ВДНХ',
+    text: 'Прикладное решение для работы с огромным интерактивным экраном на основе lidar технологии. Выставочный стенд «Музыка сердца», «VK клипы» и другое',
+    to: '/',
+    image: '/img/home_projects/vk.png'
+  },
+  {
+    id: 3,
+    subtitle: 'Desktop',
+    title: 'VK на выставке ВДНХ',
+    text: 'Прикладное решение для работы с огромным интерактивным экраном на основе lidar технологии. Выставочный стенд «Музыка сердца», «VK клипы» и другое',
+    to: '/',
+    image: '/img/home_projects/vk.png'
+  },
+  {
+    id: 4,
+    subtitle: 'Desktop',
+    title: 'VK на выставке ВДНХ',
+    text: 'Прикладное решение для работы с огромным интерактивным экраном на основе lidar технологии. Выставочный стенд «Музыка сердца», «VK клипы» и другое',
+    to: '/',
+    image: '/img/home_projects/vk.png'
+  }
+]
+const active = ref(0)
+</script>
+
+<template>
+  <section class="section projects">
+    <div class="container">
+      <div class="title">проекты</div>
+      <div class="projects-list">
+        <HomeProjectsItem
+          v-for="(cat, idx) in data"
+          :key="cat.id"
+          v-model:active="active"
+          :item="cat"
+          :idx="idx"
+        />
+        <Button class="projects-btn">Все проекты</Button>
+      </div>
+    </div>
+  </section>
+</template>
+
+<style scoped lang="scss">
+@import '/assets/scss/variables';
+
+.projects {
+  &-list {
+    display: flex;
+    gap: 20px;
+    height: 400px;
+    justify-content: start;
+    padding-right: 104px;
+    position: relative;
+  }
+
+  &-btn {
+    transform: rotate(90deg) translate(158px, -158px);
+    position: absolute !important;
+    top: 0;
+    right: 0;
+    width: 400px;
+    height: 84px;
+    border-radius: 40px;
+  }
+
+  .title {
+    color: $text-blue;
+    text-align: center;
+    margin: 0 0 40px;
+  }
+}
+</style>
