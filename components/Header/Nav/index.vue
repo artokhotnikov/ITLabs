@@ -1,1 +1,15 @@
-<script setup lang="ts"></script><template>  <nav class="nav">    <NuxtLink href="/ui" class="nav-link medium">Решения</NuxtLink>    <NuxtLink href="/" class="nav-link medium">Услуги</NuxtLink>    <NuxtLink href="/" class="nav-link medium">Проекты</NuxtLink>    <NuxtLink href="/" class="nav-link medium">О компании</NuxtLink>    <NuxtLink href="/" class="nav-link medium">Партнеры</NuxtLink>  </nav></template><style scoped lang="scss">@import 'Nav';</style>
+<script setup lang="ts"></script>
+
+<template>
+  <nav class="nav">
+    <NuxtLink href="/ui" class="nav-link medium">Решения</NuxtLink>
+    <NuxtLink href="/" class="nav-link medium">Услуги</NuxtLink>
+    <NuxtLink href="/" class="nav-link medium">Проекты</NuxtLink>
+    <NuxtLink href="/" class="nav-link medium">О компании</NuxtLink>
+    <NuxtLink href="/" class="nav-link medium">Партнеры</NuxtLink>
+  </nav>
+</template>
+
+<style scoped lang="scss">
+@import 'Nav';
+</style>

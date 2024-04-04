@@ -1,1 +1,11 @@
-<template>  <svg viewBox="0 0 524 54" xmlns="http://www.w3.org/2000/svg">    <g fill="none" stroke="currentColor">      <path        d="M1 54V38.5818C1 29.7452 8.16344 22.5818 17 22.5818H507C515.837 22.5818 523 15.4184 523 6.58182V0"        stroke-width="2"      />    </g>  </svg></template><script setup lang="ts"></script>
+<template>
+  <svg viewBox="0 0 524 54" xmlns="http://www.w3.org/2000/svg">
+    <g fill="none" stroke="currentColor">
+      <path
+        d="M1 54V38.5818C1 29.7452 8.16344 22.5818 17 22.5818H507C515.837 22.5818 523 15.4184 523 6.58182V0"
+        stroke-width="2"
+      />
+    </g>
+  </svg>
+</template>
+<script setup lang="ts"></script>
