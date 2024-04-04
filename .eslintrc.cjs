@@ -23,6 +23,6 @@ module.exports = {
     'no-var': ['error'],
     'vue/no-v-html': 'off',
     ident: 'off',
-    'prettier/prettier': ['error', { endOfLine: 'crlf' }]
+    'prettier/prettier': ['error', { endOfLine: 'auto' }]
   }
 }
