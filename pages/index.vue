@@ -2,10 +2,16 @@
 
 <template>
   <div class="page">
-    <HomeSlider />
+    <!--    МБ УБРАТЬ-->
+    <ClientOnly>
+      <HomeSlider />
+    </ClientOnly>
     <HomeCategories />
     <HomeSolutions />
     <HomeProjects />
+    <HomeStages />
+    <HomeDiscussion />
+    <HomePartners />
   </div>
 </template>
 

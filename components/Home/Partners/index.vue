@@ -1,0 +1,73 @@
+<script setup lang="ts">
+import data from '~/data/partners'
+</script>
+
+<template>
+  <section class="section partners">
+    <div class="container">
+      <h2 class="title">Партнеры</h2>
+      <div class="partners-list">
+        <div v-for="item in data" :key="item.imageMono" class="img">
+          <img :src="item.imageMono" :alt="item.title" />
+          <img :src="item.imageNormal" :alt="item.title" />
+        </div>
+      </div>
+    </div>
+  </section>
+</template>
+
+<style scoped lang="scss">
+@import '/assets/scss/variables';
+
+.partners {
+  .title {
+    color: $text-blue;
+    text-align: center;
+    margin: 0 0 40px;
+  }
+
+  &-list {
+    max-width: 1060px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 50px 32px;
+  }
+}
+
+.img {
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    img {
+      &:first-child {
+        opacity: 0;
+      }
+
+      &:last-child {
+        opacity: 1;
+      }
+    }
+  }
+
+  img {
+    transition: opacity 0.3s ease-in-out;
+
+    &:first-child {
+      opacity: 1;
+    }
+
+    &:last-child {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0;
+    }
+  }
+}
+</style>
