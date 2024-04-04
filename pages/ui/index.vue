@@ -65,30 +65,41 @@ const {
       <Button @click="openDiscussion">Modal Discussion</Button>
     </div>
     <Teleport to="body">
-      <ModalCallSpecialist
-        :is-active="isOpenCallSpecialist"
-        @cancel="toggleCallSpecialist"
-      />
-      <ModalResultRequest
-        :is-active="isOpenResultSuccessResponse"
-        result="success"
-        @close="toggleResultSuccessResponse"
-      />
-      <ModalResultRequest
-        :is-active="isOpenResultErrorResponse"
-        result="error"
-        @close="toggleResultErrorResponse"
-      />
-      <ModalQuestionDiscussion
-        :is-active="isOpenQuestion"
-        entity="question"
-        @cancel="toggleQuestion"
-      />
-      <ModalQuestionDiscussion
-        :is-active="isOpenDiscussion"
-        entity="discussion"
-        @cancel="toggleDiscussion"
-      />
+      <transition name="fade">
+        <ModalCallSpecialist
+          v-if="isOpenCallSpecialist"
+          v-model:is-active="isOpenCallSpecialist"
+        />
+      </transition>
+      <transition name="fade">
+        <ModalResultRequest
+          v-if="isOpenResultSuccessResponse"
+          v-model:is-active="isOpenResultSuccessResponse"
+          type="success"
+        />
+      </transition>
+
+      <transition name="fade">
+        <ModalResultRequest
+          v-if="isOpenResultErrorResponse"
+          v-model:is-active="isOpenResultErrorResponse"
+          type="error"
+        />
+      </transition>
+      <transition name="fade">
+        <ModalQuestionDiscussion
+          v-if="isOpenQuestion"
+          v-model:is-active="isOpenQuestion"
+          type="question"
+        />
+      </transition>
+      <transition name="fade">
+        <ModalQuestionDiscussion
+          v-if="isOpenDiscussion"
+          v-model:is-active="isOpenDiscussion"
+          type="discussion"
+        />
+      </transition>
     </Teleport>
   </div>
 </template>

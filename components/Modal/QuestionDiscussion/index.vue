@@ -1,28 +1,28 @@
 <script setup lang="ts">
-type QuestionDiscussionPropsModal = {
+type QuestionDiscussionModalProps = {
   isActive: boolean
-  entity: 'question' | 'discussion'
+  type: 'question' | 'discussion'
 }
 
-interface QuestionDiscussionEmitsModal {
-  (eventName: 'cancel'): void
+interface QuestionDiscussionModalEmits {
+  (eventName: 'update:isActive', value: boolean): void
 
-  (eventName: 'send'): void
+  (eventName: 'confirm'): void
 }
 
-const emits = defineEmits<QuestionDiscussionEmitsModal>()
-defineProps<QuestionDiscussionPropsModal>()
+const emits = defineEmits<QuestionDiscussionModalEmits>()
+defineProps<QuestionDiscussionModalProps>()
 </script>
 
 <template>
-  <Modal :is-active="isActive">
+  <Modal @close="emits('update:isActive', false)">
     <template #content>
       <section class="content">
         <div class="content-title">
-          <h3 v-if="entity === 'discussion'" class="title-xs uppercase">
+          <h3 v-if="type === 'discussion'" class="title-xs uppercase">
             <span class="highlight">Обсудить</span> проект
           </h3>
-          <h3 v-if="entity === 'question'" class="title-xs uppercase">
+          <h3 v-if="type === 'question'" class="title-xs uppercase">
             <span class="highlight">Ваш</span> вопрос
           </h3>
           <p>Мы ответим вам в ближайшее время</p>
@@ -59,8 +59,10 @@ defineProps<QuestionDiscussionPropsModal>()
           </form>
         </div>
         <div class="content-actions">
-          <Button outline @click="emits('cancel')">Отмена</Button>
-          <Button @click="emits('send')">Отправить</Button>
+          <Button outline @click="emits('update:isActive', false)">
+            Отмена
+          </Button>
+          <Button @click="emits('confirm')">Отправить</Button>
         </div>
       </section>
     </template>
