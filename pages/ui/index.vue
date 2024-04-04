@@ -1,4 +1,7 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const inputModel = ref('')
+</script>
+
 <template>
   <div>
     <!--  primary  -->
@@ -28,6 +31,17 @@
       <Button small disabled>Button</Button>
       <Button small outline>Button</Button>
       <Button small outline disabled>Button</Button>
+    </div>
+
+    <div class="list">
+      <label for="">3 заглавные буквы [A-Z]</label>
+      <Input
+        v-model="inputModel"
+        type="text"
+        color="primary"
+        placeholder="Введите текст"
+        required
+      />
     </div>
   </div>
 </template>
