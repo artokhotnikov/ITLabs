@@ -1,1 +1,43 @@
-<script setup lang="ts">type ModalProps = {  isActive: boolean}defineProps<ModalProps>()</script><template>  <Transition name="fade">    <div v-if="isActive" class="modal" >      <div class="modal-content">        <slot name="content" />      </div>    </div>  </Transition>  <PageOverlay v-if="isActive" /></template><style scoped lang="scss">@import '/assets/scss/variables';.modal {  position: sticky;  inset: 0;  top: 168px;  z-index: 6;  display: flex;  justify-content: center;  align-items: center;  &-content {    width: 100%;    max-width: 396px;    border-radius: 40px;    background-color: $bg-white;    padding: 40px 20px;    display: flex;    justify-content: center;    align-content: center;  }}</style>
+<script setup lang="ts">
+type ModalProps = {
+  isActive: boolean
+}
+
+defineProps<ModalProps>()
+</script>
+
+<template>
+  <Transition name="fade">
+    <div v-if="isActive" class="modal">
+      <div class="modal-content">
+        <slot name="content" />
+      </div>
+    </div>
+  </Transition>
+  <PageOverlay v-if="isActive" />
+</template>
+
+<style scoped lang="scss">
+@import '/assets/scss/variables';
+
+.modal {
+  position: sticky;
+  inset: 0;
+  top: 168px;
+  z-index: 6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &-content {
+    width: 100%;
+    max-width: 396px;
+    border-radius: 40px;
+    background-color: $bg-white;
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+  }
+}
+</style>
