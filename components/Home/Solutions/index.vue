@@ -1,49 +1,5 @@
 <script setup lang="ts">
-const data = [
-  {
-    id: 1,
-    title: 'Интерактивная <br> Навигация',
-    list: [
-      'Построение маршрутов',
-      'Информация об объектах',
-      'Рекламный контент'
-    ],
-    to: '/',
-    image: '/img/home_solutions/navigation.png'
-  },
-  {
-    id: 2,
-    title: 'Электронная <br> очередь',
-    list: [
-      'Выдача талонов с временем, датой и номером кабинета',
-      'Рекламный контент'
-    ],
-    to: '/',
-    image: '/img/home_solutions/query.png'
-  },
-  {
-    id: 3,
-    title: 'Кассы <br> самообслуживания',
-    list: [
-      'Продажа билетов на мероприятия и аттракционы',
-      'Сбор и обработка данных пользователей',
-      'Рекламный контент'
-    ],
-    to: '/',
-    image: '/img/home_solutions/cash.png'
-  },
-  {
-    id: 4,
-    title: 'Виртуальная <br> примерочная',
-    list: [
-      'Виртуальная примерка костюмов при помощи технологии kinect',
-      'Информация об объектах',
-      'Сбор и обработка данных пользователей'
-    ],
-    to: '/',
-    image: '/img/home_solutions/fitting.png'
-  }
-]
+import data from '~/data/solutions.ts'
 const router = useRouter()
 </script>
 

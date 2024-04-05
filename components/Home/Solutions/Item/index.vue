@@ -1,25 +1,23 @@
 <script setup lang="ts">
-export interface itemProps {
-  item: {
-    image: string
-    title: string
-    to: string
-    id: number
-    list: Array<string>
-  }
+import type Solution from '~/types/Solution/Solution'
+interface ItemProps {
+  item: Solution
 }
-
-defineProps<itemProps>()
+defineProps<ItemProps>()
 </script>
 
 <template>
   <div class="item">
     <div class="item-img">
-      <NuxtImg :src="item.image" loading="lazy" />
+      <NuxtImg :src="item.imageCover" loading="lazy" />
     </div>
     <div class="subtitle bold" v-html="item.title" />
     <ul class="ul ul-disc">
-      <li v-for="text in item.list" :key="text" class="text text-md">
+      <li
+        v-for="text in item.mainFunctionalityCover"
+        :key="text"
+        class="text text-md"
+      >
         {{ text }}
       </li>
     </ul>
