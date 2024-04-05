@@ -46,7 +46,7 @@ const ariaCurrent = (index: number) =>
 <style lang="scss" scoped>
 @import '/assets/scss/variables';
 .breadcrumbs {
-  margin: 40px 0;
+  margin: 20px 0 40px;
   &-list {
     display: flex;
     align-items: center;

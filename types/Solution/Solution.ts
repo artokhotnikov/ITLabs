@@ -1,5 +1,5 @@
 export default interface Solution {
-  id?: number
+  id?: any
   title?: string
   subtitle?: string
   mainDescription?: string

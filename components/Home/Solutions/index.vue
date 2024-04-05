@@ -22,7 +22,12 @@ const router = useRouter()
         </Button>
       </div>
       <div class="solutions-list">
-        <HomeSolutionsItem v-for="cat in data" :key="cat.id" :item="cat" />
+        <HomeSolutionsItem
+          v-for="solution in data"
+          :key="solution.id"
+          :item="solution"
+          @click="router.push(`/solutions/${solution.id}`)"
+        />
       </div>
     </div>
   </section>

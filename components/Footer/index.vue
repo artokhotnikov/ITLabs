@@ -59,6 +59,7 @@
   padding: 40px 0;
   background: $text-secondary;
   color: $text-white;
+  border-radius: 40px 40px 0 0;
 
   &-top {
     display: flex;

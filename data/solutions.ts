@@ -1,6 +1,8 @@
 import type Solution from '~/types/Solution/Solution'
+
 const data: Array<Solution> = [
   {
+    id: 1,
     title: 'Интерактивная <br> Навигация',
     subtitle: 'Быстрая ориентация в незнакомом пространстве',
     mainDescription:
@@ -36,19 +38,21 @@ const data: Array<Solution> = [
       'Тревожная кнопка (вызов сотрудника)'
     ],
     images: [
-      '/img/home_solutions/1.png',
-      '/img/home_solutions/2.png',
-      '/img/home_solutions/3.png',
-      '/img/home_solutions/4.png'
+      '/img/home_solutions/navigation/1.png',
+      '/img/home_solutions/navigation/2.png',
+      '/img/home_solutions/navigation/3.png',
+      '/img/home_solutions/navigation/4.png'
     ],
     imageCover: '/img/home_solutions/navigation/navigation.png',
     mainFunctionalityCover: [
       'Построение маршрутов',
       'Информация об объектах',
       'Рекламный контент'
-    ]
+    ],
+    video: '/video/video.mp4'
   },
   {
+    id: 2,
     title: 'Электронная <br> очередь',
     subtitle: 'Быстрая ориентация в незнакомом пространстве',
     mainDescription:
@@ -84,19 +88,21 @@ const data: Array<Solution> = [
       'Тревожная кнопка (вызов сотрудника)'
     ],
     images: [
-      '/img/home_solutions/1.png',
-      '/img/home_solutions/2.png',
-      '/img/home_solutions/3.png',
-      '/img/home_solutions/4.png'
+      '/img/home_solutions/navigation/1.png',
+      '/img/home_solutions/navigation/2.png',
+      '/img/home_solutions/navigation/3.png',
+      '/img/home_solutions/navigation/4.png'
     ],
     imageCover: '/img/home_solutions/query/query.png',
     mainFunctionalityCover: [
       'Выдача талонов с временем, датой и номером кабинета',
       'Рекламный контент',
       'Рекламный контент'
-    ]
+    ],
+    video: '/video/video.mp4'
   },
   {
+    id: 3,
     title: 'Кассы <br> самообслуживания',
     subtitle: 'Быстрая ориентация в незнакомом пространстве',
     mainDescription:
@@ -132,19 +138,21 @@ const data: Array<Solution> = [
       'Тревожная кнопка (вызов сотрудника)'
     ],
     images: [
-      '/img/home_solutions/1.png',
-      '/img/home_solutions/2.png',
-      '/img/home_solutions/3.png',
-      '/img/home_solutions/4.png'
+      '/img/home_solutions/navigation/1.png',
+      '/img/home_solutions/navigation/2.png',
+      '/img/home_solutions/navigation/3.png',
+      '/img/home_solutions/navigation/4.png'
     ],
     imageCover: '/img/home_solutions/cash/cash.png',
     mainFunctionalityCover: [
       'Продажа билетов на мероприятия и аттракционы',
       'Сбор и обработка данных пользователей',
       'Рекламный контент'
-    ]
+    ],
+    video: '/video/video.mp4'
   },
   {
+    id: 4,
     title: 'Виртуальная <br> примерочная',
     subtitle: 'Быстрая ориентация в незнакомом пространстве',
     mainDescription:
@@ -180,17 +188,18 @@ const data: Array<Solution> = [
       'Тревожная кнопка (вызов сотрудника)'
     ],
     images: [
-      '/img/home_solutions/1.png',
-      '/img/home_solutions/2.png',
-      '/img/home_solutions/3.png',
-      '/img/home_solutions/4.png'
+      '/img/home_solutions/navigation/1.png',
+      '/img/home_solutions/navigation/2.png',
+      '/img/home_solutions/navigation/3.png',
+      '/img/home_solutions/navigation/4.png'
     ],
     imageCover: '/img/home_solutions/fitting/fitting.png',
     mainFunctionalityCover: [
       'Виртуальная примерка костюмов при помощи технологии kinect',
       'Информация об объектах',
       'Сбор и обработка данных пользователей'
-    ]
+    ],
+    video: '/video/video.mp4'
   }
 ]
 
