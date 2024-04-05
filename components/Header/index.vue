@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { useGlobalStore } from '~/store/globalStore'
+import { useModalsStore } from '~/store/modalsStore'
 
+const modalsStore = useModalsStore()
 const globalStore = useGlobalStore()
 const { lock, unlock } = useBodyLock()
 
@@ -24,7 +26,12 @@ const toggleMenu = () => {
         />
         <HeaderNav />
         <HeaderSearch />
-        <Button class="header-ask">Задать вопрос</Button>
+        <Button
+          class="header-ask"
+          @click="modalsStore.open('discussionQuestion')"
+        >
+          Задать вопрос
+        </Button>
         <transition name="fade-top">
           <HeaderMenu v-if="globalStore.isOpenMenu" />
         </transition>

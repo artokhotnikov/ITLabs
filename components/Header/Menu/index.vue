@@ -1,4 +1,8 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { useModalsStore } from '~/store/modalsStore'
+
+const modalsStore = useModalsStore()
+</script>
 
 <template>
   <nav class="menu">
@@ -99,7 +103,13 @@
           </div>
         </div>
         <div class="menu-col">
-          <Button class="menu-feedback" outline>Перезвоните мне</Button>
+          <Button
+            class="menu-feedback"
+            outline
+            @click="modalsStore.open('specialist')"
+          >
+            Перезвоните мне
+          </Button>
         </div>
       </section>
     </div>
