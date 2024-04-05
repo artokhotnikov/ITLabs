@@ -44,6 +44,7 @@ const data = [
     image: '/img/home_solutions/fitting.png'
   }
 ]
+const router = useRouter()
 </script>
 
 <template>
@@ -56,7 +57,13 @@ const data = [
             Готовые продукты и приложения для вашего бизнеса
           </div>
         </div>
-        <Button class="solutions-btn" outline>Все решения</Button>
+        <Button
+          class="solutions-btn"
+          outline
+          @click="router.push('/solutions')"
+        >
+          Все решения
+        </Button>
       </div>
       <div class="solutions-list">
         <HomeSolutionsItem v-for="cat in data" :key="cat.id" :item="cat" />
