@@ -21,11 +21,15 @@ useHead({
             <NuxtImg :src="partner.imageNormal" loading="lazy" />
           </div>
           <div class="partner-content">
-            <div class="partner-title title title-s" v-html="partner.title" />
+            <div class="partner-title title title-xxs" v-html="partner.title" />
             <div class="partner-text text">
               {{ partner.description }}
             </div>
-            <a :href="partner.link" target="_blank" class="text text-md">
+            <a
+              :href="partner.link"
+              target="_blank"
+              class="partner-link text text-md"
+            >
               {{ partner.linkTitle }}
             </a>
           </div>
@@ -45,7 +49,7 @@ useHead({
     gap: 20px;
   }
 
-  .title {
+  &-title {
     margin: 0 0 8px;
     color: $text-blue;
   }
@@ -62,9 +66,19 @@ useHead({
   border-radius: 40px;
   display: flex;
   gap: 40px;
+  color: $text-secondary;
+  transition: background 0.3s ease;
+  cursor: pointer;
+
+  @media (min-width: $md3 + px) {
+    &:hover {
+      background: $bg-white-alpha;
+    }
+  }
 
   &-logo {
-    width: 200px;
+    width: 100%;
+    max-width: 200px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -78,17 +92,15 @@ useHead({
   }
 
   &-title {
+    margin: 0 0 20px;
   }
 
   &-text {
+    margin: 0 0 40px;
   }
-}
 
-.bold {
-}
-
-.text {
-  &-md {
+  &-link {
+    color: $text-blue;
   }
 }
 </style>
