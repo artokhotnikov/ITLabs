@@ -1,10 +1,19 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { useModalsStore } from '~/store/modalsStore'
+
+const modalsStore = useModalsStore()
+</script>
 
 <template>
   <div class="project">
     <h4 class="title title-xs">Хотите обсудить проект?</h4>
     <div class="text text-md">Консультация и оценка бесплатно</div>
-    <Button class="project-btn" color="secondary" outline>
+    <Button
+      class="project-btn"
+      color="secondary"
+      outline
+      @click="modalsStore.open('discussionDiscussion')"
+    >
       Связаться с нами
     </Button>
   </div>
