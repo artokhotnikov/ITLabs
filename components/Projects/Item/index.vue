@@ -3,16 +3,17 @@ import type Project from '~/types/Projects/Project'
 
 interface ProjectProps {
   project: Project
+  small?: boolean
 }
 
-const props = defineProps<ProjectProps>()
+defineProps<ProjectProps>()
 const emits = defineEmits(['onClick'])
 </script>
 
 <template>
   <div
     v-if="project"
-    class="project"
+    :class="['project', { small: small }]"
     :style="{ backgroundImage: 'url(' + project.imageCard + ')' }"
   >
     <div class="project-content">
@@ -25,7 +26,9 @@ const emits = defineEmits(['onClick'])
       <div class="project-description text text-md">
         {{ project.description }}
       </div>
-      <Button class="project-btn" @click="emits('onClick')">Подробнее</Button>
+      <Button class="project-btn" :small="small" @click="emits('onClick')">
+        Подробнее
+      </Button>
     </div>
   </div>
 </template>
@@ -45,6 +48,15 @@ const emits = defineEmits(['onClick'])
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+
+  &.small {
+    padding: 16px;
+    border-radius: 14px;
+
+    .project-btn {
+      width: 100%;
+    }
+  }
 
   @media (min-width: $md2 + px) {
     &:hover {

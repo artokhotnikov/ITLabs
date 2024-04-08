@@ -55,20 +55,7 @@ onMounted(() => {
             </li>
           </ul>
         </div>
-        <div class="solution-gallery gallery section-md">
-          <h3 class="gallery-title title title-s">Примеры работ</h3>
-          <div class="gallery-list">
-            <ProjectsItem
-              v-for="project in projectsData"
-              :key="project.id"
-              :project="project"
-              @on-click="router.push(`/projects/${project.id}`)"
-            />
-          </div>
-          <Button class="gallery-btn" outline @click="router.push('/projects')">
-            Больше проектов
-          </Button>
-        </div>
+        <PageDetailsProjectsExamples :examples="projectsData" />
       </section>
     </div>
     <ConctactSection />
