@@ -1,31 +1,14 @@
 <script setup lang="ts">
 import { useOpen } from '~/utils/useOpen'
+import Check from '~/components/Icons/Check.vue'
 
-const {
-  isOpen: isOpenCallSpecialist,
-  open: openCallSpecialist,
-  toggle: toggleCallSpecialist
-} = useOpen()
-const {
-  isOpen: isOpenResultSuccessResponse,
-  open: openResultSuccessResponse,
-  toggle: toggleResultSuccessResponse
-} = useOpen()
-const {
-  isOpen: isOpenResultErrorResponse,
-  open: openResultErrorResponse,
-  toggle: toggleResultErrorResponse
-} = useOpen()
-const {
-  isOpen: isOpenQuestion,
-  open: openQuestion,
-  toggle: toggleQuestion
-} = useOpen()
-const {
-  isOpen: isOpenDiscussion,
-  open: openDiscussion,
-  toggle: toggleDiscussion
-} = useOpen()
+const { isOpen: isOpenCallSpecialist, open: openCallSpecialist } = useOpen()
+const { isOpen: isOpenResultSuccessResponse, open: openResultSuccessResponse } =
+  useOpen()
+const { isOpen: isOpenResultErrorResponse, open: openResultErrorResponse } =
+  useOpen()
+const { isOpen: isOpenQuestion, open: openQuestion } = useOpen()
+const { isOpen: isOpenDiscussion, open: openDiscussion } = useOpen()
 const inputModel = ref('')
 </script>
 <template>
@@ -59,13 +42,37 @@ const inputModel = ref('')
       <Button small outline disabled>Button</Button>
     </div>
     <div class="list">
-      <label for="">3 заглавные буквы [A-Z]</label>
       <Input
+        id="main-field"
         v-model="inputModel"
         type="text"
         color="primary"
         placeholder="Введите текст"
         required
+      />
+      <Checkbox
+        type="checkbox"
+        label="Left label"
+        label-rotate="rtl"
+        color="primary"
+      />
+      <Checkbox
+        type="checkbox"
+        label="Right label"
+        label-rotate="rtr"
+        color="primary"
+      />
+      <Checkbox
+        type="radio"
+        label="Left label"
+        label-rotate="rtl"
+        color="primary"
+      />
+      <Checkbox
+        type="radio"
+        label="Right label"
+        label-rotate="rtr"
+        color="primary"
       />
     </div>
     <div class="list">

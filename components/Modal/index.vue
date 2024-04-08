@@ -42,6 +42,13 @@ onBeforeUnmount(unlock)
     display: flex;
     justify-content: center;
     align-content: center;
+    transition: 0.3s all ease-in-out;
+    @media (max-width: $md2 + px) {
+      max-width: 590px;
+    }
+    @media (max-width: $md5 + px) {
+      max-width: 328px;
+    }
   }
 }
 </style>
