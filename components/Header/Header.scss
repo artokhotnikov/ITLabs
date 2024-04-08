@@ -1,25 +1,26 @@
 @import '/assets/scss/variables';
 
 .header {
-	margin: 20px 0;
+  margin: 20px 0;
 
-	&-container {
-		display: flex;
-		gap: 20px;
-		align-items: center;
-		position: relative;
-	}
+  &-container {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    position: relative;
+  }
 
-	&-ask {
-		flex-basis: 50px;
-		padding: 0;
-		@media(min-width: $md3 + px) {
-			flex-grow: 1;
-		}
-	}
+  &-ask {
+    flex-basis: 50px;
+    padding: 0;
+    flex-grow: 1;
+    @media (max-width: $md3 + px) {
+      flex-grow: 0;
+    }
+  }
 }
 
 .container {
-	position: relative;
-	z-index: 6;
+  position: relative;
+  z-index: 6;
 }

@@ -96,3 +96,35 @@
     width: 100%;
   }
 }
+
+@media (max-width: $md1 + px) {
+  .menu {
+    &-header {
+      flex-wrap: wrap;
+
+      .menu-col {
+        flex-basis: 245px;
+
+        &:nth-child(2) {
+        }
+      }
+    }
+
+    &-footer {
+      flex-wrap: wrap;
+      gap: 40px;
+
+      .menu-col {
+        flex-basis: 245px;
+
+        &:last-child {
+          flex-basis: 214px;
+        }
+      }
+    }
+  }
+}
+
+@media(max-width: $md3 + px) {
+
+}
