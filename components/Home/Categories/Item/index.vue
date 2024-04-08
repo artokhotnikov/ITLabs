@@ -1,12 +1,8 @@
 <script setup lang="ts">
-export interface itemProps {
-  item: {
-    image: string
-    title: string
-    to: string
-    id: number
-    list: Array<string>
-  }
+import type ProjectsCategory from '~/types/Projects/ProjectsCategory'
+
+interface itemProps {
+  item: ProjectsCategory
 }
 
 defineProps<itemProps>()
@@ -21,7 +17,7 @@ defineProps<itemProps>()
       {{ item.title }}
     </div>
     <ul class="ul ul-disc">
-      <li v-for="text in item.list" :key="text" class="text text-md">
+      <li v-for="text in item.descriptionList" :key="text" class="text text-md">
         {{ text }}
       </li>
     </ul>
@@ -59,6 +55,7 @@ defineProps<itemProps>()
 
   &-img {
     margin-top: -120px;
+
     img {
       width: 100%;
     }
