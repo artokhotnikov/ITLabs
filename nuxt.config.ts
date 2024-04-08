@@ -4,7 +4,12 @@ export default defineNuxtConfig({
     pageTransition: { name: 'fade', mode: 'out-in' }
   },
   devtools: { enabled: false },
-  modules: ['@nuxtjs/eslint-module', '@pinia/nuxt', '@nuxt/image'],
+  modules: [
+    '@nuxtjs/eslint-module',
+    '@pinia/nuxt',
+    '@nuxt/image',
+    '@vueuse/nuxt'
+  ],
   alias: {
     assets: '/<rootDir>/assets',
     pinia: '/node_modules/@pinia/nuxt/node_modules/pinia/dist/pinia.mjs'

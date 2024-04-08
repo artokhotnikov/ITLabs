@@ -11,7 +11,11 @@
 	}
 
 	&-ask {
-		flex-grow: 1;
+		flex-basis: 50px;
+		padding: 0;
+		@media(min-width: $md3 + px) {
+			flex-grow: 1;
+		}
 	}
 }
 

@@ -7,12 +7,9 @@ interface ProjectsExamples {
 
 defineProps<ProjectsExamples>()
 
+const { width } = useWindowSize()
 const router = useRouter()
-const small = ref(false)
-
-onMounted(() => {
-  small.value = window.innerWidth < 540
-})
+const small = computed(() => width.value <= 768)
 </script>
 
 <template>

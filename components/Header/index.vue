@@ -5,7 +5,9 @@ import { useModalsStore } from '~/store/modalsStore'
 const modalsStore = useModalsStore()
 const globalStore = useGlobalStore()
 const { lock, unlock } = useBodyLock()
+const { width } = useWindowSize()
 
+const sm = computed(() => width.value <= 768)
 const toggleMenu = () => {
   globalStore.toggleMenu()
   if (globalStore.isOpenMenu) {
@@ -30,7 +32,8 @@ const toggleMenu = () => {
           class="header-ask"
           @click="modalsStore.open('discussionQuestion')"
         >
-          Задать вопрос
+          <IconsQuestion v-if="sm" />
+          <span v-else>Задать вопрос</span>
         </Button>
         <transition name="fade-top">
           <HeaderMenu v-if="globalStore.isOpenMenu" />
