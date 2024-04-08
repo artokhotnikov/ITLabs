@@ -47,6 +47,9 @@ useHead({
     display: flex;
     flex-direction: column;
     gap: 20px;
+    @media (max-width: $md3 + px) {
+      gap: 16px;
+    }
   }
 
   &-title {
@@ -57,19 +60,25 @@ useHead({
   .subtitle {
     color: $text-secondary;
     margin: 0 0 40px;
+    @media (max-width: $md3 + px) {
+      margin: 0 0 32px;
+    }
   }
 }
 
 .partner {
   padding: 40px;
   background: $bg-white;
-  border-radius: 40px;
+  border-radius: 20px;
   display: flex;
   gap: 40px;
   color: $text-secondary;
   transition: background 0.3s ease;
   cursor: pointer;
-
+  @media (max-width: $md3 + px) {
+    flex-direction: column;
+    padding: 32px;
+  }
   @media (min-width: $md3 + px) {
     &:hover {
       background: $bg-white-alpha;
@@ -82,6 +91,10 @@ useHead({
     display: flex;
     align-items: center;
     justify-content: center;
+
+    @media (max-width: $md3 + px) {
+      margin: 0 auto;
+    }
 
     img {
       width: 100%;
@@ -101,6 +114,10 @@ useHead({
 
   &-link {
     color: $text-blue;
+    font-weight: 500;
+    @media (max-width: $md3 + px) {
+      font-weight: 700;
+    }
   }
 }
 </style>
