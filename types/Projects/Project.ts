@@ -9,7 +9,7 @@ export default interface Project {
   taskLeft?: string
   taskRight?: string
   solutionSubtitle?: string
-  solutionLeft?: string
-  solutionRight?: string
+  solutionLeft?: Array<string>
+  solutionRight?: Array<string>
   resultGallery?: Array<string>
 }

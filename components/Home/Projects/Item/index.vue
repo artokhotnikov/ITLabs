@@ -109,7 +109,6 @@ span {
 
 .description {
   overflow: hidden;
-  height: 140px;
   opacity: 0;
   transition-delay: 0.3s;
   transition: all 0.3s ease;
