@@ -1,20 +1,15 @@
 <script setup lang="ts">
+import type Project from '~/types/Projects/Project'
+
 export interface itemProps {
-  item: {
-    image: string
-    subtitle: string
-    text: string
-    title: string
-    to: string
-    id: number
-  }
+  item: Project
   idx: number
   active: number
 }
 
 const props = defineProps<itemProps>()
 const emits = defineEmits(['update:active'])
-
+const router = useRouter()
 const onMouseEnter = () => {
   emits('update:active', props.idx)
 }
@@ -26,17 +21,19 @@ const onMouseEnter = () => {
     <label
       :for="item.id"
       class="card"
-      :style="{ backgroundImage: 'url(' + item.image + ')' }"
+      :style="{ backgroundImage: 'url(' + item.imageCard + ')' }"
       @mouseenter="onMouseEnter"
     >
       <span class="description">
-        <span class="card-subtitle text text-md">{{ item.subtitle }}</span>
+        <span class="card-subtitle text text-md">{{ item.type }}</span>
         <span class="title title-xs">{{ item.title }}</span>
-        <span class="card-text text text-md">{{ item.text }}</span>
+        <span class="card-text text text-md">{{ item.description }}</span>
       </span>
       <span class="card-footer">
         <span class="card-idx subtitle bold">{{ +idx + 1 }}</span>
-        <Button class="card-btn">Подробнее</Button>
+        <Button class="card-btn" @click="router.push(`/projects/${item.id}`)">
+          Подробнее
+        </Button>
       </span>
     </label>
   </div>
@@ -44,9 +41,11 @@ const onMouseEnter = () => {
 
 <style scoped lang="scss">
 @import '/assets/scss/variables';
+
 span {
   display: block;
 }
+
 .card {
   height: 100%;
   padding: 40px 17px;
@@ -63,8 +62,22 @@ span {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  position: relative;
+
+  &:before {
+    content: '';
+    inset: 0;
+    position: absolute;
+    display: block;
+    background: linear-gradient(
+      90deg,
+      rgba(45, 55, 68, 1) 0%,
+      rgba(45, 55, 68, 0) 100%
+    );
+  }
 
   &-subtitle {
+    text-transform: capitalize;
     color: $text-white-alpha;
   }
 
@@ -83,6 +96,7 @@ span {
     align-items: center;
     gap: 34px;
     padding-top: 40px;
+    position: relative;
   }
 
   &-idx {
@@ -112,6 +126,8 @@ span {
   opacity: 0;
   transition-delay: 0.3s;
   transition: all 0.3s ease;
+  position: relative;
+  max-width: 360px;
 }
 
 input {

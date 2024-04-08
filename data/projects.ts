@@ -354,3 +354,5 @@ const projects: Array<Project> = [
     ]
   }
 ]
+
+export default projects
