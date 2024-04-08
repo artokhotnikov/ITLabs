@@ -1,15 +1,19 @@
 <script setup lang="ts">
 import data from '~/data/solutions'
 import type Solution from '~/types/Solution/Solution'
-import { useModalsStore } from '~/store/modalsStore'
+// import { useModalsStore } from '~/store/modalsStore'
+import projects from '~/data/projects'
+import type Project from '~/types/Projects/Project'
 
-const modalsStore = useModalsStore()
+// const modalsStore = useModalsStore()
 const route = useRoute()
 const router = useRouter()
 const solution = ref<Solution>()
+const projectsData = ref<Array<Project>>()
 
 onMounted(() => {
   solution.value = data.find((item) => item.id === +route.params.id)
+  projectsData.value = projects.slice(0, 4)
 })
 </script>
 
@@ -18,27 +22,13 @@ onMounted(() => {
     <div class="container">
       <Breadcrumbs />
       <section v-if="solution" class="solution">
-        <div class="solution-header section-md">
-          <div class="solution-video">
-            <video :src="solution.video" controls></video>
-          </div>
-          <div class="solution-description">
-            <h1 class="solution-title title title-s" v-html="solution.title" />
-            <div class="solution-subtitle text bold">
-              {{ solution.subtitle }}
-            </div>
-            <div
-              class="solution-text text text-md"
-              v-html="solution.mainDescription"
-            />
-            <Button
-              class="solution-btn"
-              @click="modalsStore.open('discussionDiscussion')"
-            >
-              Консультация с экспертом
-            </Button>
-          </div>
-        </div>
+        <PageDetailsHeader
+          :title="solution.title"
+          :video="solution.video"
+          :description="solution.mainDescription"
+          btn-title="Консультация с экспертом"
+          :subtitle="solution.subtitle"
+        />
         <div class="solution-functionality section-md">
           <h4 class="solution-category title title-xs">Основной функционал</h4>
           <ul class="ul ul-disc">
@@ -68,13 +58,12 @@ onMounted(() => {
         <div class="solution-gallery gallery section-md">
           <h3 class="gallery-title title title-s">Примеры работ</h3>
           <div class="gallery-list">
-            <div
-              v-for="image in solution.images"
-              :key="image"
-              class="gallery-img"
-            >
-              <NuxtImg :src="image" sizes="180px md:280px xl:320px" />
-            </div>
+            <ProjectsItem
+              v-for="project in projectsData"
+              :key="project.id"
+              :project="project"
+              @on-click="router.push(`/projects/${project.id}`)"
+            />
           </div>
           <Button class="gallery-btn" outline @click="router.push('/projects')">
             Больше проектов
@@ -124,7 +113,6 @@ onMounted(() => {
 
   &-title {
     color: $text-blue;
-    margin: 0 0 8px;
   }
 
   &-subtitle {
@@ -146,16 +134,34 @@ onMounted(() => {
   &-category {
     color: $text-secondary;
     margin: 0 0 40px;
+    @media (max-width: $md3 + px) {
+      text-align: center;
+    }
   }
 
   &-functionality {
     .ul {
       flex-wrap: wrap;
-      max-height: 270px;
+      max-height: 290px;
       gap: 8px 40px;
+      @media (max-width: $md1 + px) {
+        max-height: 360px;
+      }
+      @media (max-width: $md2 + px) {
+        max-height: 50vw;
+      }
+      @media (max-width: $md3 + px) {
+        max-height: 100%;
+      }
 
       li {
         max-width: 50%;
+        @media (max-width: $md2 + px) {
+          max-width: 40%;
+        }
+        @media (max-width: $md3 + px) {
+          max-width: 100%;
+        }
       }
     }
   }
@@ -186,10 +192,6 @@ onMounted(() => {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
-  }
-
-  &-img {
-    @include img;
   }
 
   &-btn {
