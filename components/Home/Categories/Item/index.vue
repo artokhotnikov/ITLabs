@@ -6,10 +6,12 @@ interface itemProps {
 }
 
 defineProps<itemProps>()
+
+const router = useRouter()
 </script>
 
 <template>
-  <div class="item">
+  <div class="item" @click="router.push(`/categories/${item.id}`)">
     <div class="item-img">
       <NuxtImg :src="item.image" loading="lazy" />
     </div>
@@ -21,7 +23,7 @@ defineProps<itemProps>()
         {{ text }}
       </li>
     </ul>
-    <Button class="item-btn">Подробнее</Button>
+    <Button class="item-btn"> Подробнее </Button>
   </div>
 </template>
 

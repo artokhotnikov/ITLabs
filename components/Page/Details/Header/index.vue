@@ -88,7 +88,7 @@ const emits = defineEmits(['onClick'])
 
   &-description {
     @media (min-width: $md2 + px) {
-      flex: 0 1 385px;
+      flex: 0 1 395px;
     }
     @media (max-width: $md2 + px) {
       text-align: center;

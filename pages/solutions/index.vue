@@ -7,8 +7,6 @@ definePageMeta({
 useHead({
   title: 'Решения'
 })
-
-const router = useRouter()
 </script>
 
 <template>
@@ -20,17 +18,11 @@ const router = useRouter()
         Готовые продукты и приложения для вашего бизнеса
       </div>
       <div class="page-list">
-        <div
+        <SolutionsItem
           v-for="solution in data"
           :key="solution.id"
-          class="item"
-          @click="router.push(`/solutions/${solution.id}`)"
-        >
-          <div class="item-img">
-            <NuxtImg :src="solution.imageCover" loading="lazy" />
-          </div>
-          <div class="text bold" v-html="solution.title" />
-        </div>
+          :solution="solution"
+        />
       </div>
     </div>
   </div>
@@ -44,56 +36,12 @@ const router = useRouter()
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
-  }
-}
-
-.item {
-  display: flex;
-  flex-direction: column;
-  padding: 0 0 40px;
-  border-radius: 40px;
-  background: $bg-white-alpha-20;
-  cursor: pointer;
-  transition: all 0.5s linear;
-  position: relative;
-  text-align: center;
-  color: $text-secondary;
-
-  &:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: block;
-    background: $bg-gradient;
-    border-radius: 40px;
-    z-index: -1;
-    opacity: 0;
-    transition: opacity 0.5s linear;
-  }
-
-  &-img {
-    img {
-      width: 100%;
+    @media (max-width: $md2 + px) {
+      grid-template-columns: repeat(3, 1fr);
     }
-  }
-
-  &-btn {
-    margin-top: auto;
-    max-width: 170px;
-    pointer-events: none;
-  }
-
-  @media (min-width: $md3 + px) {
-    &:hover {
-      background: none;
-      color: $text-white;
-
-      &:before {
-        opacity: 1;
-      }
+    @media (max-width: $md3 + px) {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
     }
   }
 }
@@ -106,5 +54,8 @@ const router = useRouter()
 .subtitle {
   color: $text-secondary;
   margin: 0 0 60px;
+  @media (max-width: $md3 + px) {
+    margin: 0 0 40px;
+  }
 }
 </style>

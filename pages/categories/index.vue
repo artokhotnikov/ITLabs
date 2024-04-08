@@ -7,6 +7,8 @@ definePageMeta({
 useHead({
   title: 'Услуги'
 })
+
+const router = useRouter()
 </script>
 
 <template>
@@ -34,7 +36,12 @@ useHead({
             <div class="category-text text text-md">
               {{ category.description }}
             </div>
-            <Button class="category-btn">Подробнее</Button>
+            <Button
+              class="category-btn"
+              @click="router.push(`/categories/${category.id}`)"
+            >
+              Подробнее
+            </Button>
           </div>
         </div>
       </div>
