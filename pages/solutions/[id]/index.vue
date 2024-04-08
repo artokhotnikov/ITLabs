@@ -73,7 +73,7 @@ onMounted(() => {
               :key="image"
               class="gallery-img"
             >
-              <NuxtImg :src="image" />
+              <NuxtImg :src="image" sizes="180px md:280px xl:320px" />
             </div>
           </div>
           <Button class="gallery-btn" outline @click="router.push('/projects')">
