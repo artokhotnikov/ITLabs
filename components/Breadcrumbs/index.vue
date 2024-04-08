@@ -27,13 +27,13 @@ const ariaCurrent = (index: number) =>
 <template>
   <nav id="breadcrumbs" class="breadcrumbs" aria-label="Breadcrumb">
     <ul class="breadcrumbs-list">
-      <li class="breadcrumbs-link">
+      <li class="breadcrumbs-link medium">
         <NuxtLink to="/" :aria-current="ariaCurrent(-1)"> Главная </NuxtLink>
       </li>
       <li
         v-for="(breadcrumb, index) in getBreadcrumbs()"
         :key="index"
-        class="breadcrumbs-link"
+        class="breadcrumbs-link medium"
       >
         <NuxtLink :to="breadcrumb.path" :aria-current="ariaCurrent(index)">
           {{ breadcrumb.meta.title || 'Не заполнен definePageMeta' }}
