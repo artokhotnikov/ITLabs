@@ -81,21 +81,21 @@ const router = useRouter()
 .project:nth-child(5n + 3) {
   max-width: 500px;
   @media (max-width: $md1 + px) {
-    max-width: 305px;
+    max-width: 280px;
   }
 }
 
 .project:nth-child(5n + 4) {
   max-width: 500px;
   @media (max-width: $md1 + px) {
-    max-width: 390px;
+    max-width: 380px;
   }
 }
 
 .project:nth-child(5n + 5) {
   max-width: 708px;
   @media (max-width: $md1 + px) {
-    max-width: 510px;
+    max-width: 496px;
   }
 }
 </style>

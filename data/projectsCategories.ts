@@ -30,7 +30,7 @@ const projectsCategories: Array<ProjectsCategory> = [
     video: '/video/video.mp4'
   },
   {
-    id: 1,
+    id: 3,
     image: '/img/home_categories/gamedev.png',
     title: 'Gamedev',
     subtitle: 'Что такое Gamedev разработка?',

@@ -94,6 +94,7 @@ useHead({
 
     @media (max-width: $md3 + px) {
       margin: 0 auto;
+      min-height: 120px;
     }
 
     img {
