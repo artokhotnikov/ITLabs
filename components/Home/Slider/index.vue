@@ -27,10 +27,12 @@ const options = {
 
 .splider {
   &-slider {
+    max-height: 420px;
     border-radius: 40px;
     overflow: hidden;
     @media (max-width: $md4 + px) {
       border-radius: 20px;
+      max-height: 440px;
     }
   }
 }

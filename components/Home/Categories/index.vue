@@ -17,13 +17,21 @@ import projectsCategories from '~/data/projectsCategories'
 </template>
 
 <style scoped lang="scss">
-.categories {
-  margin: 20px 0 0;
+@import '/assets/scss/variables';
+@import '/assets/scss/mixins';
 
+.categories {
   &-list {
+    @include no-scroll;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
+    padding: 40px 0 0;
+    @media (max-width: $md2 + px) {
+      max-width: 100%;
+      overflow-x: auto;
+      overflow-y: visible;
+    }
   }
 }
 </style>
