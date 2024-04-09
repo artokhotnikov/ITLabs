@@ -1,4 +1,5 @@
 <script setup lang="ts">
+// TODO: вынести галерею в отдельный компонент
 import type Project from '~/types/Projects/Project'
 import projects from '~/data/projects'
 import { Splide, SplideSlide, SplideTrack } from '@splidejs/vue-splide'
@@ -10,8 +11,39 @@ useHead({
   title: 'Проект'
 })
 
+const { isOpen, open, close } = useOpen()
+const { lock, unlock } = useBodyLock()
 const route = useRoute()
 const project = ref<Project>()
+const currentView = ref('/video/video.mp4')
+const currentViewIndex = ref(0)
+const openView = (index: number) => {
+  if (!project.value) return
+  currentViewIndex.value = index
+  currentView.value = project.value?.resultGallery?.[index] as string
+  lock()
+  open()
+}
+const closeView = () => {
+  currentView.value = ''
+  unlock()
+  close()
+}
+const nextView = () => {
+  if (currentViewIndex.value + 1 === project.value?.resultGallery?.length)
+    return
+  currentViewIndex.value = currentViewIndex.value + 1
+  currentView.value = project.value?.resultGallery?.[
+    currentViewIndex.value
+  ] as string
+}
+const prevView = () => {
+  if (currentViewIndex.value === 0) return
+  currentViewIndex.value = currentViewIndex.value - 1
+  currentView.value = project.value?.resultGallery?.[
+    currentViewIndex.value
+  ] as string
+}
 const options = {
   perPage: 4,
   arrows: true,
@@ -95,12 +127,12 @@ onMounted(() => {
               >
                 <SplideTrack>
                   <SplideSlide
-                    v-for="slide in project.resultGallery"
+                    v-for="(slide, index) in project.resultGallery"
                     :key="slide"
                   >
-                    <div class="slide">
+                    <div class="slide" @click="openView(index)">
                       <div v-if="isVideoSlide(slide)" class="slide-video">
-                        <video :src="slide" no-contorls></video>
+                        <video :src="slide"></video>
                         <div class="slide-icon">
                           <IconsPlay />
                         </div>
@@ -124,6 +156,32 @@ onMounted(() => {
                 </div>
               </Splide>
             </div>
+            <transition name="fade">
+              <div v-if="isOpen" class="view">
+                <div class="view-close" @click="closeView">
+                  <IconsClose />
+                </div>
+                <div v-if="currentView.length" class="view-content">
+                  <video
+                    v-if="isVideoSlide(currentView)"
+                    :src="currentView"
+                    controls
+                  />
+                  <NuxtImg v-else :src="currentView" loading="lazy" />
+                </div>
+                <div class="view-controls">
+                  <button class="view-arrow view-arrow-prev" @click="prevView">
+                    <IconsArrowLeft />
+                  </button>
+                  <button class="view-arrow view-arrow-next" @click="nextView">
+                    <IconsArrowRight />
+                  </button>
+                </div>
+              </div>
+            </transition>
+            <transition name="fade">
+              <PageOverlay v-if="isOpen" />
+            </transition>
           </div>
         </ClientOnly>
       </section>
@@ -315,6 +373,106 @@ onMounted(() => {
 
   &--next {
     right: 10px;
+  }
+}
+
+.view {
+  position: fixed;
+  inset: 0;
+  z-index: 6;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &-close {
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    cursor: pointer;
+    z-index: 6;
+
+    svg {
+      width: 36px;
+      height: 36px;
+    }
+
+    @media (max-width: $md3 + px) {
+      width: 32px;
+      height: 32px;
+      top: 20px;
+      right: 20px;
+      svg {
+        width: 32px;
+        height: 32px;
+      }
+    }
+  }
+
+  &-content {
+    max-width: 1200px;
+    width: 100%;
+    aspect-ratio: 16/9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @media (max-width: $md3 + px) {
+      aspect-ratio: 9/16;
+      max-height: 100dvh;
+    }
+
+    img,
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    @media (max-width: $md3 + px) {
+      img,
+      video {
+        height: auto;
+        max-height: 100dvh;
+      }
+    }
+  }
+
+  &-arrow {
+    width: 64px;
+    height: 64px;
+    background: $bg-white-alpha-20;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $text-white;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    @media (max-width: $md3 + px) {
+      width: 32px;
+      height: 32px;
+      svg {
+        width: 16px;
+        height: 16px;
+      }
+    }
+  }
+
+  &-arrow-prev {
+    left: 40px;
+    @media (max-width: $md3 + px) {
+      left: 10px;
+    }
+  }
+
+  &-arrow-next {
+    right: 40px;
+    @media (max-width: $md3 + px) {
+      right: 10px;
+    }
   }
 }
 </style>
