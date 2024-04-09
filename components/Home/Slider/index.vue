@@ -26,13 +26,12 @@ const options = {
 @import '/assets/scss/variables';
 
 .splider {
-  position: relative;
-  max-height: 418px;
-  overflow: hidden;
-
   &-slider {
     border-radius: 40px;
     overflow: hidden;
+    @media (max-width: $md4 + px) {
+      border-radius: 20px;
+    }
   }
 }
 
@@ -43,6 +42,10 @@ const options = {
   gap: 8px;
   justify-content: flex-start;
   padding: 0;
+  @media (max-width: $md4 + px) {
+    left: 32px;
+    bottom: 32px;
+  }
 }
 
 .splide__pagination__page {
@@ -57,6 +60,13 @@ const options = {
     width: 60px;
     background: $bg-white;
     transform: scale(1);
+  }
+
+  @media (max-width: $md4 + px) {
+    width: 14px;
+    &.is-active {
+      width: 44px;
+    }
   }
 }
 </style>
