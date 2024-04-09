@@ -95,14 +95,14 @@ onMounted(() => {
   }
 
   &-section {
-  }
-
-  &-title {
     margin: 40px 0 0;
-    color: $text-blue;
     @media (max-width: $md3 + px) {
       margin: 64px 0 0;
     }
+  }
+
+  &-title {
+    color: $text-blue;
   }
 
   &-content {
