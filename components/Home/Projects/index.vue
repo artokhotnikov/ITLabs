@@ -42,22 +42,32 @@ onMounted(() => {
     justify-content: start;
     padding-right: 104px;
     position: relative;
+    @media (max-width: 959px) {
+      flex-direction: column;
+      height: auto;
+      padding: 0;
+    }
   }
 
   &-btn {
-    transform: rotate(90deg) translate(158px, -158px);
-    position: absolute !important;
-    top: 0;
-    right: 0;
-    width: 400px;
-    height: 84px;
-    border-radius: 40px;
+    @media (min-width: 960px) {
+      transform: rotate(-90deg) translate(-158px, 158px);
+      position: absolute !important;
+      top: 0;
+      right: 0;
+      width: 400px;
+      height: 84px;
+      border-radius: 40px;
+    }
   }
 
   .title {
     color: $text-blue;
     text-align: center;
     margin: 0 0 40px;
+    @media (max-width: $md3 + px) {
+      margin: 0 0 32px;
+    }
   }
 }
 </style>

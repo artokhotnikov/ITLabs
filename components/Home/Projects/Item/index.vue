@@ -63,6 +63,12 @@ span {
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
+  @media (max-width: 959px) {
+    padding: 24px 24px 17px;
+    width: 100%;
+    height: 84px;
+    border-radius: 16px;
+  }
 
   &:before {
     content: '';
@@ -112,6 +118,10 @@ span {
 
   &-btn {
     width: 170px;
+    @media (max-width: 959px) {
+      opacity: 0;
+      pointer-events: none;
+    }
   }
 }
 
@@ -128,6 +138,9 @@ span {
   transition: all 0.3s ease;
   position: relative;
   max-width: 360px;
+  @media (max-width: $md3 + px) {
+    max-width: 240px;
+  }
 }
 
 input {
@@ -138,6 +151,18 @@ input:checked {
   & + .card {
     padding: 40px;
     width: 812px;
+    @media (max-width: $md1 + px) {
+      width: 480px;
+    }
+    @media (max-width: 959px) {
+      height: auto;
+      width: 100%;
+      padding: 64px 24px 24px;
+      .card-btn {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
 
     .card-subtitle {
       height: auto;
