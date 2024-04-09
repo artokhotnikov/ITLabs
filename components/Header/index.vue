@@ -28,14 +28,16 @@ const toggleMenu = () => {
         />
         <HeaderNav />
         <HeaderSearch />
-        <Button
-          class="header-ask"
-          @click="modalsStore.open('discussionQuestion')"
-        >
-          <IconsQuestion v-if="sm" />
-          <span v-else>Задать вопрос</span>
-        </Button>
-        <transition name="fade-top">
+        <ClientOnly>
+          <Button
+            class="header-ask"
+            @click="modalsStore.open('discussionQuestion')"
+          >
+            <IconsQuestion v-if="sm" />
+            <span v-else>Задать вопрос</span>
+          </Button>
+        </ClientOnly>
+        <transition :name="sm ? 'slide-left' : 'fade-top'">
           <HeaderMenu v-if="globalStore.isOpenMenu" />
         </transition>
       </div>

@@ -10,7 +10,7 @@ const mobile = computed(() => width.value <= 767)
 
 <template>
   <nav class="menu">
-    <section v-if="mobile" class="menu-mobile"></section>
+    <HeaderMenuMobile v-if="mobile" />
     <section v-else class="menu-header">
       <div class="menu-col">
         <h5 class="title title-xxs">Решения</h5>

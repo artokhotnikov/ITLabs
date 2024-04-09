@@ -1,4 +1,5 @@
 @import '/assets/scss/variables';
+@import '/assets/scss/mixins';
 
 .menu {
   position: absolute;
@@ -125,6 +126,33 @@
   }
 }
 
-@media(max-width: $md3 + px) {
+@media (max-width: $md3 + px) {
+  .menu {
+    @include no-scroll;
+    position: fixed;
+    width: 240px;
+    padding: 24px 16px;
+    border-radius: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 6;
+    overflow: auto;
 
+    &-footer {
+      gap: 24px;
+      margin: 32px 0 0;
+
+      .subtitle {
+        margin: 0 0 8px;
+      }
+      .menu-col {
+        flex-basis: 100%;
+      }
+    }
+
+    &-social {
+      gap: 16px;
+    }
+  }
 }
