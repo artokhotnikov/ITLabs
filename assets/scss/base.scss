@@ -20,6 +20,9 @@
 
 .section {
   padding: 60px 0;
+  @media (max-width: $md3 + px) {
+    padding: 32px 0;
+  }
 }
 
 .section-md {
