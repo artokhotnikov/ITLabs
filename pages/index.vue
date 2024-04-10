@@ -12,6 +12,7 @@
     <HomeStages />
     <HomeDiscussion />
     <HomePartners />
+    <HomePrices />
   </div>
 </template>
 

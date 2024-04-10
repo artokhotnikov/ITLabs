@@ -60,7 +60,7 @@ const onChangeTab = (tab: string) => {
       <Input
         id="main-field"
         v-model="inputModel"
-        :validRegx="RegExp('^[A-Z]{3}$')"
+        :valid-regx="RegExp('^[A-Z]{3}$')"
         type="text"
         color="primary"
         placeholder="Введите текст"

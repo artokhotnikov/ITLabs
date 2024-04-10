@@ -18,6 +18,7 @@ const props = defineProps<InputProps>()
 const emits = defineEmits<InputEmits>()
 
 const validState = ref(true)
+const focused = ref(false)
 const haveContent = computed(() => props.modelValue.length > 0)
 
 const checkValid = () => {
@@ -27,12 +28,22 @@ const checkValid = () => {
 const onInput = (e: Event) => {
   emits('update:modelValue', (e.target as HTMLInputElement).value)
 }
+const makeValid = () => {
+  validState.value = true
+}
+
 const onClear = () => {
   emits('update:modelValue', '')
   makeValid()
 }
-const makeValid = () => {
-  validState.value = true
+
+const focusIn = () => {
+  focused.value = true
+  makeValid()
+}
+const focusOut = () => {
+  focused.value = false
+  checkValid()
 }
 </script>
 
@@ -51,12 +62,12 @@ const makeValid = () => {
       :disabled="disabled"
       :value="modelValue"
       @input="onInput"
-      @focusout="checkValid"
-      @focusin="makeValid"
+      @focusout="focusOut"
+      @focusin="focusIn"
     />
     <Transition name="fade">
       <IconsClose
-        v-show="haveContent"
+        v-show="haveContent && focused"
         class="icon icon-close"
         @click="onClear"
       />
