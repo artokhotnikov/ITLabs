@@ -16,22 +16,26 @@ const toggleSpoiler = (e: PointerEvent) => {
         <IconsArrowDown />
       </div>
       <div class="spoiler-body">
-        <NuxtLink href="/" class="menu-link"> Навигация</NuxtLink>
-        <NuxtLink href="/" class="menu-link"> Электронная очередь</NuxtLink>
-        <NuxtLink href="/" class="menu-link"> Кассы самообслуживания</NuxtLink>
-        <NuxtLink href="/" class="menu-link">
+        <NuxtLink href="/solutions" class="menu-link"> Навигация</NuxtLink>
+        <NuxtLink href="/solutions" class="menu-link">
+          Электронная очередь
+        </NuxtLink>
+        <NuxtLink href="/solutions" class="menu-link">
+          Кассы самообслуживания
+        </NuxtLink>
+        <NuxtLink href="/solutions" class="menu-link">
           Виртуальная примерочная
         </NuxtLink>
-        <NuxtLink href="/" class="menu-link"> Музеи</NuxtLink>
-        <NuxtLink href="/" class="menu-link"> Образование</NuxtLink>
-        <NuxtLink href="/" class="menu-link"> Дети</NuxtLink>
-        <NuxtLink href="/" class="menu-link"> Медицина</NuxtLink>
-        <NuxtLink href="/" class="menu-link"> EVENT</NuxtLink>
-        <NuxtLink href="/" class="menu-link"> Эксклюзив</NuxtLink>
-        <NuxtLink href="/" class="menu-link"> Голография</NuxtLink>
-        <NuxtLink href="/" class="menu-link"> Помощь</NuxtLink>
-        <NuxtLink href="/" class="menu-link"> Фото</NuxtLink>
-        <NuxtLink href="/" class="menu-link"> Кадры</NuxtLink>
+        <NuxtLink href="/solutions" class="menu-link"> Музеи</NuxtLink>
+        <NuxtLink href="/solutions" class="menu-link"> Образование</NuxtLink>
+        <NuxtLink href="/solutions" class="menu-link"> Дети</NuxtLink>
+        <NuxtLink href="/solutions" class="menu-link"> Медицина</NuxtLink>
+        <NuxtLink href="/solutions" class="menu-link"> EVENT</NuxtLink>
+        <NuxtLink href="/solutions" class="menu-link"> Эксклюзив</NuxtLink>
+        <NuxtLink href="/solutions" class="menu-link"> Голография</NuxtLink>
+        <NuxtLink href="/solutions" class="menu-link"> Помощь</NuxtLink>
+        <NuxtLink href="/solutions" class="menu-link"> Фото</NuxtLink>
+        <NuxtLink href="/solutions" class="menu-link"> Кадры</NuxtLink>
       </div>
     </div>
     <div class="spoiler">
@@ -40,12 +44,16 @@ const toggleSpoiler = (e: PointerEvent) => {
         <IconsArrowDown />
       </div>
       <div class="spoiler-body">
-        <NuxtLink href="/" class="menu-link">
+        <NuxtLink href="/projects" class="menu-link">
           Интерактивные устройства
         </NuxtLink>
-        <NuxtLink href="/" class="menu-link"> Мобильные приложения</NuxtLink>
-        <NuxtLink href="/" class="menu-link"> Веб-сайты</NuxtLink>
-        <NuxtLink href="/" class="menu-link"> Unity разработка</NuxtLink>
+        <NuxtLink href="/projects" class="menu-link">
+          Мобильные приложения
+        </NuxtLink>
+        <NuxtLink href="/projects" class="menu-link"> Веб-сайты</NuxtLink>
+        <NuxtLink href="/projects" class="menu-link">
+          Unity разработка
+        </NuxtLink>
       </div>
     </div>
     <div class="spoiler">
@@ -54,9 +62,9 @@ const toggleSpoiler = (e: PointerEvent) => {
         <IconsArrowDown />
       </div>
       <div class="spoiler-body">
-        <NuxtLink href="/" class="menu-link"> О нас</NuxtLink>
-        <NuxtLink href="/" class="menu-link"> Руководство</NuxtLink>
-        <NuxtLink href="/" class="menu-link"> Контакты</NuxtLink>
+        <NuxtLink href="/about" class="menu-link"> О нас</NuxtLink>
+        <NuxtLink href="/management" class="menu-link"> Руководство</NuxtLink>
+        <NuxtLink href="/contacts" class="menu-link"> Контакты</NuxtLink>
       </div>
     </div>
     <div class="spoiler">
@@ -65,9 +73,9 @@ const toggleSpoiler = (e: PointerEvent) => {
         <IconsArrowDown />
       </div>
       <div class="spoiler-body">
-        <NuxtLink href="/" class="menu-link"> Desktop</NuxtLink>
-        <NuxtLink href="/" class="menu-link"> Web</NuxtLink>
-        <NuxtLink href="/" class="menu-link"> Gamedev</NuxtLink>
+        <NuxtLink href="/categories/1" class="menu-link"> Desktop</NuxtLink>
+        <NuxtLink href="/categories/2" class="menu-link"> Web</NuxtLink>
+        <NuxtLink href="/categories/3" class="menu-link"> Gamedev</NuxtLink>
       </div>
     </div>
     <div class="spoiler">
@@ -76,7 +84,7 @@ const toggleSpoiler = (e: PointerEvent) => {
         <IconsArrowDown />
       </div>
       <div class="spoiler-body">
-        <NuxtLink href="/" class="menu-link"> Список компаний</NuxtLink>
+        <NuxtLink href="/partners" class="menu-link"> Список компаний</NuxtLink>
         <NuxtLink href="/" class="menu-link"> Как стать партнером</NuxtLink>
       </div>
     </div>

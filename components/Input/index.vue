@@ -88,13 +88,14 @@ const focusOut = () => {
 }
 
 input {
-  padding: 16px;
+  padding: 17px 16px;
   width: 100%;
   height: 100%;
   border-radius: 16px;
   border: 1px solid transparent;
   background-color: transparent;
   transition: 0.3s all ease-in-out;
+  font-size: 14px;
 
   &:focus,
   &:active {
@@ -123,5 +124,8 @@ input {
 
 .primary {
   background-color: $bg-third;
+}
+.secondary {
+  background-color: $bg-white;
 }
 </style>
