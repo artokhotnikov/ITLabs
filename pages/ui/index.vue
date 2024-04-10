@@ -101,6 +101,9 @@ const onChangeTab = (tab: string) => {
       <Tab :titles="tabs" @change-tab="onChangeTab" />
     </div>
     <div class="list">
+      <Switcher />
+    </div>
+    <div class="list">
       <Button @click="openCallSpecialist">Modal Call Specialist</Button>
       <Button @click="openResultSuccessResponse">Modal Success</Button>
       <Button @click="openResultErrorResponse">Modal Error</Button>
