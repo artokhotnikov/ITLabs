@@ -21,9 +21,7 @@ const onClickCheckbox = () => {
 
 <template>
   <div class="checkbox">
-    <label v-if="label && rtl" for="checkbox" class="text-md"
-      >{{ label }}
-    </label>
+    <span v-if="label && rtl" class="text-md">{{ label }} </span>
     <section>
       <div
         :class="[
@@ -34,6 +32,7 @@ const onClickCheckbox = () => {
             active: state
           }
         ]"
+        id="checkbox"
         @click="onClickCheckbox"
       >
         <Transition name="fade">
@@ -47,7 +46,7 @@ const onClickCheckbox = () => {
         </Transition>
       </div>
     </section>
-    <label v-if="label && !rtl" for="" class="text-md">{{ label }}</label>
+    <span v-if="label && !rtl" class="text-md">{{ label }}</span>
   </div>
 </template>
 
