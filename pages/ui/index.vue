@@ -1,31 +1,13 @@
 <script setup lang="ts">
 import { useOpen } from '~/utils/useOpen'
 
-const {
-  isOpen: isOpenCallSpecialist,
-  open: openCallSpecialist,
-  toggle: toggleCallSpecialist
-} = useOpen()
-const {
-  isOpen: isOpenResultSuccessResponse,
-  open: openResultSuccessResponse,
-  toggle: toggleResultSuccessResponse
-} = useOpen()
-const {
-  isOpen: isOpenResultErrorResponse,
-  open: openResultErrorResponse,
-  toggle: toggleResultErrorResponse
-} = useOpen()
-const {
-  isOpen: isOpenQuestion,
-  open: openQuestion,
-  toggle: toggleQuestion
-} = useOpen()
-const {
-  isOpen: isOpenDiscussion,
-  open: openDiscussion,
-  toggle: toggleDiscussion
-} = useOpen()
+const { isOpen: isOpenCallSpecialist, open: openCallSpecialist } = useOpen()
+const { isOpen: isOpenResultSuccessResponse, open: openResultSuccessResponse } =
+  useOpen()
+const { isOpen: isOpenResultErrorResponse, open: openResultErrorResponse } =
+  useOpen()
+const { isOpen: isOpenQuestion, open: openQuestion } = useOpen()
+const { isOpen: isOpenDiscussion, open: openDiscussion } = useOpen()
 const inputModel = ref('')
 </script>
 <template>
