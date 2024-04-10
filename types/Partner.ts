@@ -7,5 +7,3 @@ export default interface Partner {
   linkTitle?: string
   id?: number
 }
-
-
