@@ -1,5 +1,4 @@
 <script setup lang="ts">
-// TODO: вынести галерею в отдельный компонент
 import type Project from '~/types/Projects/Project'
 import projects from '~/data/projects'
 import { Splide, SplideSlide, SplideTrack } from '@splidejs/vue-splide'
@@ -11,38 +10,14 @@ useHead({
   title: 'Проект'
 })
 
-const { isOpen, open, close } = useOpen()
-const { lock, unlock } = useBodyLock()
+const { isOpen, open } = useOpen()
 const route = useRoute()
 const project = ref<Project>()
-const currentView = ref('/video/video.mp4')
 const currentViewIndex = ref(0)
 const openView = (index: number) => {
   if (!project.value) return
   currentViewIndex.value = index
-  currentView.value = project.value?.resultGallery?.[index] as string
-  lock()
   open()
-}
-const closeView = () => {
-  currentView.value = ''
-  unlock()
-  close()
-}
-const nextView = () => {
-  if (currentViewIndex.value + 1 === project.value?.resultGallery?.length)
-    return
-  currentViewIndex.value = currentViewIndex.value + 1
-  currentView.value = project.value?.resultGallery?.[
-    currentViewIndex.value
-  ] as string
-}
-const prevView = () => {
-  if (currentViewIndex.value === 0) return
-  currentViewIndex.value = currentViewIndex.value - 1
-  currentView.value = project.value?.resultGallery?.[
-    currentViewIndex.value
-  ] as string
 }
 const options = {
   perPage: 4,
@@ -157,30 +132,12 @@ onMounted(() => {
               </Splide>
             </div>
             <transition name="fade">
-              <div v-if="isOpen" class="view">
-                <div class="view-close" @click="closeView">
-                  <IconsClose />
-                </div>
-                <div v-if="currentView.length" class="view-content">
-                  <video
-                    v-if="isVideoSlide(currentView)"
-                    :src="currentView"
-                    controls
-                  />
-                  <NuxtImg v-else :src="currentView" loading="lazy" />
-                </div>
-                <div class="view-controls">
-                  <button class="view-arrow view-arrow-prev" @click="prevView">
-                    <IconsArrowLeft />
-                  </button>
-                  <button class="view-arrow view-arrow-next" @click="nextView">
-                    <IconsArrowRight />
-                  </button>
-                </div>
-              </div>
-            </transition>
-            <transition name="fade">
-              <PageOverlay v-if="isOpen" />
+              <GalleryModal
+                v-if="isOpen"
+                v-model:is-active="isOpen"
+                :index="currentViewIndex"
+                :gallery="project.resultGallery"
+              />
             </transition>
           </div>
         </ClientOnly>
