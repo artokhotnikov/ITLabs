@@ -6,3 +6,5 @@ export default interface Partner {
   link?: string
   linkTitle?: string
 }
+
+

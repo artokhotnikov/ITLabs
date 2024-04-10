@@ -11,6 +11,7 @@ interface CallSpecialistModalEmits {
 
 const emits = defineEmits<CallSpecialistModalEmits>()
 defineProps<CallSpecialistModalProps>()
+const phone = ref('')
 </script>
 
 <template>
@@ -23,21 +24,27 @@ defineProps<CallSpecialistModalProps>()
             Специалисты свяжутся с вами и ответят на все интересующие вопросы
           </p>
         </div>
-        <form action="">
+        <form action="" class="content-form">
           <fieldset>
-            <input
-              id="field-phone"
-              type="tel"
-              placeholder="Номер телефона"
-              required
+            <Input
+              v-model="phone"
+              type="text"
+              color="primary"
+              placeholder="Введите номер телефона"
             />
           </fieldset>
         </form>
         <div class="content-actions">
-          <Button outline @click="emits('update:isActive', false)">
+          <Button
+            class="action action-cancel"
+            outline
+            @click="emits('update:isActive', false)"
+          >
             Отмена
           </Button>
-          <Button @click="emits('confirm')">Жду звонка</Button>
+          <Button class="action action-send" @click="emits('confirm')"
+            >Жду звонка
+          </Button>
         </div>
       </section>
     </template>
@@ -58,10 +65,10 @@ defineProps<CallSpecialistModalProps>()
     display: flex;
     flex-direction: column;
     gap: 20px;
+    text-align: center;
   }
 
   &-title {
-    max-width: 292px;
     font-family: $fontSecond;
     text-transform: uppercase;
   }
@@ -72,6 +79,18 @@ defineProps<CallSpecialistModalProps>()
     line-height: 20.8px;
     max-width: 292px;
     font-size: 16px;
+    @media (max-width: $md2 + px) {
+      max-width: 550px;
+    }
+    @media (max-width: $md5 + px) {
+      max-width: 288px;
+    }
+  }
+
+  &-form {
+    width: 100%;
+    margin: 0 auto;
+    max-width: 290px;
   }
 
   &-actions {
@@ -79,6 +98,33 @@ defineProps<CallSpecialistModalProps>()
     justify-content: center;
     align-content: center;
     gap: 10px;
+    @media (max-width: $md5 + px) {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+}
+
+.action {
+  @media (max-width: $md5 + px) {
+    flex-direction: column;
+    align-items: center;
+    &:nth-child(1) {
+      max-width: 140px;
+    }
+    &:nth-child(2) {
+      max-width: 170px;
+    }
+  }
+
+  &-cancel {
+    width: 100%;
+    max-width: 140px;
+  }
+
+  &-send {
+    width: 100%;
+    max-width: 170px;
   }
 }
 </style>
