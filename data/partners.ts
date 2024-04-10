@@ -7,7 +7,7 @@ const data: Array<Partner> = [
     title: 'BM-Group',
     description:
       '- производитель интерактивного оборудование высокого качества и уровня надежности. Готовые решения, создания индивидуальных проектов.',
-    link: 'bm-technology.ru',
+    link: 'https://bm-technology.ru',
     linkTitle: 'bm-technology.ru'
   },
   {
@@ -16,7 +16,7 @@ const data: Array<Partner> = [
     title: 'AXE TECH',
     description:
       'Российский производитель интерактивного оборудования и программно-аппаратных комплексов для всех сфер применения.',
-    link: 'axe-tech.ru',
+    link: 'https://axe-tech.ru',
     linkTitle: 'axe-tech.ru'
   },
   {
@@ -25,7 +25,7 @@ const data: Array<Partner> = [
     title: 'Intechirs',
     description:
       'Федеральная IT-компания по поставке и обслуживанию мультимедийного оборудования и устройств самообслуживания',
-    link: 'intechirs.ru',
+    link: 'https://intechirs.ru',
     linkTitle: 'intechirs.ru'
   },
   {
@@ -34,7 +34,7 @@ const data: Array<Partner> = [
     title: 'Touch +',
     description:
       'Компания Touch + – производитель и интегратор решений мультимедийного и интерактивного оборудования.',
-    linkTitle: 'touch-plus.ru',
+    linkTitle: 'https://touch-plus.ru',
     link: 'touch-plus.ru'
   },
   {
@@ -43,7 +43,7 @@ const data: Array<Partner> = [
     title: 'Get Media',
     description:
       'Производство интерактивного оборудования для образовательных и развлекательных организаций.',
-    link: 'getmedia.store',
+    link: 'https://getmedia.store',
     linkTitle: 'getmedia.store'
   },
   {
@@ -52,7 +52,7 @@ const data: Array<Partner> = [
     title: 'Olodim',
     description:
       'Инновационные решения для образования, производство интерактивного оборудования, полный спектр работ и услуг.',
-    link: 'olodim.ru',
+    link: 'https://olodim.ru',
     linkTitle: 'olodim.ru'
   },
   {
@@ -61,7 +61,7 @@ const data: Array<Partner> = [
     title: 'Intersens',
     description:
       'Производство сенсорного интерактивного оборудования - интерактивные киоски, столы, трибуны, терминалы, панели. Изготовление по индивидуальным параметрам.',
-    linkTitle: 'worldsens.ru',
+    linkTitle: 'https://worldsens.ru',
     link: 'worldsens.ru'
   },
   {
@@ -70,7 +70,7 @@ const data: Array<Partner> = [
     title: 'Rentouch',
     description:
       'Передовая платформа для аренды, покупки и технического обслуживания интерактивного, сценического и светодиодного оборудования.',
-    link: 'rentouch.ru',
+    link: 'https://rentouch.ru',
     linkTitle: 'rentouch.ru'
   }
 ]

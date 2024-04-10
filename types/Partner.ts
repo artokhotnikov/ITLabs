@@ -5,4 +5,5 @@ export default interface Partner {
   description?: string
   link?: string
   linkTitle?: string
+  id?: number
 }

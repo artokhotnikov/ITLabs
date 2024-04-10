@@ -5,7 +5,9 @@ import { useModalsStore } from '~/store/modalsStore'
 const modalsStore = useModalsStore()
 const globalStore = useGlobalStore()
 const { lock, unlock } = useBodyLock()
+const { width } = useWindowSize()
 
+const sm = computed(() => width.value <= 768)
 const toggleMenu = () => {
   globalStore.toggleMenu()
   if (globalStore.isOpenMenu) {
@@ -26,13 +28,16 @@ const toggleMenu = () => {
         />
         <HeaderNav />
         <HeaderSearch />
-        <Button
-          class="header-ask"
-          @click="modalsStore.open('discussionQuestion')"
-        >
-          Задать вопрос
-        </Button>
-        <transition name="fade-top">
+        <ClientOnly>
+          <Button
+            class="header-ask"
+            @click="modalsStore.open('discussionQuestion')"
+          >
+            <IconsQuestion v-if="sm" />
+            <span v-else>Задать вопрос</span>
+          </Button>
+        </ClientOnly>
+        <transition :name="sm ? 'slide-left' : 'fade-top'">
           <HeaderMenu v-if="globalStore.isOpenMenu" />
         </transition>
       </div>

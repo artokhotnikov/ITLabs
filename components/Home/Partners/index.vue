@@ -7,7 +7,7 @@ import data from '~/data/partners'
     <div class="container">
       <h2 class="title">Партнеры</h2>
       <div class="partners-list">
-        <div v-for="item in data" :key="item.imageMono" class="img">
+        <div v-for="item in data" :key="item.id" class="img">
           <img :src="item.imageMono" :alt="item.title" />
           <img :src="item.imageNormal" :alt="item.title" />
         </div>
@@ -18,6 +18,7 @@ import data from '~/data/partners'
 
 <style scoped lang="scss">
 @import '/assets/scss/variables';
+@import '/assets/scss/mixins';
 
 .partners {
   .title {
@@ -32,10 +33,16 @@ import data from '~/data/partners'
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 50px 32px;
+    @media (max-width: $md4 + px) {
+      grid-template-columns: repeat(2, 1fr);
+      padding: 0 24px;
+      gap: 40px 32px;
+    }
   }
 }
 
 .img {
+  @include img;
   cursor: pointer;
   position: relative;
   display: flex;

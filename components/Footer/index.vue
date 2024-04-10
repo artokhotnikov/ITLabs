@@ -59,11 +59,18 @@
   padding: 40px 0;
   background: $text-secondary;
   color: $text-white;
+  border-radius: 40px 40px 0 0;
 
   &-top {
     display: flex;
     gap: 20px;
-    //justify-content: space-between;
+    @media (max-width: $md3 + px) {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      gap: 40px;
+    }
   }
 
   &-about {
@@ -73,6 +80,12 @@
 
     @media (min-width: $md2 + px) {
       flex: 0 1 400px;
+    }
+    @media (max-width: $md2 + px) {
+      flex: 0 1 280px;
+    }
+    @media (max-width: $md3 + px) {
+      flex-basis: auto;
     }
   }
 
@@ -91,6 +104,12 @@
     @media (min-width: $md2 + px) {
       flex: 0 1 188px;
     }
+    @media (max-width: $md2 + px) {
+      flex: 0 1 120px;
+    }
+    @media (max-width: $md3 + px) {
+      flex-basis: auto;
+    }
   }
 
   &-link {
@@ -106,8 +125,11 @@
       margin: 40px 0 8px;
     }
 
-    @media (min-width: $md2 + px) {
+    @media (min-width: $md3 + px) {
       flex: 0 1 290px;
+    }
+    @media (max-width: $md3 + px) {
+      flex-basis: auto;
     }
   }
 
@@ -119,12 +141,21 @@
     @media (min-width: $md2 + px) {
       flex: 0 1 188px;
     }
+    @media (max-width: $md2 + px) {
+      flex: 0 1 130px;
+    }
+    @media (max-width: $md3 + px) {
+      flex-basis: auto;
+    }
   }
 
   &-social {
     margin: 40px 0 0;
     display: flex;
     gap: 16px;
+    @media (max-width: $md3 + px) {
+      justify-content: center;
+    }
   }
 
   &-icon {

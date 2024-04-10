@@ -1,24 +1,24 @@
 <script setup lang="ts">
 import { IconsBurger, IconsClose } from '#components'
 
-const emits = defineEmits(['clickHandler'])
-const clickHandler = () => {
-  emits('clickHandler')
-}
 defineProps({
   isOpen: {
     type: Boolean,
     default: false
   }
 })
+const emits = defineEmits(['clickHandler'])
+const clickHandler = () => {
+  emits('clickHandler')
+}
 </script>
 
 <template>
   <div class="burger">
     <component :is="isOpen ? IconsClose : IconsBurger" @click="clickHandler" />
-    <div class="logo">
+    <NuxtLink to="/" class="logo">
       <img src="@/assets/img/logo.svg" alt="Логотип" />
-    </div>
+    </NuxtLink>
   </div>
 </template>
 
