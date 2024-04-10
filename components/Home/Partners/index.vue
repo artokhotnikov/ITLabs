@@ -7,7 +7,7 @@ import data from '~/data/partners'
     <div class="container">
       <h2 class="title">Партнеры</h2>
       <div class="partners-list">
-        <div v-for="item in data" :key="item.imageMono" class="img">
+        <div v-for="item in data" :key="item.id" class="img">
           <img :src="item.imageMono" :alt="item.title" />
           <img :src="item.imageNormal" :alt="item.title" />
         </div>

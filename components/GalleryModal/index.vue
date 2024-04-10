@@ -104,7 +104,7 @@ onUnmounted(() => {
   }
 
   &-content {
-    max-width: 1200px;
+    max-width: 1600px;
     width: 100%;
     aspect-ratio: 16/9;
     display: flex;
