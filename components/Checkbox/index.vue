@@ -86,7 +86,11 @@ const onClickCheckbox = () => {
 }
 
 .primary {
-  border-color: $border-white-alpha !important;
+  border-color: $border-blue-dark;
+}
+
+.secondary {
+  border-color: $border-secondary;
 }
 
 .active {

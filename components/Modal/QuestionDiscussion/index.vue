@@ -58,20 +58,16 @@ const form = ref({
           <h5>Предпочтительный вид связи</h5>
           <form class="preferences-form">
             <div class="preferences-field">
-              <input id="checkbox-telegram" type="checkbox" />
-              <label for="checkbox-telegram">Telegram</label>
+              <Checkbox type="checkbox" label="Telegram" color="secondary" />
             </div>
             <div class="preferences-field">
-              <input id="checkbox-whatsapp" type="checkbox" />
-              <label for="checkbox-whatsapp">Whatsapp</label>
+              <Checkbox type="checkbox" label="Whatsapp" color="secondary" />
             </div>
             <div class="preferences-field">
-              <input id="checkbox-email" type="checkbox" />
-              <label for="checkbox-email">Email</label>
+              <Checkbox type="checkbox" label="Email" color="secondary" />
             </div>
             <div class="preferences-field">
-              <input id="checkbox-phone" type="checkbox" />
-              <label for="checkbox-phone">По телефону</label>
+              <Checkbox type="checkbox" label="По телефону" color="secondary" />
             </div>
           </form>
         </div>
