@@ -72,6 +72,7 @@ onMounted(() => {
   &-container {
     display: flex;
     align-items: center;
+    gap: 4px;
   }
 
   &-item {
@@ -84,6 +85,11 @@ onMounted(() => {
     transition: 0.3s all ease-in-out;
     cursor: pointer;
     color: $text-third;
+
+    &:hover {
+      color: $text-secondary;
+      background-color: $bg-fourth;
+    }
 
     &.active {
       color: $text-white;
