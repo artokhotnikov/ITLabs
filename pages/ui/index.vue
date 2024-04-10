@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { useOpen } from '~/utils/useOpen'
-import Check from '~/components/Icons/Check.vue'
 
 const { isOpen: isOpenCallSpecialist, open: openCallSpecialist } = useOpen()
 const { isOpen: isOpenResultSuccessResponse, open: openResultSuccessResponse } =
@@ -10,6 +9,14 @@ const { isOpen: isOpenResultErrorResponse, open: openResultErrorResponse } =
 const { isOpen: isOpenQuestion, open: openQuestion } = useOpen()
 const { isOpen: isOpenDiscussion, open: openDiscussion } = useOpen()
 const inputModel = ref('')
+const tabs = ref(['Tab 1', 'Tab 2', 'Tab 3'])
+
+const onChangeCheckbox = (value: string) => {
+  console.log(value)
+}
+const onChangeTab = (tab: string) => {
+  console.log(tab)
+}
 </script>
 <template>
   <div>
@@ -50,30 +57,48 @@ const inputModel = ref('')
         placeholder="Введите текст"
         required
       />
+      <Input
+        id="main-field"
+        v-model="inputModel"
+        :validRegx="RegExp('^[A-Z]{3}$')"
+        type="text"
+        color="primary"
+        placeholder="Введите текст"
+        required
+      />
+    </div>
+    <div class="list">
       <Checkbox
         type="checkbox"
         label="Left label"
-        label-rotate="rtl"
+        :rtl="true"
         color="primary"
+        @change-checkbox="onChangeCheckbox"
       />
       <Checkbox
         type="checkbox"
         label="Right label"
-        label-rotate="rtr"
+        :rtl="false"
         color="primary"
+        @change-checkbox="onChangeCheckbox"
       />
       <Checkbox
         type="radio"
         label="Left label"
-        label-rotate="rtl"
+        :rtl="true"
         color="primary"
+        @change-checkbox="onChangeCheckbox"
       />
       <Checkbox
         type="radio"
         label="Right label"
-        label-rotate="rtr"
+        :rtl="false"
         color="primary"
+        @change-checkbox="onChangeCheckbox"
       />
+    </div>
+    <div class="list">
+      <Tab :titles="tabs" @change-tab="onChangeTab" />
     </div>
     <div class="list">
       <Button @click="openCallSpecialist">Modal Call Specialist</Button>
