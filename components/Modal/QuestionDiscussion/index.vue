@@ -12,6 +12,11 @@ interface QuestionDiscussionModalEmits {
 
 const emits = defineEmits<QuestionDiscussionModalEmits>()
 defineProps<QuestionDiscussionModalProps>()
+const form = ref({
+  name: '',
+  phone: '',
+  question: ''
+})
 </script>
 
 <template>
@@ -29,11 +34,23 @@ defineProps<QuestionDiscussionModalProps>()
         </div>
         <form class="content-form">
           <fieldset>
-            <input type="text" class="form-field" />
-            <input type="tel" class="form-field" />
-            <div class="form-field">
-              <textarea> </textarea>
-              <input type="file" />
+            <Input
+              v-model="form.name"
+              type="text"
+              class="form-field"
+              color="primary"
+              placeholder="Имя"
+            />
+            <Input
+              v-model="form.phone"
+              type="tel"
+              class="form-field"
+              color="primary"
+              placeholder="Телефон"
+            />
+            <div class="form-field form-double">
+              <textarea class="form-textarea"> </textarea>
+              <InputFile class="form-file" />
             </div>
           </fieldset>
         </form>
@@ -41,20 +58,16 @@ defineProps<QuestionDiscussionModalProps>()
           <h5>Предпочтительный вид связи</h5>
           <form class="preferences-form">
             <div class="preferences-field">
-              <input id="checkbox-telegram" type="checkbox" />
-              <label for="checkbox-telegram">Telegram</label>
+              <Checkbox type="checkbox" label="Telegram" color="secondary" />
             </div>
             <div class="preferences-field">
-              <input id="checkbox-whatsapp" type="checkbox" />
-              <label for="checkbox-whatsapp">Whatsapp</label>
+              <Checkbox type="checkbox" label="Whatsapp" color="secondary" />
             </div>
             <div class="preferences-field">
-              <input id="checkbox-email" type="checkbox" />
-              <label for="checkbox-email">Email</label>
+              <Checkbox type="checkbox" label="Email" color="secondary" />
             </div>
             <div class="preferences-field">
-              <input id="checkbox-phone" type="checkbox" />
-              <label for="checkbox-phone">По телефону</label>
+              <Checkbox type="checkbox" label="По телефону" color="secondary" />
             </div>
           </form>
         </div>
@@ -100,6 +113,13 @@ defineProps<QuestionDiscussionModalProps>()
   }
 
   &-form {
+    width: 100%;
+
+    fieldset {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
   }
 
   &-preferences {
@@ -119,6 +139,30 @@ defineProps<QuestionDiscussionModalProps>()
 
 .form {
   &-field {
+  }
+
+  &-double {
+    position: relative;
+    z-index: 0;
+    min-height: 150px;
+    max-height: 150px;
+  }
+
+  &-textarea {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    min-height: 150px;
+    background-color: $bg-third;
+    border-radius: 16px;
+  }
+
+  &-file {
+    position: absolute;
+    overflow: hidden;
+    z-index: 2;
   }
 }
 

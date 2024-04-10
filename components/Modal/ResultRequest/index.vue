@@ -41,7 +41,12 @@ defineProps<ResultRequestModalProps>()
           </p>
         </div>
         <div class="content-actions">
-          <Button rounded @click="emits('update:isActive', false)">Ок</Button>
+          <Button
+            class="action"
+            rounded
+            @click="emits('update:isActive', false)"
+            >Ок
+          </Button>
         </div>
       </section>
     </template>
@@ -57,7 +62,6 @@ defineProps<ResultRequestModalProps>()
   justify-content: center;
   align-items: center;
   gap: 40px;
-
   &-head {
   }
 
@@ -66,6 +70,14 @@ defineProps<ResultRequestModalProps>()
     flex-direction: column;
     text-align: center;
     gap: 20px;
+    @media (max-width: $md5 + px) {
+      max-width: 288px;
+    }
+    h3 {
+      @media (max-width: $md5 + px) {
+        font-size: 18px;
+      }
+    }
   }
 
   &-actions {
@@ -74,9 +86,9 @@ defineProps<ResultRequestModalProps>()
     justify-content: center;
     align-items: center;
 
-    button {
+    .action {
       width: 100%;
-      max-width: 100px;
+      max-width: 103px;
     }
   }
 }
