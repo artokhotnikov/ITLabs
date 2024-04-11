@@ -11,7 +11,7 @@ defineProps<ItemProps>()
 <template>
   <div class="item">
     <div class="item-img">
-      <NuxtImg :src="item.imageCover" loading="lazy" sizes="180px md:230px" />
+      <img :src="item.imageCover" loading="lazy" :alt="item.title" />
     </div>
     <div class="subtitle bold" v-html="item.title" />
     <ul class="ul ul-disc">

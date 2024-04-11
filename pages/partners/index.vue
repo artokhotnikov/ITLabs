@@ -18,7 +18,7 @@ useHead({
       <div v-if="data.length" class="partners-list">
         <div v-for="partner in data" :key="partner.title" class="partner">
           <div class="partner-logo">
-            <NuxtImg :src="partner.imageNormal" loading="lazy" />
+            <img :src="partner.imageNormal" loading="lazy" :alt="partner.title"/>
           </div>
           <div class="partner-content">
             <div class="partner-title title title-xxs" v-html="partner.title" />

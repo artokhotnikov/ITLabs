@@ -52,7 +52,7 @@ onUnmounted(() => {
     </div>
     <div v-if="currentView.length" class="view-content">
       <video v-if="isVideoSlide(currentView)" :src="currentView" controls />
-      <NuxtImg v-else :src="currentView" loading="lazy" />
+      <img v-else :src="currentView" loading="lazy" alt="Резкультат" />
     </div>
     <div class="view-controls">
       <button class="view-arrow view-arrow-prev" @click="prevView">
