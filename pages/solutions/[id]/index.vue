@@ -5,7 +5,6 @@ import projects from '~/data/projects'
 import type Project from '~/types/Projects/Project'
 
 const route = useRoute()
-const router = useRouter()
 const solution = ref<Solution>()
 const projectsData = ref<Array<Project>>()
 

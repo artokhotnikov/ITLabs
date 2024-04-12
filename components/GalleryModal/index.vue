@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { VideoPlayer } from '@videojs-player/vue'
+
 interface GalleryModalProps {
   gallery: Array<string>
   isActive: boolean
@@ -51,7 +53,12 @@ onUnmounted(() => {
       <IconsClose />
     </div>
     <div v-if="currentView.length" class="view-content">
-      <video v-if="isVideoSlide(currentView)" :src="currentView" controls />
+      <video-player
+        v-if="isVideoSlide(currentView)"
+        :src="currentView"
+        poster="/your-path/poster.jpg"
+        controls
+      />
       <img v-else :src="currentView" loading="lazy" alt="Резкультат" />
     </div>
     <div class="view-controls">
