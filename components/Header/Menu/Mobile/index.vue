@@ -154,4 +154,15 @@ const toggleSpoiler = (e: PointerEvent) => {
 .title {
   color: $text-secondary;
 }
+
+.dark .spoiler {
+  &-title {
+    background: $bg-white-alpha-5;
+    color: $text-white;
+  }
+
+  &-body {
+    color: $text-white;
+  }
+}
 </style>

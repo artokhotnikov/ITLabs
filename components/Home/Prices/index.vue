@@ -42,7 +42,7 @@ const callback = ref({
                 v-model="estimate.phone"
                 placeholder="Телефон"
                 type="text"
-                color="primary"
+                color="secondary"
               />
             </div>
             <div class="estimate-row">
@@ -252,5 +252,9 @@ const callback = ref({
       margin: 40px auto 0;
     }
   }
+}
+
+.dark .prices {
+  color: $text-white;
 }
 </style>

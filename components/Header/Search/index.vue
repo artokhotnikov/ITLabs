@@ -21,4 +21,9 @@
   border-radius: 16px;
   cursor: pointer;
 }
+
+.dark .search {
+  color: $text-white;
+  background: $bg-white-alpha-5;
+}
 </style>

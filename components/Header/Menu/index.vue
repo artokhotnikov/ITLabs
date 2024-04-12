@@ -3,6 +3,7 @@ import { useModalsStore } from '~/store/modalsStore'
 
 const modalsStore = useModalsStore()
 const { width } = useWindowSize()
+const isDark = useDark()
 
 const tablet = computed(() => width.value <= 1260)
 const mobile = computed(() => width.value <= 767)
@@ -118,13 +119,16 @@ const mobile = computed(() => width.value <= 767)
         </div>
       </div>
       <div class="menu-col">
-        <Button
-          class="menu-feedback"
-          outline
-          @click="modalsStore.open('specialist')"
-        >
-          Перезвоните мне
-        </Button>
+        <ClientOnly>
+          <Button
+            class="menu-feedback"
+            outline
+            @click="modalsStore.open('specialist')"
+            :color="isDark ? 'secondary' : 'primary'"
+          >
+            Перезвоните мне
+          </Button>
+        </ClientOnly>
       </div>
     </section>
   </nav>

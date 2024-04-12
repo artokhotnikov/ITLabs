@@ -41,6 +41,7 @@
               <IconsVK />
             </Button>
           </div>
+          <ThemeSwitcher />
         </div>
       </div>
       <div class="footer-bottom">

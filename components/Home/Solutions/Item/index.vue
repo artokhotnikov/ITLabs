@@ -113,4 +113,8 @@ defineProps<ItemProps>()
     }
   }
 }
+.dark .item {
+  background: $bg-white-alpha-5;
+  color: $text-white;
+}
 </style>
