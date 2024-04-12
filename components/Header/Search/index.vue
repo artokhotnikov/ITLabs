@@ -10,6 +10,7 @@
 @import '/assets/scss/variables';
 
 .search {
+  color: $text-secondary;
   margin-left: auto;
   width: 50px;
   height: 50px;

@@ -1,11 +1,9 @@
 <script setup lang="ts">
 import data from '~/data/solutions'
 import type Solution from '~/types/Solution/Solution'
-// import { useModalsStore } from '~/store/modalsStore'
 import projects from '~/data/projects'
 import type Project from '~/types/Projects/Project'
 
-// const modalsStore = useModalsStore()
 const route = useRoute()
 const router = useRouter()
 const solution = ref<Solution>()

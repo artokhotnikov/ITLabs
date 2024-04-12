@@ -78,6 +78,10 @@ const router = useRouter()
     @media (max-width: $md3 + px) {
       max-width: 250px;
     }
+
+    img {
+      width: 100%;
+    }
   }
 
   &-content {

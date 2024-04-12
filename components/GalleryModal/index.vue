@@ -46,7 +46,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="view">
+  <div class="view modal">
     <div class="view-close" @click="closeView">
       <IconsClose />
     </div>
