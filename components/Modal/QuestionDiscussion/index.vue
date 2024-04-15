@@ -56,7 +56,7 @@ const form = ref({
                 color="primary"
               >
                 <template #additional>
-                  <InputFile v-model="form.files" />
+                  <InputFile v-model="form.files" class="additional" />
                 </template>
               </Textarea>
             </div>
@@ -179,7 +179,7 @@ const form = ref({
     display: flex;
     flex-wrap: wrap;
     max-width: 292px;
-    gap: 40px;
+    gap: 20px;
   }
 
   &-field {
@@ -188,5 +188,9 @@ const form = ref({
     align-items: center;
     gap: 12px;
   }
+}
+
+.additional {
+  justify-content: flex-end;
 }
 </style>

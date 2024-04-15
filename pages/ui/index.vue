@@ -15,13 +15,13 @@ const tabs = ref(['Tab 1', 'Tab 2', 'Tab 3'])
 const fileModel = ref(null)
 const textareaModel = ref('')
 const onChangeCheckbox = (value: string) => {
-  console.log(value)
+  // console.log(value)
 }
 const onChangeTab = (tab: string) => {
-  console.log(tab)
+  // console.log(tab)
 }
 const onChangeTextarea = (newValue: string) => {
-  console.log(newValue)
+  // console.log(newValue)
 }
 </script>
 <template>
@@ -81,7 +81,7 @@ const onChangeTextarea = (newValue: string) => {
         @change-textarea="onChangeTextarea"
       >
         <template #additional>
-          <InputFile />
+          <InputFile class="additional" />
         </template>
       </Textarea>
     </div>
@@ -178,5 +178,9 @@ const onChangeTextarea = (newValue: string) => {
   &:nth-child(3) {
     background: black;
   }
+}
+
+.additional {
+  justify-content: flex-end;
 }
 </style>
