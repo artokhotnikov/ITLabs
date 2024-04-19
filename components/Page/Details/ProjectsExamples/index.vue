@@ -7,6 +7,7 @@ interface ProjectsExamples {
 
 defineProps<ProjectsExamples>()
 
+const isDark = useDark()
 const { width } = useWindowSize()
 const router = useRouter()
 const small = computed(() => width.value <= 768)
@@ -25,15 +26,30 @@ const small = computed(() => width.value <= 768)
         @on-click="router.push(`/projects/${example.id}`)"
       />
     </div>
-    <Button class="examples-btn" outline @click="router.push('/projects')">
-      Больше проектов
-    </Button>
+    <ClientOnly>
+      <Button
+        class="examples-btn"
+        outline
+        :color="isDark ? 'secondary' : 'primary'"
+        @click="router.push('/projects')"
+      >
+        Больше проектов
+      </Button>
+    </ClientOnly>
   </section>
 </template>
 
 <style scoped lang="scss">
 @import '/assets/scss/variables';
 @import '/assets/scss/mixins';
+
+.dark {
+  .examples {
+    &-title {
+      color: $text-white;
+    }
+  }
+}
 
 .examples {
   position: relative;

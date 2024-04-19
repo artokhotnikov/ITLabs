@@ -7,6 +7,8 @@ definePageMeta({
 useHead({
   title: 'Партнеры'
 })
+
+const isDark = useDark()
 </script>
 
 <template>
@@ -17,13 +19,15 @@ useHead({
       <div class="subtitle medium">Компании, которые нам доверяют</div>
       <div v-if="data.length" class="partners-list">
         <div v-for="partner in data" :key="partner.title" class="partner">
-          <div class="partner-logo">
-            <img
-              :src="partner.imageNormal"
-              loading="lazy"
-              :alt="partner.title"
-            />
-          </div>
+          <ClientOnly>
+            <div class="partner-logo">
+              <img
+                :src="isDark ? partner.imageWhite : partner.imageNormal"
+                loading="lazy"
+                :alt="partner.title"
+              />
+            </div>
+          </ClientOnly>
           <div class="partner-content">
             <div class="partner-title title title-xxs" v-html="partner.title" />
             <div class="partner-text text">
@@ -45,6 +49,18 @@ useHead({
 
 <style scoped lang="scss">
 @import '/assets/scss/variables';
+
+.dark {
+  .partners {
+    .subtitle {
+      color: $text-white;
+    }
+  }
+  .partner {
+    background: $bg-white-alpha-5;
+    color: $text-white;
+  }
+}
 
 .partners {
   &-list {

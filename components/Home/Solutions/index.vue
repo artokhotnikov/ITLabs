@@ -24,8 +24,8 @@ const isDark = useDark()
         <Button
           class="solutions-btn"
           outline
-          @click="router.push('/solutions')"
           :color="isDark ? 'secondary' : 'primary'"
+          @click="router.push('/solutions')"
         >
           Все решения
         </Button>

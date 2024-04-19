@@ -150,6 +150,14 @@ onMounted(() => {
 @import '/assets/scss/variables';
 @import '/assets/scss/mixins';
 
+.dark {
+  .project {
+    &-subtitle {
+      color: $text-white;
+    }
+  }
+}
+
 .project {
   @media (min-width: $md1 + px) {
     max-width: 812px;

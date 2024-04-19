@@ -25,6 +25,13 @@ const router = useRouter()
 <style scoped lang="scss">
 @import '/assets/scss/variables';
 
+.dark {
+  .solution {
+    background: $bg-white-alpha-5;
+    color: $text-white;
+  }
+}
+
 .solution {
   display: flex;
   flex-direction: column;

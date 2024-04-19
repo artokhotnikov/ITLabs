@@ -21,7 +21,12 @@ const emits = defineEmits(['onClick'])
   />
   <div class="details-header">
     <div v-if="video" class="details-video">
-      <video-player :src="video" poster="/your-path/poster.jpg" controls />
+      <video-player
+        :src="video"
+        poster="/your-path/poster.jpg"
+        controls
+        fluid
+      />
     </div>
     <div class="details-description">
       <h1
@@ -46,6 +51,14 @@ const emits = defineEmits(['onClick'])
 
 <style scoped lang="scss">
 @import '/assets/scss/variables';
+
+.dark {
+  .details {
+    &-subtitle {
+      color: $text-white;
+    }
+  }
+}
 
 .details {
   &-header {

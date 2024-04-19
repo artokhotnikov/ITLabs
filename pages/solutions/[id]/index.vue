@@ -62,6 +62,14 @@ onMounted(() => {
 <style scoped lang="scss">
 @import '/assets/scss/mixins';
 
+.dark {
+  .solution {
+    &-category {
+      color: $text-white;
+    }
+  }
+}
+
 .solution {
   &-header {
     display: flex;
@@ -149,42 +157,9 @@ onMounted(() => {
       }
     }
   }
-
-  &-features {
-  }
-
-  &-gallery {
-  }
 }
 
 .ul {
   color: $text-third;
-
-  &-disc {
-  }
-}
-
-.gallery {
-  position: relative;
-
-  &-title {
-    color: $text-secondary;
-    margin: 0 0 50px;
-  }
-
-  &-list {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-  }
-
-  &-btn {
-    width: 215px;
-    @media (min-width: $md3 + px) {
-      position: absolute;
-      right: 0;
-      top: 40px;
-    }
-  }
 }
 </style>

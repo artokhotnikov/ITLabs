@@ -105,6 +105,17 @@ const gallery = computed(() => reviews.map((item) => item.image))
 @import '/assets/scss/variables';
 @import '/assets/scss/mixins';
 
+.dark {
+  .text,
+  .subtitle {
+    color: $text-white;
+  }
+
+  .review {
+    background: $bg-white-alpha-5;
+  }
+}
+
 .title {
   color: $text-blue;
   text-align: center;

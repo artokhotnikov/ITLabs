@@ -48,6 +48,16 @@ const router = useRouter()
 <style scoped lang="scss">
 @import '/assets/scss/variables';
 
+.dark {
+  .category {
+    background: $bg-white-alpha-5;
+
+    &-subtitle {
+      color: $text-white;
+    }
+  }
+}
+
 .categories {
   &-list {
     display: grid;

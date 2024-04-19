@@ -58,6 +58,7 @@ onUnmounted(() => {
         :src="currentView"
         poster="/your-path/poster.jpg"
         controls
+        fluid
       />
       <img v-else :src="currentView" loading="lazy" alt="Резкультат" />
     </div>

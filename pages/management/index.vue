@@ -122,6 +122,16 @@ const callback = ref({
 @import '/assets/scss/variables';
 @import '/assets/scss/mixins';
 
+.dark {
+  .management {
+    color: $text-white;
+  }
+
+  .callback {
+    background: $bg-white-alpha-5;
+  }
+}
+
 .title {
   color: $text-blue;
 }
