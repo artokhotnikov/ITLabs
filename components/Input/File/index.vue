@@ -20,6 +20,7 @@ const onChangeFiles = (e: Event) => {
 const onClearFiles = () => {
   files.value = null
   emits('update:modelValue', null)
+
 }
 </script>
 
@@ -36,6 +37,11 @@ const onClearFiles = () => {
     <div class="files-icon">
       <IconsClip />
       <input type="file" @change="onChangeFiles" />
+    </div>
+    <div v-if="files" class="files-name">name files</div>
+    <div v-if="files" class="files-delete">
+      <IconsClose />
+
     </div>
   </div>
 </template>

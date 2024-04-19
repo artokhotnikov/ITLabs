@@ -10,7 +10,7 @@
             <HomeStagesLineOne />
           </div>
           <div class="stage-container">
-            <div class="stage-num title title-xs">1</div>
+            <div class="stage-num">1</div>
             <div class="stage-content">
               <div class="stage-subtitle subtitle bold">Подача заявки</div>
               <div class="stage-text text text-md">
@@ -24,7 +24,7 @@
         </div>
         <div class="stage">
           <div class="stage-container">
-            <div class="stage-num title title-xs">2</div>
+            <div class="stage-num">2</div>
             <div class="stage-content">
               <div class="stage-subtitle subtitle bold">Обработка запроса</div>
               <div class="stage-text text text-md">
@@ -39,7 +39,7 @@
             <HomeStagesLineThree />
           </div>
           <div class="stage-container">
-            <div class="stage-num title title-xs">3</div>
+            <div class="stage-num">3</div>
             <div class="stage-content">
               <div class="stage-subtitle subtitle bold">Старт</div>
               <div class="stage-text text text-md">
@@ -51,7 +51,7 @@
         </div>
         <div class="stage">
           <div class="stage-container">
-            <div class="stage-num title title-xs">4</div>
+            <div class="stage-num">4</div>
             <div class="stage-content">
               <div class="stage-subtitle subtitle bold">Релиз</div>
               <div class="stage-text text text-md">
@@ -63,7 +63,7 @@
         </div>
         <div class="stage">
           <div class="stage-container">
-            <div class="stage-num title title-xs">5</div>
+            <div class="stage-num">5</div>
             <div class="stage-content">
               <div class="stage-subtitle subtitle bold">
                 Ввод в эксплуатацию
@@ -79,7 +79,7 @@
         </div>
         <div class="stage">
           <div class="stage-container">
-            <div class="stage-num title title-xs">6</div>
+            <div class="stage-num">6</div>
             <div class="stage-content">
               <div class="stage-subtitle subtitle bold">Поддержка</div>
               <div class="stage-text text text-md">
@@ -115,6 +115,10 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 64px 20px;
     align-items: center;
+    @media (max-width: $md3 + px) {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
   }
 }
 
@@ -122,11 +126,50 @@
   color: $text-secondary;
   position: relative;
 
+  @media (max-width: $md3 + px) {
+    &:not(:last-child):after {
+      content: '';
+      position: absolute;
+      left: 31px;
+      top: 100%;
+      width: 2px;
+      background: $bg-white;
+      border-radius: 4px;
+    }
+    &:nth-child(1):after {
+      height: 28px;
+      margin: 6px 0;
+    }
+    &:nth-child(2):after {
+      height: 44px;
+    }
+    &:nth-child(3):after {
+      height: 44px;
+      margin-top: -10px;
+    }
+    &:nth-child(4):after {
+      height: 28px;
+    }
+    &:nth-child(5):after {
+      height: 34px;
+      margin-top: 4px;
+    }
+  }
+
   &-line {
     position: absolute;
     right: -52px;
     width: 522px;
     color: $text-white;
+    @media (max-width: $md1 + px) {
+      width: 460px;
+    }
+    @media (max-width: $md2 + px) {
+      width: calc(100% + 20px);
+    }
+    @media (max-width: $md3 + px) {
+      display: none;
+    }
 
     &-one {
       top: -48px;
@@ -158,35 +201,36 @@
   }
 
   &-num {
+    font-size: 24px;
+    color: $text-blue;
+    font-family: $fontSecond;
+    font-weight: 700;
     flex-shrink: 0;
     width: 64px;
     height: 64px;
-    background: $bg-white;
+    background: $bg-white-alpha;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
   }
 
-  &-content {
-  }
-
   &-subtitle {
     margin: 0 0 20px;
   }
 
-  &-text {
+  &-content {
+    @media (max-width: $md3 + px) {
+      max-width: 240px;
+    }
   }
 }
 
-.subtitle {
-}
+.dark .stage {
+  color: $text-white;
 
-.bold {
-}
-
-.text {
-  &-md {
+  &-num {
+    background: $bg-white-alpha-5;
   }
 }
 </style>

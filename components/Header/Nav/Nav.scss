@@ -36,9 +36,26 @@
 				}
 			}
 		}
+		@media (max-width: $md1 + px) {
+			&:nth-child(4),
+			&:nth-child(5) {
+				display: none;
+			}
+		}
 	}
 
-	@media (min-width: $md3 + px) {
+	@media (min-width: $md2 + px) {
+		flex: 1 1 380px;
+	}
+	@media (min-width: $md1 + px) {
 		flex: 0 1 780px;
 	}
+	@media (max-width: $md3 + px) {
+		display: none;
+	}
+}
+
+.dark .nav {
+	background: $bg-white-alpha-5;
+	color: $text-white;
 }

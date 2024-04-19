@@ -4,13 +4,17 @@
 @import 'null';
 @import 'animation';
 @import 'typography';
+@import 'videojs';
+@import 'dark';
 
 body {
   background: $bg-secondary;
+
   &.lock {
     overflow: hidden;
   }
 }
+
 .app {
   display: flex;
   flex-direction: column;
@@ -19,9 +23,11 @@ body {
 
 .page {
   flex: 1 1 auto;
+  padding: 0 0 80px;
+  @media (max-width: $md3 + px) {
+    padding: 0 0 32px;
+  }
 }
-
-
 
 svg {
   width: 24px;

@@ -11,11 +11,18 @@
 	}
 
 	&-ask {
+		flex-basis: 50px;
+		padding: 0 !important;
 		flex-grow: 1;
+		@media (max-width: $md3 + px) {
+			flex-grow: 0;
+		}
 	}
 }
 
 .container {
 	position: relative;
-	z-index: 6;
+	@media(min-width: $md3 + px) {
+		z-index: 6;
+	}
 }

@@ -4,7 +4,13 @@ export default defineNuxtConfig({
     pageTransition: { name: 'fade', mode: 'out-in' }
   },
   devtools: { enabled: true },
-  modules: ['@nuxtjs/eslint-module', '@pinia/nuxt', '@nuxt/image'],
+  modules: [
+    '@nuxtjs/eslint-module',
+    '@pinia/nuxt',
+    '@nuxt/image',
+    '@vueuse/nuxt',
+    'vue-yandex-maps/nuxt'
+  ],
   alias: {
     assets: '/<rootDir>/assets',
     pinia: '/node_modules/@pinia/nuxt/node_modules/pinia/dist/pinia.mjs'
@@ -18,5 +24,18 @@ export default defineNuxtConfig({
         }
       }
     }
+  },
+  image: {
+    // The screen sizes predefined by `@nuxt/image`:
+    screens: {
+      xs: 420,
+      sm: 440,
+      md: 768,
+      lg: 960,
+      xl: 1260
+    }
+  },
+  yandexMaps: {
+    apikey: '3c893c7f-a06c-4af0-906f-79e9f2815e28'
   }
 })

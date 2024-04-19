@@ -12,6 +12,7 @@ const { isOpen: isOpenDiscussion, open: openDiscussion } = useOpen()
 
 const inputModel = ref('')
 const tabs = ref(['Tab 1', 'Tab 2', 'Tab 3'])
+
 const fileModel = ref(null)
 const textareaModel = ref('')
 const onChangeCheckbox = (value: string) => {
@@ -23,6 +24,8 @@ const onChangeTab = (tab: string) => {
 const onChangeTextarea = (newValue: string) => {
   // console.log(newValue)
 }
+
+
 </script>
 <template>
   <div>
@@ -66,7 +69,7 @@ const onChangeTextarea = (newValue: string) => {
       <Input
         id="main-field"
         v-model="inputModel"
-        :validRegx="RegExp('^[A-Z]{3}$')"
+        :valid-regx="RegExp('^[A-Z]{3}$')"
         type="text"
         color="primary"
         placeholder="Введите текст"

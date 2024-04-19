@@ -1,8 +1,14 @@
-<script setup></script>
+<script setup>
+definePageMeta({
+  title: 'ITLabs'
+})
+useHead({
+  title: 'ITLabs'
+})
+</script>
 
 <template>
   <div class="page">
-    <!--    МБ УБРАТЬ-->
     <ClientOnly>
       <HomeSlider />
     </ClientOnly>
@@ -12,6 +18,7 @@
     <HomeStages />
     <HomeDiscussion />
     <HomePartners />
+    <HomePrices />
   </div>
 </template>
 

@@ -13,7 +13,7 @@ const onClick = () => {
 .overlay {
   position: fixed;
   inset: 0;
-  background: #58687c33;
+  background: rgba(88, 104, 124, 0.4);
   z-index: 5;
 }
 </style>

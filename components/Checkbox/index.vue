@@ -1,27 +1,34 @@
 <script setup lang="ts">
 type CheckboxProps = {
+  modelValue: boolean
   type: 'radio' | 'checkbox'
-  label: string
-  rtl: boolean
+  label?: string
+  rtl?: boolean
   color: 'primary' | 'secondary'
 }
 
 type CheckboxEmits = {
-  (eventName: 'changeCheckbox', value: boolean): void
+  (eventName: 'update:modelValue', value: boolean): void
 }
 const props = defineProps<CheckboxProps>()
 const emits = defineEmits<CheckboxEmits>()
-const state = ref(false)
 
 const onClickCheckbox = () => {
-  state.value = !state.value
-  emits('changeCheckbox', state.value)
+  emits('update:modelValue', !props.modelValue)
 }
 </script>
 
 <template>
   <div class="checkbox">
-    <span v-if="label && rtl" class="text-md">{{ label }} </span>
+
+    <label
+      v-if="label && rtl"
+      for="checkbox"
+      class="text-md"
+      @click="onClickCheckbox"
+    >
+      {{ label }}
+    </label>
     <section>
       <div
         :class="[
@@ -29,7 +36,7 @@ const onClickCheckbox = () => {
           color,
           type,
           {
-            active: state
+            active: modelValue
           }
         ]"
         id="checkbox"
@@ -37,16 +44,23 @@ const onClickCheckbox = () => {
       >
         <Transition name="fade">
           <IconsCheck
-            v-if="state && type === 'checkbox'"
+            v-if="modelValue && type === 'checkbox'"
             class="icon icon-check"
           />
         </Transition>
         <Transition name="fade">
-          <div v-if="state && type === 'radio'" class="icon icon-radio radio" />
+          <div
+            v-if="modelValue && type === 'radio'"
+            class="icon icon-radio radio"
+          />
         </Transition>
       </div>
     </section>
-    <span v-if="label && !rtl" class="text-md">{{ label }}</span>
+
+    <label v-if="label && !rtl" for="" class="text-md" @click="onClickCheckbox">
+      {{ label }}
+    </label>
+
   </div>
 </template>
 
@@ -71,8 +85,7 @@ const onClickCheckbox = () => {
   }
 
   label {
-    font-family: $font;
-    font-weight: 400;
+    cursor: pointer;
   }
 }
 
@@ -94,6 +107,7 @@ const onClickCheckbox = () => {
 
 .active {
   background-color: $bg-blue;
+  border-color: $border-blue-dark;
 }
 
 .icon {

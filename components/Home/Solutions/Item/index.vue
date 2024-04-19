@@ -1,25 +1,25 @@
 <script setup lang="ts">
-export interface itemProps {
-  item: {
-    image: string
-    title: string
-    to: string
-    id: number
-    list: Array<string>
-  }
+import type Solution from '~/types/Solution/Solution'
+
+interface ItemProps {
+  item: Solution
 }
 
-defineProps<itemProps>()
+defineProps<ItemProps>()
 </script>
 
 <template>
   <div class="item">
     <div class="item-img">
-      <NuxtImg :src="item.image" loading="lazy" />
+      <img :src="item.imageCover" loading="lazy" :alt="item.title" />
     </div>
     <div class="subtitle bold" v-html="item.title" />
     <ul class="ul ul-disc">
-      <li v-for="text in item.list" :key="text" class="text text-md">
+      <li
+        v-for="text in item.mainFunctionalityCover"
+        :key="text"
+        class="text text-md"
+      >
         {{ text }}
       </li>
     </ul>
@@ -39,24 +39,34 @@ defineProps<itemProps>()
   cursor: pointer;
   transition: all 0.5s linear;
   position: relative;
+  @media (max-width: $md3 + px) {
+    padding: 16px;
+    border-radius: 20px;
+  }
 
   &:before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    inset: 0;
     display: block;
     background: $bg-gradient;
     border-radius: 40px;
     z-index: -1;
     opacity: 0;
     transition: opacity 0.5s linear;
+    @media (max-width: $md3 + px) {
+      border-radius: 20px;
+    }
   }
 
   &-img {
     margin-top: -120px;
+    width: 230px;
+    @media (max-width: $md3 + px) {
+      width: 130px;
+      margin-top: -70px;
+    }
+
     img {
       width: 100%;
     }
@@ -66,6 +76,9 @@ defineProps<itemProps>()
     margin-top: auto;
     max-width: 170px;
     pointer-events: none;
+    @media (max-width: $md3 + px) {
+      display: none;
+    }
   }
 
   ul {
@@ -75,6 +88,9 @@ defineProps<itemProps>()
   .subtitle {
     color: $text-blue;
     margin: 0 0 20px;
+    @media (max-width: $md3 + px) {
+      margin: 0 0 16px;
+    }
   }
 
   @media (min-width: $md3 + px) {
@@ -96,5 +112,9 @@ defineProps<itemProps>()
       }
     }
   }
+}
+.dark .item {
+  background: $bg-white-alpha-5;
+  color: $text-white;
 }
 </style>
