@@ -28,13 +28,16 @@ const click = () => {
   border-radius: 100px;
   position: relative;
   color: $text-secondary;
-  transition: all 0.3s;
+  transition: all 0.3s ease !important;
+
   &.active {
     background: $text-blue;
     color: $text-blue;
   }
 
   &-icon {
+    position: relative;
+    left: 0%;
     width: 24px;
     height: 24px;
     background: $bg-white;
@@ -42,13 +45,13 @@ const click = () => {
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.2s;
+    transition: all 0.3s !important;
     box-shadow:
       0 1px 2px 0 rgba(16, 24, 40, 0.2),
       0 1px 4px 0 rgba(16, 24, 40, 0.3);
 
     &.active {
-      margin-left: auto;
+      left: 50%;
     }
 
     svg {
