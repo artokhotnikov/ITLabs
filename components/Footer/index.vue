@@ -41,7 +41,9 @@
               <IconsVK />
             </Button>
           </div>
-          <ThemeSwitcher />
+          <ClientOnly>
+            <ThemeSwitcher />
+          </ClientOnly>
         </div>
       </div>
       <div class="footer-bottom">
@@ -176,6 +178,13 @@
     padding-top: 40px;
     margin-top: 40px;
     text-align: center;
+  }
+}
+
+.switcher {
+  margin: 40px 0 0;
+  @media (max-width: $md3 + px) {
+    margin: 40px auto 0;
   }
 }
 </style>
