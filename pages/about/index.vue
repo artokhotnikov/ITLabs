@@ -26,10 +26,7 @@ const gallery = computed(() => reviews.map((item) => item.image))
     <div class="container">
       <Breadcrumbs />
       <div class="about-img">
-        <NuxtImg
-          src="img/about_page/main.png"
-          sizes="100vw md:900px xl:1020px"
-        />
+        <img src="/img/about_page/main.png" alt="О компании" />
       </div>
       <h1 class="about-title title title-s">
         ITL Лаборатория Информационных технологий
@@ -107,6 +104,17 @@ const gallery = computed(() => reviews.map((item) => item.image))
 <style scoped lang="scss">
 @import '/assets/scss/variables';
 @import '/assets/scss/mixins';
+
+.dark {
+  .text,
+  .subtitle {
+    color: $text-white;
+  }
+
+  .review {
+    background: $bg-white-alpha-5;
+  }
+}
 
 .title {
   color: $text-blue;

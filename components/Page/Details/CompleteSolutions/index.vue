@@ -8,6 +8,7 @@ interface ProjectsExamples {
 defineProps<ProjectsExamples>()
 
 const router = useRouter()
+const isDark = useDark()
 </script>
 
 <template>
@@ -22,15 +23,30 @@ const router = useRouter()
         @on-click="router.push(`/solutions/${solution.id}`)"
       />
     </div>
-    <Button class="examples-btn" outline @click="router.push('/solutions')">
-      Все решения
-    </Button>
+    <ClientOnly>
+      <Button
+        class="examples-btn"
+        outline
+        :color="isDark ? 'secondary' : 'primary'"
+        @click="router.push('/solutions')"
+      >
+        Все решения
+      </Button>
+    </ClientOnly>
   </section>
 </template>
 
 <style scoped lang="scss">
 @import '/assets/scss/variables';
 @import '/assets/scss/mixins';
+
+.dark {
+  .examples {
+    &-title {
+      color: $text-white;
+    }
+  }
+}
 
 .examples {
   position: relative;

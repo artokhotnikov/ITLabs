@@ -4,7 +4,7 @@ interface InputProps {
   placeholder?: string
   validRegx?: RegExp
   type: 'text' | 'password'
-  color: 'primary'
+  color: 'primary | secondary'
   required?: boolean
   outlined?: boolean
   disabled?: boolean
@@ -96,6 +96,11 @@ input {
   background-color: transparent;
   transition: 0.3s all ease-in-out;
   font-size: 14px;
+  color: inherit;
+
+  &::placeholder {
+    color: inherit;
+  }
 
   &:focus,
   &:active {
@@ -125,7 +130,19 @@ input {
 .primary {
   background-color: $bg-third;
 }
+
 .secondary {
   background-color: $bg-white;
+}
+
+.dark {
+  .input {
+    color: $text-white;
+  }
+
+  .primary,
+  .secondary {
+    background-color: $bg-white-alpha-5;
+  }
 }
 </style>

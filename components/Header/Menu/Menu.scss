@@ -79,10 +79,10 @@
   }
 
   &-icon {
-    height: 32px;
-    width: 32px;
-    padding: 0;
-    border-radius: 8px;
+    height: 32px !important;
+    width: 32px !important;
+    padding: 0 !important;
+    border-radius: 8px !important;
 
     svg {
       flex: 0 0 20px;
@@ -143,6 +143,7 @@
       .subtitle {
         margin: 0 0 8px;
       }
+
       .menu-col {
         flex-basis: 100%;
       }
@@ -150,6 +151,17 @@
 
     &-social {
       gap: 16px;
+    }
+  }
+}
+
+.dark .menu {
+  background: $text-secondary;
+  color: $text-white;
+  &-footer {
+    .subtitle,
+    .text {
+      color: $text-white;
     }
   }
 }

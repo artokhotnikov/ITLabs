@@ -16,11 +16,7 @@ const router = useRouter()
     @click="router.push(`/solutions/${solution.id}`)"
   >
     <div class="solution-img">
-      <NuxtImg
-        :src="solution.imageCover"
-        loading="lazy"
-        sizes="160px lg:283px xl:293px"
-      />
+      <img :src="solution.imageCover" loading="lazy" :alt="solution.title" />
     </div>
     <div class="text bold" v-html="solution.title" />
   </div>
@@ -28,6 +24,13 @@ const router = useRouter()
 
 <style scoped lang="scss">
 @import '/assets/scss/variables';
+
+.dark {
+  .solution {
+    background: $bg-white-alpha-5;
+    color: $text-white;
+  }
+}
 
 .solution {
   display: flex;

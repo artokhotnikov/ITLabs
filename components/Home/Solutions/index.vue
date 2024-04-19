@@ -2,6 +2,7 @@
 import data from '~/data/solutions.ts'
 
 const router = useRouter()
+const isDark = useDark()
 </script>
 
 <template>
@@ -19,9 +20,16 @@ const router = useRouter()
           @click="router.push(`/solutions/${solution.id}`)"
         />
       </div>
-      <Button class="solutions-btn" outline @click="router.push('/solutions')">
-        Все решения
-      </Button>
+      <ClientOnly>
+        <Button
+          class="solutions-btn"
+          outline
+          :color="isDark ? 'secondary' : 'primary'"
+          @click="router.push('/solutions')"
+        >
+          Все решения
+        </Button>
+      </ClientOnly>
     </div>
   </section>
 </template>
@@ -71,6 +79,12 @@ const router = useRouter()
       overflow-x: auto;
       max-width: 100%;
     }
+  }
+}
+
+.dark .solutions {
+  .subtitle {
+    color: $text-white;
   }
 }
 </style>

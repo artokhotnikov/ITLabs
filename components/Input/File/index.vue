@@ -4,7 +4,6 @@ import type { Ref } from 'vue'
 const files: Ref<FileList | null> = ref(null)
 const onChangeFiles = (e: Event) => {
   files.value = (e.target as HTMLInputElement).files
-  console.log(files.value)
 }
 </script>
 
@@ -12,7 +11,7 @@ const onChangeFiles = (e: Event) => {
   <div class="files">
     <div class="files-icon">
       <IconsClip />
-      <input @change="onChangeFiles" type="files" />
+      <input type="files" @change="onChangeFiles" />
     </div>
     <div v-if="files" class="files-name">name files</div>
     <div v-if="files" class="files-delete">

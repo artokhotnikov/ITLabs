@@ -13,11 +13,7 @@ const router = useRouter()
 <template>
   <div class="item" @click="router.push(`/categories/${item.id}`)">
     <div class="item-img">
-      <NuxtImg
-        :src="item.image"
-        loading="lazy"
-        sizes="180px md:280px xl:316px"
-      />
+      <img :src="item.image" loading="lazy" :alt="item.title" />
     </div>
     <div class="item-content">
       <div class="title title-s">
@@ -131,5 +127,10 @@ const router = useRouter()
       }
     }
   }
+}
+
+.dark .item {
+  background: $bg-white-alpha-5;
+  color: $text-white;
 }
 </style>

@@ -31,6 +31,12 @@ useHead({
 <style scoped lang="scss">
 @import '/assets/scss/variables';
 
+.dark {
+  .subtitle {
+    color: $text-white;
+  }
+}
+
 .page {
   &-list {
     display: grid;

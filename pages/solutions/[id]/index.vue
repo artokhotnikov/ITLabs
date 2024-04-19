@@ -1,13 +1,10 @@
 <script setup lang="ts">
 import data from '~/data/solutions'
 import type Solution from '~/types/Solution/Solution'
-// import { useModalsStore } from '~/store/modalsStore'
 import projects from '~/data/projects'
 import type Project from '~/types/Projects/Project'
 
-// const modalsStore = useModalsStore()
 const route = useRoute()
-const router = useRouter()
 const solution = ref<Solution>()
 const projectsData = ref<Array<Project>>()
 
@@ -64,6 +61,14 @@ onMounted(() => {
 
 <style scoped lang="scss">
 @import '/assets/scss/mixins';
+
+.dark {
+  .solution {
+    &-category {
+      color: $text-white;
+    }
+  }
+}
 
 .solution {
   &-header {
@@ -152,42 +157,9 @@ onMounted(() => {
       }
     }
   }
-
-  &-features {
-  }
-
-  &-gallery {
-  }
 }
 
 .ul {
   color: $text-third;
-
-  &-disc {
-  }
-}
-
-.gallery {
-  position: relative;
-
-  &-title {
-    color: $text-secondary;
-    margin: 0 0 50px;
-  }
-
-  &-list {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-  }
-
-  &-btn {
-    width: 215px;
-    @media (min-width: $md3 + px) {
-      position: absolute;
-      right: 0;
-      top: 40px;
-    }
-  }
 }
 </style>

@@ -11,12 +11,8 @@ const { isOpen: isOpenDiscussion, open: openDiscussion } = useOpen()
 const inputModel = ref('')
 const tabs = ref(['Tab 1', 'Tab 2', 'Tab 3'])
 
-const onChangeCheckbox = (value: string) => {
-  console.log(value)
-}
-const onChangeTab = (tab: string) => {
-  console.log(tab)
-}
+const onChangeCheckbox = (value: string) => {}
+const onChangeTab = (tab: string) => {}
 </script>
 <template>
   <div>

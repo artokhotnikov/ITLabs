@@ -3,12 +3,13 @@ export default defineNuxtConfig({
   app: {
     pageTransition: { name: 'fade', mode: 'out-in' }
   },
-  devtools: { enabled: false },
+  devtools: { enabled: true },
   modules: [
     '@nuxtjs/eslint-module',
     '@pinia/nuxt',
     '@nuxt/image',
-    '@vueuse/nuxt'
+    '@vueuse/nuxt',
+    'vue-yandex-maps/nuxt'
   ],
   alias: {
     assets: '/<rootDir>/assets',
@@ -33,5 +34,8 @@ export default defineNuxtConfig({
       lg: 960,
       xl: 1260
     }
+  },
+  yandexMaps: {
+    apikey: '3c893c7f-a06c-4af0-906f-79e9f2815e28'
   }
 })

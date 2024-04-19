@@ -22,11 +22,7 @@ const router = useRouter()
           class="category"
         >
           <div class="category-img">
-            <NuxtImg
-              fit="inside"
-              :src="category.image"
-              sizes="250px md:396px"
-            />
+            <img :src="category.image" :alt="category.title" />
           </div>
           <div class="category-content">
             <h3 class="category-title title title-md">{{ category.title }}</h3>
@@ -51,6 +47,16 @@ const router = useRouter()
 
 <style scoped lang="scss">
 @import '/assets/scss/variables';
+
+.dark {
+  .category {
+    background: $bg-white-alpha-5;
+
+    &-subtitle {
+      color: $text-white;
+    }
+  }
+}
 
 .categories {
   &-list {
@@ -81,6 +87,10 @@ const router = useRouter()
     flex-shrink: 0;
     @media (max-width: $md3 + px) {
       max-width: 250px;
+    }
+
+    img {
+      width: 100%;
     }
   }
 

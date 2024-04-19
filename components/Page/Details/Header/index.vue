@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { VideoPlayer } from '@videojs-player/vue'
+
 interface DetailsHeaderProps {
   title?: string
   video?: string
@@ -19,7 +21,12 @@ const emits = defineEmits(['onClick'])
   />
   <div class="details-header">
     <div v-if="video" class="details-video">
-      <video :src="video" controls></video>
+      <video-player
+        :src="video"
+        poster="/your-path/poster.jpg"
+        controls
+        fluid
+      />
     </div>
     <div class="details-description">
       <h1
@@ -45,6 +52,14 @@ const emits = defineEmits(['onClick'])
 <style scoped lang="scss">
 @import '/assets/scss/variables';
 
+.dark {
+  .details {
+    &-subtitle {
+      color: $text-white;
+    }
+  }
+}
+
 .details {
   &-header {
     display: flex;
@@ -62,7 +77,6 @@ const emits = defineEmits(['onClick'])
     border-radius: 16px;
     overflow: hidden;
     position: relative;
-    padding-top: 28%;
 
     @media (min-width: $md2 + px) {
       flex: 0 1 604px;
@@ -71,18 +85,9 @@ const emits = defineEmits(['onClick'])
     @media (max-width: $md2 + px) {
       border-radius: 20px;
       width: 100%;
-      padding-top: 57%;
     }
     @media (max-width: $md4 + px) {
       border-radius: 8px;
-    }
-
-    video {
-      position: absolute;
-      inset: 0;
-      object-fit: cover;
-      width: 100%;
-      height: 100%;
     }
   }
 

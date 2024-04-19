@@ -218,10 +218,19 @@
   &-subtitle {
     margin: 0 0 20px;
   }
+
   &-content {
     @media (max-width: $md3 + px) {
       max-width: 240px;
     }
+  }
+}
+
+.dark .stage {
+  color: $text-white;
+
+  &-num {
+    background: $bg-white-alpha-5;
   }
 }
 </style>

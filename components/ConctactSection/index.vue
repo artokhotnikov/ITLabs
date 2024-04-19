@@ -34,6 +34,15 @@ const modalsStore = useModalsStore()
 <style scoped lang="scss">
 @import '/assets/scss/variables';
 
+.dark {
+  .contact {
+    &-links,
+    .text {
+      color: $text-white;
+    }
+  }
+}
+
 .contact {
   padding-bottom: 0;
   text-align: center;

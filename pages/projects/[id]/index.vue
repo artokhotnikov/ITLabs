@@ -52,7 +52,7 @@ onMounted(() => {
       <Breadcrumbs />
       <section v-if="project" class="project">
         <div class="project-img">
-          <NuxtImg :src="project.imageMain" sizes="100vw md:900px xl: 820px" />
+          <img :src="project.imageMain" :alt="project.title" />
         </div>
         <div class="project-subtitle subtitle bold">
           {{ project.subtitle }}
@@ -113,7 +113,7 @@ onMounted(() => {
                         </div>
                       </div>
                       <div v-else class="slide-photo">
-                        <NuxtImg :src="slide" sizes="178px" />
+                        <img :src="slide" alt="Результат" />
                         <div class="slide-icon">
                           <IconsEye />
                         </div>
@@ -149,6 +149,14 @@ onMounted(() => {
 <style scoped lang="scss">
 @import '/assets/scss/variables';
 @import '/assets/scss/mixins';
+
+.dark {
+  .project {
+    &-subtitle {
+      color: $text-white;
+    }
+  }
+}
 
 .project {
   @media (min-width: $md1 + px) {

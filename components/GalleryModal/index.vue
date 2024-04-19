@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { VideoPlayer } from '@videojs-player/vue'
+
 interface GalleryModalProps {
   gallery: Array<string>
   isActive: boolean
@@ -46,13 +48,19 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="view">
+  <div class="view modal">
     <div class="view-close" @click="closeView">
       <IconsClose />
     </div>
     <div v-if="currentView.length" class="view-content">
-      <video v-if="isVideoSlide(currentView)" :src="currentView" controls />
-      <NuxtImg v-else :src="currentView" loading="lazy" />
+      <video-player
+        v-if="isVideoSlide(currentView)"
+        :src="currentView"
+        poster="/your-path/poster.jpg"
+        controls
+        fluid
+      />
+      <img v-else :src="currentView" loading="lazy" alt="Резкультат" />
     </div>
     <div class="view-controls">
       <button class="view-arrow view-arrow-prev" @click="prevView">
