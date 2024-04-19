@@ -42,7 +42,7 @@ const callback = ref({
                 v-model="estimate.phone"
                 placeholder="Телефон"
                 type="text"
-                color="secondary"
+                color="primary"
               />
             </div>
             <div class="estimate-row">

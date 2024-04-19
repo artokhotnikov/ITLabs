@@ -23,6 +23,14 @@ onBeforeUnmount(unlock)
 <style scoped lang="scss">
 @import '/assets/scss/variables';
 
+.dark {
+  .modal {
+    &-content {
+      background: $text-secondary;
+    }
+  }
+}
+
 .modal {
   position: fixed;
   inset: 0;
@@ -45,6 +53,7 @@ onBeforeUnmount(unlock)
     transition: 0.3s all ease-in-out;
     @media (max-width: $md2 + px) {
       max-width: 590px;
+      border-radius: 20px;
     }
     @media (max-width: $md5 + px) {
       max-width: 328px;

@@ -9,8 +9,10 @@ interface CallSpecialistModalEmits {
   (eventName: 'update:isActive', value: boolean): void
 }
 
+const isDark = useDark()
 const emits = defineEmits<CallSpecialistModalEmits>()
 defineProps<CallSpecialistModalProps>()
+
 const phone = ref('')
 </script>
 
@@ -19,18 +21,20 @@ const phone = ref('')
     <template #content>
       <section class="content">
         <div class="content-head">
-          <h3 class="content-title title-xs bold">Звонок</h3>
-          <p class="content-subtitle text-md">
+          <h3 class="content-title title title-xs bold">
+            <mark>Звонок</mark>
+          </h3>
+          <p class="content-subtitle text">
             Специалисты свяжутся с вами и ответят на все интересующие вопросы
           </p>
         </div>
-        <form action="" class="content-form">
+        <form class="content-form" @submit.prevent>
           <fieldset>
             <Input
               v-model="phone"
               type="text"
               color="primary"
-              placeholder="Введите номер телефона"
+              placeholder="Номер телефона"
             />
           </fieldset>
         </form>
@@ -38,12 +42,13 @@ const phone = ref('')
           <Button
             class="action action-cancel"
             outline
+            :color="isDark ? 'secondary' : 'primary'"
             @click="emits('update:isActive', false)"
           >
             Отмена
           </Button>
-          <Button class="action action-send" @click="emits('confirm')"
-            >Жду звонка
+          <Button class="action action-send" @click="emits('confirm')">
+            Жду звонка
           </Button>
         </div>
       </section>
@@ -54,8 +59,15 @@ const phone = ref('')
 <style scoped lang="scss">
 @import '/assets/scss/variables';
 
+.dark {
+  .content {
+    &-subtitle {
+      color: $text-white;
+    }
+  }
+}
+
 .content {
-  color: $text-blue;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -69,16 +81,11 @@ const phone = ref('')
   }
 
   &-title {
-    font-family: $fontSecond;
-    text-transform: uppercase;
   }
 
   &-subtitle {
-    font-family: $font;
-    color: $text-primary;
-    line-height: 20.8px;
+    color: $text-secondary;
     max-width: 292px;
-    font-size: 16px;
     @media (max-width: $md2 + px) {
       max-width: 550px;
     }
@@ -107,8 +114,6 @@ const phone = ref('')
 
 .action {
   @media (max-width: $md5 + px) {
-    flex-direction: column;
-    align-items: center;
     &:nth-child(1) {
       max-width: 140px;
     }

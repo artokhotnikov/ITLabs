@@ -47,6 +47,14 @@ const onClearFiles = () => {
 <style scoped lang="scss">
 @import '/assets/scss/variables';
 
+.dark {
+  .files {
+    &-icon {
+      background: $bg-white-alpha-10;
+    }
+  }
+}
+
 .files {
   width: 90%;
   display: flex;
@@ -61,7 +69,7 @@ const onClearFiles = () => {
     justify-content: center;
     align-items: center;
     width: 24px;
-    max-height: 24px;
+    height: 24px;
     background-color: $bg-white;
     border-radius: 4px;
     padding: 2px;
@@ -73,6 +81,7 @@ const onClearFiles = () => {
       opacity: 0;
       width: 100%;
       height: 100%;
+      z-index: -1;
     }
   }
 

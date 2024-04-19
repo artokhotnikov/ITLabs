@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { computed } from 'vue'
-
 type TextareaProps = {
   modelValue: string
   color: 'primary'
@@ -45,9 +43,23 @@ const onChangeTextarea = (e: Event) => {
 <style scoped lang="scss">
 @import '/assets/scss/variables';
 
+.dark {
+  .primary {
+    background: $bg-white-alpha-5;
+  }
+
+  textarea {
+    color: $text-white;
+    &::placeholder {
+      color: $text-white;
+    }
+  }
+}
+
 .textarea {
   position: relative;
   border-radius: 16px;
+  font-size: 14px;
 
   &-field {
     position: relative;

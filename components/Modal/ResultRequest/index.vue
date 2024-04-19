@@ -25,18 +25,15 @@ defineProps<ResultRequestModalProps>()
           </article>
         </div>
         <div class="content-text">
-          <h3
-            v-if="type === 'success'"
-            class="text-main text-success title-md bold"
-          >
-            <span>Данные</span>
-            успешно отправлены
+          <h3 v-if="type === 'success'" class="title title-xs">
+            Данные
+            <mark>успешно отправлены</mark>
           </h3>
-          <h3 v-if="type === 'error'" class="text-main text-error">Ошибка</h3>
-          <p v-if="type === 'success'" class="text-second">
+          <h3 v-if="type === 'error'" class="title title-xs">Ошибка</h3>
+          <p v-if="type === 'success'" class="text">
             Мы ответим вам в ближайшее время
           </p>
-          <p v-if="type === 'error'" class="text-second">
+          <p v-if="type === 'error'" class="text">
             Попробуйте повторить попытку позже
           </p>
         </div>
@@ -45,7 +42,8 @@ defineProps<ResultRequestModalProps>()
             class="action"
             rounded
             @click="emits('update:isActive', false)"
-            >Ок
+          >
+            Ок
           </Button>
         </div>
       </section>
@@ -56,12 +54,20 @@ defineProps<ResultRequestModalProps>()
 <style scoped lang="scss">
 @import '/assets/scss/variables';
 
+.dark {
+  .content {
+    color: $text-white;
+  }
+}
+
 .content {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 40px;
+  color: $text-secondary;
+
   &-head {
   }
 
@@ -73,6 +79,7 @@ defineProps<ResultRequestModalProps>()
     @media (max-width: $md5 + px) {
       max-width: 288px;
     }
+
     h3 {
       @media (max-width: $md5 + px) {
         font-size: 18px;
@@ -117,28 +124,12 @@ defineProps<ResultRequestModalProps>()
 }
 
 .text {
-  &-main {
-    font-family: $fontSecond;
-    font-size: 24px;
-    text-transform: uppercase;
-
-    span {
-      color: $text-primary;
-    }
-  }
-
   &-error {
     color: $text-primary;
   }
 
   &-success {
     color: $text-blue;
-  }
-
-  &-second {
-    font-family: $font;
-    color: $text-primary;
-    font-size: 16px;
   }
 }
 </style>

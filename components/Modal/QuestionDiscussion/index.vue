@@ -12,11 +12,19 @@ interface QuestionDiscussionModalEmits {
 
 const emits = defineEmits<QuestionDiscussionModalEmits>()
 defineProps<QuestionDiscussionModalProps>()
+const isDark = useDark()
+
 const form = ref({
   name: '',
   phone: '',
   question: '',
-  files: null
+  files: null,
+  connection: {
+    telegram: true,
+    whatsapp: false,
+    email: false,
+    phone: false
+  }
 })
 </script>
 
@@ -25,15 +33,17 @@ const form = ref({
     <template #content>
       <section class="content">
         <div class="content-title">
-          <h3 v-if="type === 'discussion'" class="title-xs uppercase">
-            <span class="highlight">Обсудить</span> проект
+          <h3 v-if="type === 'discussion'" class="title title-xs">
+            <mark>Обсудить</mark>
+            проект
           </h3>
-          <h3 v-if="type === 'question'" class="title-xs uppercase">
-            <span class="highlight">Ваш</span> вопрос
+          <h3 v-if="type === 'question'" class="title title-xs">
+            <mark>Ваш</mark>
+            вопрос
           </h3>
-          <p>Мы ответим вам в ближайшее время</p>
+          <p class="text">Мы ответим вам в ближайшее время</p>
         </div>
-        <form class="content-form">
+        <form class="content-form form">
           <fieldset>
             <Input
               v-model="form.name"
@@ -52,7 +62,7 @@ const form = ref({
             <div class="form-field form-double">
               <Textarea
                 v-model="form.question"
-                placeholder="Прикрепляю тз на оценку проекта, интересует стоимость и сроки разработки, жду ответа в telegram"
+                placeholder="Дополнительная информация"
                 color="primary"
               >
                 <template #additional>
@@ -63,24 +73,48 @@ const form = ref({
           </fieldset>
         </form>
         <div class="content-preferences">
-          <h5>Предпочтительный вид связи</h5>
+          <p class="text medium">Предпочтительный вид связи</p>
           <form class="preferences-form">
             <div class="preferences-field">
-              <Checkbox type="checkbox" label="Telegram" color="secondary" />
+              <Checkbox
+                v-model="form.connection.telegram"
+                type="checkbox"
+                label="Telegram"
+                color="secondary"
+              />
             </div>
             <div class="preferences-field">
-              <Checkbox type="checkbox" label="Whatsapp" color="secondary" />
+              <Checkbox
+                v-model="form.connection.whatsapp"
+                type="checkbox"
+                label="Whatsapp"
+                color="secondary"
+              />
             </div>
             <div class="preferences-field">
-              <Checkbox type="checkbox" label="Email" color="secondary" />
+              <Checkbox
+                v-model="form.connection.email"
+                type="checkbox"
+                label="Email"
+                color="secondary"
+              />
             </div>
             <div class="preferences-field">
-              <Checkbox type="checkbox" label="По телефону" color="secondary" />
+              <Checkbox
+                v-model="form.connection.phone"
+                type="checkbox"
+                label="По телефону"
+                color="secondary"
+              />
             </div>
           </form>
         </div>
         <div class="content-actions">
-          <Button outline @click="emits('update:isActive', false)">
+          <Button
+            outline
+            :color="isDark ? 'secondary' : 'primary'"
+            @click="emits('update:isActive', false)"
+          >
             Отмена
           </Button>
           <Button @click="emits('confirm')">Отправить</Button>
@@ -93,12 +127,19 @@ const form = ref({
 <style scoped lang="scss">
 @import '/assets/scss/variables';
 
+.dark {
+  .content {
+    color: $text-white;
+  }
+}
+
 .content {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   gap: 40px;
+  color: $text-secondary;
 
   &-title {
     display: flex;
@@ -106,18 +147,6 @@ const form = ref({
     gap: 20px;
     max-width: 292px;
     text-align: center;
-
-    h3 {
-      font-family: $fontSecond;
-
-      .highlight {
-        color: $text-blue;
-      }
-    }
-
-    p {
-      font-family: $font;
-    }
   }
 
   &-form {
@@ -141,7 +170,21 @@ const form = ref({
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10px;
+    gap: 20px;
+
+    @media (max-width: $md4 + px) {
+      flex-direction: column;
+    }
+
+    .btn {
+      &:first-child {
+        width: 140px;
+      }
+
+      &:last-child {
+        width: 160px;
+      }
+    }
   }
 }
 
