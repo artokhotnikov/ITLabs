@@ -8,11 +8,24 @@ const { isOpen: isOpenResultErrorResponse, open: openResultErrorResponse } =
   useOpen()
 const { isOpen: isOpenQuestion, open: openQuestion } = useOpen()
 const { isOpen: isOpenDiscussion, open: openDiscussion } = useOpen()
+
+
 const inputModel = ref('')
 const tabs = ref(['Tab 1', 'Tab 2', 'Tab 3'])
 
-const onChangeCheckbox = (value: string) => {}
-const onChangeTab = (tab: string) => {}
+const fileModel = ref(null)
+const textareaModel = ref('')
+const onChangeCheckbox = (value: string) => {
+  // console.log(value)
+}
+const onChangeTab = (tab: string) => {
+  // console.log(tab)
+}
+const onChangeTextarea = (newValue: string) => {
+  // console.log(newValue)
+}
+
+
 </script>
 <template>
   <div>
@@ -62,6 +75,18 @@ const onChangeTab = (tab: string) => {}
         placeholder="Введите текст"
         required
       />
+      <InputFile v-model="fileModel" />
+    </div>
+    <div class="list">
+      <Textarea
+        v-model="textareaModel"
+        color="primary"
+        @change-textarea="onChangeTextarea"
+      >
+        <template #additional>
+          <InputFile class="additional" />
+        </template>
+      </Textarea>
     </div>
     <div class="list">
       <Checkbox
@@ -156,5 +181,9 @@ const onChangeTab = (tab: string) => {}
   &:nth-child(3) {
     background: black;
   }
+}
+
+.additional {
+  justify-content: flex-end;
 }
 </style>

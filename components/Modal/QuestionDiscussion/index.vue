@@ -15,7 +15,8 @@ defineProps<QuestionDiscussionModalProps>()
 const form = ref({
   name: '',
   phone: '',
-  question: ''
+  question: '',
+  files: null
 })
 </script>
 
@@ -49,8 +50,15 @@ const form = ref({
               placeholder="Телефон"
             />
             <div class="form-field form-double">
-              <textarea class="form-textarea"> </textarea>
-              <InputFile class="form-file" />
+              <Textarea
+                v-model="form.question"
+                placeholder="Прикрепляю тз на оценку проекта, интересует стоимость и сроки разработки, жду ответа в telegram"
+                color="primary"
+              >
+                <template #additional>
+                  <InputFile v-model="form.files" class="additional" />
+                </template>
+              </Textarea>
             </div>
           </fieldset>
         </form>
@@ -171,7 +179,7 @@ const form = ref({
     display: flex;
     flex-wrap: wrap;
     max-width: 292px;
-    gap: 40px;
+    gap: 20px;
   }
 
   &-field {
@@ -180,5 +188,9 @@ const form = ref({
     align-items: center;
     gap: 12px;
   }
+}
+
+.additional {
+  justify-content: flex-end;
 }
 </style>
