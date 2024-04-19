@@ -9,7 +9,6 @@ const { isOpen: isOpenResultErrorResponse, open: openResultErrorResponse } =
 const { isOpen: isOpenQuestion, open: openQuestion } = useOpen()
 const { isOpen: isOpenDiscussion, open: openDiscussion } = useOpen()
 
-
 const inputModel = ref('')
 const tabs = ref(['Tab 1', 'Tab 2', 'Tab 3'])
 
@@ -24,8 +23,6 @@ const onChangeTab = (tab: string) => {
 const onChangeTextarea = (newValue: string) => {
   // console.log(newValue)
 }
-
-
 </script>
 <template>
   <div>

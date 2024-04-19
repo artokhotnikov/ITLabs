@@ -9,7 +9,7 @@ const click = () => {
 </script>
 
 <template>
-  <div @click="click" class="switcher">
+  <div class="switcher" @click="click">
     {{ isDark ? 'темная' : 'светлая' }}
   </div>
 </template>

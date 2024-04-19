@@ -1,5 +1,4 @@
 <script setup lang="ts">
-
 type SwitcherProps = {
   modelValue: boolean
   color: 'primary'

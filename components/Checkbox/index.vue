@@ -20,7 +20,6 @@ const onClickCheckbox = () => {
 
 <template>
   <div class="checkbox">
-
     <label
       v-if="label && rtl"
       for="checkbox"
@@ -31,6 +30,7 @@ const onClickCheckbox = () => {
     </label>
     <section>
       <div
+        id="checkbox"
         :class="[
           'checkbox-field',
           color,
@@ -39,7 +39,6 @@ const onClickCheckbox = () => {
             active: modelValue
           }
         ]"
-        id="checkbox"
         @click="onClickCheckbox"
       >
         <Transition name="fade">
@@ -60,7 +59,6 @@ const onClickCheckbox = () => {
     <label v-if="label && !rtl" for="" class="text-md" @click="onClickCheckbox">
       {{ label }}
     </label>
-
   </div>
 </template>
 

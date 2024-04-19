@@ -123,8 +123,8 @@ const mobile = computed(() => width.value <= 767)
           <Button
             class="menu-feedback"
             outline
-            @click="modalsStore.open('specialist')"
             :color="isDark ? 'secondary' : 'primary'"
+            @click="modalsStore.open('specialist')"
           >
             Перезвоните мне
           </Button>
