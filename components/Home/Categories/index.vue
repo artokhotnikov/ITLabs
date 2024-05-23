@@ -22,15 +22,12 @@ import projectsCategories from '~/data/projectsCategories'
 
 .categories {
   &-list {
-    @include no-scroll;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    padding: 40px 0 0;
-    @media (max-width: $md2 + px) {
-      max-width: 100%;
-      overflow-x: auto;
-      overflow-y: visible;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+    @media (max-width: $md4 + px) {
+      flex-direction: column;
     }
   }
 }

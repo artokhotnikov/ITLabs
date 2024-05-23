@@ -9,8 +9,8 @@ type SwitcherEmits = {
   (eventName: 'onChangeSwitcher', value: boolean): void
 }
 
-const props = defineProps<SwitcherProps>()
-const emits = defineEmits<SwitcherEmits>()
+defineProps<SwitcherProps>()
+defineEmits<SwitcherEmits>()
 </script>
 
 <template>

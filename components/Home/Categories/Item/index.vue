@@ -12,23 +12,13 @@ const router = useRouter()
 
 <template>
   <div class="item" @click="router.push(`/categories/${item.id}`)">
-    <div class="item-img">
-      <img :src="item.image" loading="lazy" :alt="item.title" />
-    </div>
     <div class="item-content">
-      <div class="title title-s">
+      <div class="text text-md bold">
         {{ item.title }}
       </div>
-      <ul class="ul ul-disc">
-        <li
-          v-for="text in item.descriptionList"
-          :key="text"
-          class="text text-md"
-        >
-          {{ text }}
-        </li>
-      </ul>
-      <Button class="item-btn"> Подробнее</Button>
+    </div>
+    <div class="item-img">
+      <img :src="item.image" loading="lazy" :alt="item.title" />
     </div>
   </div>
 </template>
@@ -38,16 +28,15 @@ const router = useRouter()
 
 .item {
   display: flex;
-  flex-direction: column;
-  border-radius: 40px;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 20px;
   background: $bg-white-alpha;
   cursor: pointer;
   transition: all 0.5s linear;
   position: relative;
-  @media (max-width: $md3 + px) {
-    border-radius: 20px;
-    min-width: 210px;
-  }
+  color: $text-secondary;
+  flex-shrink: 0;
 
   &:before {
     content: '';
@@ -55,57 +44,54 @@ const router = useRouter()
     inset: 0;
     display: block;
     background: $bg-gradient;
-    border-radius: 40px;
+    border-radius: 20px;
     z-index: -1;
     opacity: 0;
     transition: opacity 0.5s linear;
   }
 
   &-content {
-    flex-grow: 1;
-    padding: 0 40px 40px;
-    display: flex;
-    flex-direction: column;
-    @media (max-width: $md3 + px) {
-      padding: 16px 16px 30px;
-    }
+    padding: 20px;
+  }
+
+  .text {
+    max-width: 116px;
   }
 
   &-img {
-    width: 280px;
-    margin: -100px auto 0;
-    @media (max-width: $md2 + px) {
-      margin: -60px auto 0;
-    }
-    @media (max-width: $md3 + px) {
-      width: 180px;
-      margin: 0 auto;
-    }
+    width: 150px;
+    flex-shrink: 0;
 
     img {
       width: 100%;
     }
   }
 
-  &-btn {
-    margin-top: auto;
-    max-width: 170px;
-    pointer-events: none;
-    @media (max-width: $md2 + px) {
-      max-width: 100%;
+  @media (min-width: $md2 + px) {
+    &:nth-child(1) {
+      flex-basis: 300px;
     }
-    @media (max-width: $md3 + px) {
-      display: none;
+    &:nth-child(2) {
+      flex-basis: 270px;
     }
-  }
-
-  ul {
-    margin: 0 0 20px;
-  }
-
-  .title {
-    color: $text-blue;
-    margin: 0 0 20px;
+    &:nth-child(3) {
+      flex-basis: 270px;
+    }
+    &:nth-child(4) {
+      flex-basis: 270px;
+    }
+    &:nth-child(5) {
+      flex-basis: 260px;
+    }
+    &:nth-child(6) {
+      flex-basis: 300px;
+    }
+    &:nth-child(7) {
+      flex-basis: 400px;
+      .text {
+        max-width: 210px;
+      }
+    }
   }
 
   @media (min-width: $md3 + px) {
@@ -120,12 +106,10 @@ const router = useRouter()
       .text {
         color: $text-white;
       }
-
-      .item-btn {
-        background: $bg-white;
-        color: $text-primary;
-      }
     }
+  }
+  @media (max-width: $md3 + px) {
+    flex: 1 1 40%;
   }
 }
 

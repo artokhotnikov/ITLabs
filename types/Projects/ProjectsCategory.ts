@@ -3,7 +3,6 @@ export default interface ProjectsCategory {
   image?: string
   title?: string
   subtitle?: string
-  descriptionList?: Array<string>
   description?: string
   video?: string
 }

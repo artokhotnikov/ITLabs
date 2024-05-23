@@ -20,7 +20,4 @@ useHead({
   </div>
 </template>
 
-<style scoped lang="scss">
-div {
-}
-</style>
+<style scoped lang="scss"></style>
