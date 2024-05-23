@@ -14,11 +14,9 @@
           </p>
         </div>
         <nav class="footer-menu">
-          <NuxtLink href="/ui" class="footer-link medium">Решения</NuxtLink>
           <NuxtLink href="/" class="footer-link medium">Услуги</NuxtLink>
           <NuxtLink href="/" class="footer-link medium">Проекты</NuxtLink>
           <NuxtLink href="/" class="footer-link medium">О компании</NuxtLink>
-          <NuxtLink href="/" class="footer-link medium">Партнеры</NuxtLink>
         </nav>
         <div class="footer-contacts">
           <h4 class="subtitle bold">

@@ -19,13 +19,4 @@
 .logo {
 	display: flex;
 	align-items: center;
-	gap: 12px;
-
-	&:before {
-		content: '';
-		width: 1px;
-		height: 32px;
-		display: block;
-		background: $bg-white-alpha;
-	}
 }
