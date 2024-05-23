@@ -1,38 +1,33 @@
-<script setup lang="ts">
-import { useModalsStore } from '~/store/modalsStore'
-
-const modalsStore = useModalsStore()
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <section class="contact section-md">
     <div class="container">
-      <h2 class="title title-xs">
-        Остались вопросы или хотите уточнить важные моменты?
-      </h2>
-      <div class="text medium">
-        Воспользуйтесь формой “Задать вопрос”, позвоните или напишите нам
-      </div>
-      <div class="contact-links">
-        <div class="subtitle bold">
-          <a href="tel:+79511929402">+7 951 192 94 02</a>
+      <div class="contact-container">
+        <h2 class="title title-md">Остались вопросы?</h2>
+        <h3 class="title title-xs">
+          Позвоните <br />
+          или напишите нам
+        </h3>
+        <div class="contact-links">
+          <div class="subtitle bold">
+            <a href="tel:+79511929402">+7 951 192 94 02</a>
+          </div>
+          <div class="subtitle bold">
+            <a href="mailto:info@itlabs.top"> info@itlabs.top</a>
+          </div>
         </div>
-        <div class="subtitle bold">
-          <a href="mailto:info@itlabs.top"> info@itlabs.top</a>
+        <div class="contact-img">
+          <img src="@/assets/img/callback.png" alt="" />
         </div>
       </div>
-      <Button
-        class="contact-btn"
-        @click="modalsStore.open('discussionDiscussion')"
-      >
-        Обсудить проект
-      </Button>
     </div>
   </section>
 </template>
 
 <style scoped lang="scss">
 @import '/assets/scss/variables';
+@import '/assets/scss/mixins';
 
 .dark {
   .contact {
@@ -44,25 +39,65 @@ const modalsStore = useModalsStore()
 }
 
 .contact {
-  padding-bottom: 0;
-  text-align: center;
+  padding: 160px 0;
+  overflow: hidden;
+  @media (max-width: $md2 + px) {
+    padding: 45px 0;
+    text-align: center;
+  }
+
+  &-container {
+    position: relative;
+    max-width: 1020px;
+    margin: 0 auto;
+  }
 
   &-links {
+    margin: 40px 0 0;
     display: flex;
     gap: 20px;
-    justify-content: center;
     color: $text-secondary;
+    @media (max-width: $md2 + px) {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      margin: 20px 0 0;
+    }
   }
 
-  &-btn {
-    width: 212px;
-    margin: 40px auto 0;
+  &-img {
+    @include img;
+    max-width: 320px;
+    display: none;
+    @media (min-width: $md2 + px) {
+      display: block;
+      max-width: 604px;
+      position: absolute;
+      right: -100px;
+      top: -167px;
+    }
+
+    @media (min-width: $md1 + px) {
+      right: 0;
+    }
   }
 
-  .title {
+  .title-md {
     color: $text-blue;
-    max-width: 800px;
-    margin: 0 auto 40px;
+    margin: 0 0 8px;
+    @media (max-width: $md4 + px) {
+      font-size: 22px;
+    }
+  }
+
+  .title-xs {
+    color: $text-secondary;
+    @media (min-width: $md3 + px) {
+      br {
+        display: none;
+      }
+    }
   }
 
   .text {
@@ -71,6 +106,16 @@ const modalsStore = useModalsStore()
   }
 
   .subtitle {
+    width: 190px;
+    padding: 10px;
+    border-radius: 16px;
+    background: $bg-white;
+    text-align: center;
+    @media (max-width: $md2 + px) {
+      width: auto;
+      padding: 8px 16px;
+      text-transform: uppercase;
+    }
   }
 }
 </style>

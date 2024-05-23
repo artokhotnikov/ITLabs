@@ -8,7 +8,7 @@ useHead({
 </script>
 
 <template>
-  <div class="page">
+  <div class="page page-main">
     <ClientOnly>
       <HomeSlider />
     </ClientOnly>
