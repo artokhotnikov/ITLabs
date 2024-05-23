@@ -31,8 +31,11 @@
 
 .dark {
   .contact {
-    &-links,
-    .text {
+    &-links {
+      color: $text-primary;
+    }
+
+    .title-xs {
       color: $text-white;
     }
   }

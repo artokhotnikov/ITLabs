@@ -65,6 +65,16 @@ onMounted(() => {
 <style scoped lang="scss">
 @import '@/assets/scss/variables';
 
+.dark {
+  .category {
+    &-block {
+      .title {
+        color: $text-white;
+      }
+    }
+  }
+}
+
 .category {
   &-block {
     .title {
