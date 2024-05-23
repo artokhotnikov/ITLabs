@@ -5,4 +5,7 @@ export default interface ProjectsCategory {
   subtitle?: string
   description?: string
   video?: string
+  videoPoster?: string
+  firstBlock?: string
+  secondBlock?: string
 }

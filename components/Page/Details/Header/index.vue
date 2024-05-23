@@ -4,6 +4,7 @@ import { VideoPlayer } from '@videojs-player/vue'
 interface DetailsHeaderProps {
   title?: string
   video?: string
+  videoPoster?: string
   subtitle?: string
   description?: string
   btnTitle?: string
@@ -21,12 +22,7 @@ const emits = defineEmits(['onClick'])
   />
   <div class="details-header">
     <div v-if="video" class="details-video">
-      <video-player
-        :src="video"
-        poster="/your-path/poster.jpg"
-        controls
-        fluid
-      />
+      <video-player :src="video" :poster="videoPoster" controls fluid />
     </div>
     <div class="details-description">
       <h1
@@ -66,10 +62,8 @@ const emits = defineEmits(['onClick'])
     gap: 64px;
     justify-content: space-between;
     align-items: flex-start;
-    padding: 0 0 40px;
     @media (max-width: $md2 + px) {
       flex-direction: column;
-      padding: 0 0 32px;
     }
   }
 
