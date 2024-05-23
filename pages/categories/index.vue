@@ -25,7 +25,7 @@ const router = useRouter()
             <img :src="category.image" :alt="category.title" />
           </div>
           <div class="category-content">
-            <h3 class="category-title title title-md">{{ category.title }}</h3>
+            <h3 class="category-title title title-s">{{ category.title }}</h3>
             <h5 class="category-subtitle subtitle bold">
               {{ category.subtitle }}
             </h5>
@@ -85,6 +85,9 @@ const router = useRouter()
     width: 100%;
     max-width: 396px;
     flex-shrink: 0;
+    @media (max-width: $md2 + px) {
+      max-width: 300px;
+    }
     @media (max-width: $md3 + px) {
       max-width: 250px;
     }
