@@ -13,12 +13,10 @@ useHead({
       <HomeSlider />
     </ClientOnly>
     <HomeCategories />
-    <HomeSolutions />
     <HomeProjects />
     <HomeStages />
-    <HomeDiscussion />
-    <HomePartners />
     <HomePrices />
+    <ConctactSection />
   </div>
 </template>
 

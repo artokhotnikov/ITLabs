@@ -133,7 +133,7 @@ onMounted(() => {
             </div>
             <transition name="fade">
               <GalleryModal
-                v-if="isOpen"
+                v-if="isOpen && project.resultGallery?.length"
                 v-model:is-active="isOpen"
                 :index="currentViewIndex"
                 :gallery="project.resultGallery"

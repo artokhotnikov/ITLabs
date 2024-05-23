@@ -44,9 +44,10 @@
   @media (min-width: $md1 + px) {
     flex: 0 1 724px;
   }
-	@media(max-width: $md2 + px) {
-	   gap: 24px;
-	}
+  @media (max-width: $md1 + px) {
+    justify-content: space-between;
+    gap: 24px;
+  }
   @media (max-width: $md3 + px) {
     display: none;
   }

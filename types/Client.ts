@@ -1,3 +1,10 @@
-import type Partner from '~/types/Partner'
-
-export interface Client extends Partner {}
+export interface Client {
+  imageNormal?: string
+  imageMono?: string
+  imageWhite?: string
+  title?: string
+  description?: string
+  link?: string
+  linkTitle?: string
+  id?: number
+}

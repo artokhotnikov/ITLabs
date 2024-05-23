@@ -14,9 +14,18 @@
           </p>
         </div>
         <nav class="footer-menu">
-          <NuxtLink href="/" class="footer-link medium">Услуги</NuxtLink>
-          <NuxtLink href="/" class="footer-link medium">Проекты</NuxtLink>
-          <NuxtLink href="/" class="footer-link medium">О компании</NuxtLink>
+          <NuxtLink href="/categories" class="footer-link medium">
+            Услуги
+          </NuxtLink>
+          <NuxtLink href="/projects" class="footer-link medium">
+            Проекты
+          </NuxtLink>
+          <NuxtLink href="/about" class="footer-link medium">
+            О компании
+          </NuxtLink>
+          <NuxtLink href="/contacts" class="footer-link medium">
+            Контакты
+          </NuxtLink>
         </nav>
         <div class="footer-contacts">
           <h4 class="subtitle bold">
