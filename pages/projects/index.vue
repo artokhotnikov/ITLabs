@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import projects from '~/data/projects'
+import { useContentStore } from '~/store/contentStore'
 
 definePageMeta({
   title: 'Проекты'
@@ -9,6 +10,7 @@ useHead({
 })
 
 const router = useRouter()
+const contentStore = useContentStore()
 </script>
 
 <template>
@@ -16,9 +18,9 @@ const router = useRouter()
     <div class="container">
       <Breadcrumbs />
       <h1 class="projects-title title">Проекты</h1>
-      <div class="projects-list">
+      <div v-if="contentStore.projects.length" class="projects-list">
         <ProjectsItem
-          v-for="project in projects"
+          v-for="project in contentStore.projects"
           :key="project.id"
           :project="project"
           @on-click="router.push(`/projects/${project.id}`)"

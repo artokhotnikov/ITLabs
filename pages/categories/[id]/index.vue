@@ -15,7 +15,7 @@ const contentStore = useContentStore()
 
 const route = useRoute()
 const projectCategory = ref<ProjectsCategory>()
-const projectsData = ref<Array<Project>>()
+const projectsData = ref<Array<Project>>([])
 
 onMounted(async () => {
   await nextTick(async () => {
@@ -62,7 +62,7 @@ onMounted(async () => {
       </section>
 
       <PageDetailsProjectsExamples
-        v-if="projectsData"
+        v-if="projectsData.length"
         :examples="projectsData"
       />
       <HomeStages />

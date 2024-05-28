@@ -1,3 +1,5 @@
+import type GalleryItem from '~/types/GalleryItem'
+
 export default interface Project {
   id?: number
   type?: string
@@ -11,5 +13,5 @@ export default interface Project {
   solutionSubtitle?: string
   solutionLeft?: Array<string>
   solutionRight?: Array<string>
-  resultGallery?: Array<string>
+  resultGallery?: GalleryItem[]
 }

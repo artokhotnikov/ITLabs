@@ -27,8 +27,8 @@ export const useContentStore = defineStore('contentStore', () => {
     projects.value = data.value as Project[]
   }
   const getProject = async (id: number) => {
-    const { data } = await useMyFetch(`/api/projects${id}`)
-    projects.value = data.value as Project[]
+    const { data } = await useMyFetch(`/api/projects/${id}`)
+    return data.value as Project
   }
 
   return {

@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import type Project from '~/types/Projects/Project'
+import { useContentStore } from '~/store/contentStore'
 
 export interface itemProps {
   item: Project
-  idx: number
+  idx: number | string
   active: number
 }
 
@@ -13,6 +14,8 @@ const router = useRouter()
 const onMouseEnter = () => {
   emits('update:active', props.idx)
 }
+
+const { URL } = useContentStore()
 </script>
 
 <template>
@@ -21,13 +24,13 @@ const onMouseEnter = () => {
     <label
       :for="item.id"
       class="card"
-      :style="{ backgroundImage: 'url(' + item.imageCard + ')' }"
+      :style="{ backgroundImage: 'url(' + URL + item.imageCard + ')' }"
       @mouseenter="onMouseEnter"
     >
       <span class="description">
         <span class="card-subtitle text text-md">{{ item.type }}</span>
         <span class="title title-xs">{{ item.title }}</span>
-        <span class="card-text text text-md">{{ item.description }}</span>
+        <span class="card-text text text-md" v-html="item.description" />
       </span>
       <span class="card-footer">
         <span class="card-idx subtitle bold">{{ +idx + 1 }}</span>

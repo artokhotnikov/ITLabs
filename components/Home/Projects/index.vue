@@ -1,23 +1,18 @@
 <script setup lang="ts">
-import projects from '~/data/projects'
-import type Project from '~/types/Projects/Project'
+import { useContentStore } from '~/store/contentStore'
 
 const active = ref(0)
-const projectsData = ref<Array<Project>>()
 const router = useRouter()
-
-onMounted(() => {
-  projectsData.value = projects.slice(0, 4)
-})
+const contentStore = useContentStore()
 </script>
 
 <template>
-  <section class="section projects">
+  <section v-if="contentStore.projects.length" class="section projects">
     <div class="container">
       <div class="title">проекты</div>
       <div class="projects-list">
         <HomeProjectsItem
-          v-for="(cat, idx) in projectsData"
+          v-for="(cat, idx) in contentStore.projects"
           :key="cat.id"
           v-model:active="active"
           :item="cat"

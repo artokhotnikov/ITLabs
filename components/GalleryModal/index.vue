@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { VideoPlayer } from '@videojs-player/vue'
+import type GalleryItem from '~/types/GalleryItem'
+import { useContentStore } from '~/store/contentStore'
 
 interface GalleryModalProps {
-  gallery: Array<string>
+  gallery: GalleryItem[]
   isActive: boolean
   index: number
 }
@@ -17,6 +19,7 @@ const props = defineProps<GalleryModalProps>()
 const { lock, unlock } = useBodyLock()
 const currentView = ref('')
 const currentViewIndex = ref(0)
+const { URL } = useContentStore()
 
 const closeView = () => {
   currentView.value = ''
@@ -26,19 +29,19 @@ const closeView = () => {
 const nextView = () => {
   if (currentViewIndex.value + 1 === props.gallery.length) return
   currentViewIndex.value = currentViewIndex.value + 1
-  currentView.value = props.gallery[currentViewIndex.value] as string
+  currentView.value = props.gallery[currentViewIndex.value].media
 }
 const prevView = () => {
   if (currentViewIndex.value === 0) return
   currentViewIndex.value = currentViewIndex.value - 1
-  currentView.value = props.gallery[currentViewIndex.value] as string
+  currentView.value = props.gallery[currentViewIndex.value].media
 }
 
 const isVideoSlide = (slidePath: string): boolean => slidePath.includes('.mp4')
 
 onMounted(() => {
   currentViewIndex.value = props.index
-  currentView.value = props.gallery[currentViewIndex.value]
+  currentView.value = props.gallery[currentViewIndex.value].media
   lock()
 })
 
@@ -55,12 +58,11 @@ onUnmounted(() => {
     <div v-if="currentView.length" class="view-content">
       <video-player
         v-if="isVideoSlide(currentView)"
-        :src="currentView"
-        poster="/your-path/poster.jpg"
+        :src="URL + currentView"
         controls
         fluid
       />
-      <img v-else :src="currentView" loading="lazy" alt="Резкультат" />
+      <img v-else :src="URL + currentView" loading="lazy" alt="Результат" />
     </div>
     <div class="view-controls">
       <button class="view-arrow view-arrow-prev" @click="prevView">

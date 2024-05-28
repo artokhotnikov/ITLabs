@@ -2,14 +2,17 @@
 import type Project from '~/types/Projects/Project'
 import projects from '~/data/projects'
 import { Splide, SplideSlide, SplideTrack } from '@splidejs/vue-splide'
+import { useContentStore } from '~/store/contentStore'
 
+const title = ref('Проект')
 definePageMeta({
   title: 'Проект'
 })
 useHead({
-  title: 'Проект'
+  title
 })
 
+const contentStore = useContentStore()
 const { isOpen, open } = useOpen()
 const route = useRoute()
 const project = ref<Project>()
@@ -41,8 +44,14 @@ const options = {
 
 const isVideoSlide = (slidePath: string): boolean => slidePath.includes('.mp4')
 
-onMounted(() => {
-  project.value = projects.find((pr) => pr.id === +route.params.id)
+onMounted(async () => {
+  await nextTick(async () => {
+    project.value = await contentStore.getProject(+route.params.id)
+    if ('title' in project.value) {
+      title.value = project.value.title
+    }
+  })
+  // project.value = projects.find((pr) => pr.id === +route.params.id)
 })
 </script>
 
@@ -52,46 +61,57 @@ onMounted(() => {
       <Breadcrumbs />
       <section v-if="project" class="project">
         <div class="project-img">
-          <img :src="project.imageMain" :alt="project.title" />
+          <img
+            :src="contentStore.URL + project.imageMain"
+            :alt="project.title"
+          />
         </div>
-        <div class="project-subtitle subtitle bold">
+        <div v-if="project.subtitle" class="project-subtitle subtitle bold">
           {{ project.subtitle }}
         </div>
-        <div class="project-section">
+        <div
+          v-if="project.taskRight || project.taskLeft"
+          class="project-section"
+        >
           <h2 class="project-title title title-s">Задача</h2>
           <div class="project-content">
-            <div class="text text-md" v-html="project.taskLeft" />
-            <div class="text text-md" v-html="project.taskRight" />
+            <div
+              v-if="project.taskLeft"
+              class="text text-md"
+              v-html="project.taskLeft"
+            />
+            <div
+              v-if="project.taskRight"
+              class="text text-md"
+              v-html="project.taskRight"
+            />
           </div>
         </div>
-        <div class="project-section">
+        <div
+          v-if="project.solutionLeft || project.solutionRight"
+          class="project-section"
+        >
           <h2 class="project-title title title-s">Решение</h2>
-          <div class="project-subtitle text bold">
-            {{ project.solutionSubtitle }}
-          </div>
+          <div
+            v-if="project.solutionSubtitle"
+            class="project-subtitle text bold"
+            v-html="project.solutionSubtitle"
+          />
           <div class="project-content">
-            <ul class="ul ul-disc">
-              <li
-                v-for="li in project.solutionLeft"
-                :key="li"
-                class="text text-md"
-              >
-                {{ li }}
-              </li>
-            </ul>
-            <ul class="ul ul-disc">
-              <li
-                v-for="li in project.solutionRight"
-                :key="li"
-                class="text text-md"
-              >
-                {{ li }}
-              </li>
-            </ul>
+            <div
+              v-if="project.solutionLeft"
+              class="project-side"
+              v-html="project.solutionLeft"
+            />
+            <div
+              v-if="project.solutionRight"
+              class="project-side"
+              v-html="project.solutionRight"
+            />
           </div>
         </div>
         <ClientOnly>
-          <div class="project-section">
+          <div v-if="project.resultGallery?.length" class="project-section">
             <div class="gallery">
               <h2 class="gallery-title title title-s">Результат</h2>
               <Splide
@@ -106,14 +126,17 @@ onMounted(() => {
                     :key="slide"
                   >
                     <div class="slide" @click="openView(index)">
-                      <div v-if="isVideoSlide(slide)" class="slide-video">
-                        <video :src="slide"></video>
+                      <div v-if="isVideoSlide(slide.media)" class="slide-video">
+                        <video :src="contentStore.URL + slide.media"></video>
                         <div class="slide-icon">
                           <IconsPlay />
                         </div>
                       </div>
                       <div v-else class="slide-photo">
-                        <img :src="slide" alt="Результат" />
+                        <img
+                          :src="contentStore.URL + slide.media"
+                          alt="Результат"
+                        />
                         <div class="slide-icon">
                           <IconsEye />
                         </div>
@@ -206,6 +229,21 @@ onMounted(() => {
       margin: 32px 0 0;
       flex-direction: column;
       gap: 16px;
+    }
+  }
+
+  &-side {
+    line-height: 130%;
+
+    :deep(ul) {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding-left: 20px;
+
+      li {
+        list-style: disc;
+      }
     }
   }
 }
