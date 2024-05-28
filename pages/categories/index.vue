@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import ProjectsCategories from '~/data/projectsCategories'
+import { useContentStore } from '~/store/contentStore'
 
 definePageMeta({
   title: 'Услуги'
@@ -9,29 +9,38 @@ useHead({
 })
 
 const router = useRouter()
+const contentStore = useContentStore()
 </script>
 
 <template>
   <div class="page categories">
     <div class="container">
       <Breadcrumbs />
-      <div class="categories-list">
+      <div v-if="contentStore.projectCategories.length" class="categories-list">
         <div
-          v-for="category in ProjectsCategories"
+          v-for="category in contentStore.projectCategories"
           :key="category.id"
           class="category"
         >
           <div class="category-img">
-            <img :src="category.image" :alt="category.title" />
+            <img
+              :src="contentStore.URL + category.image"
+              :alt="category.title"
+            />
           </div>
           <div class="category-content">
             <h3 class="category-title title title-s">{{ category.title }}</h3>
-            <h5 class="category-subtitle subtitle bold">
+            <h5
+              v-if="category.subtitle"
+              class="category-subtitle subtitle bold"
+            >
               {{ category.subtitle }}
             </h5>
-            <div class="category-text text text-md">
-              {{ category.description }}
-            </div>
+            <div
+              v-if="category.description"
+              class="category-text text text-md"
+              v-html="category.description"
+            />
             <Button
               class="category-btn"
               @click="router.push(`/categories/${category.id}`)"

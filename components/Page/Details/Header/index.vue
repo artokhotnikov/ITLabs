@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { VideoPlayer } from '@videojs-player/vue'
+import { useContentStore } from '~/store/contentStore'
 
 interface DetailsHeaderProps {
   title?: string
@@ -12,6 +13,7 @@ interface DetailsHeaderProps {
 
 defineProps<DetailsHeaderProps>()
 const emits = defineEmits(['onClick'])
+const { URL } = useContentStore()
 </script>
 
 <template>
@@ -22,7 +24,12 @@ const emits = defineEmits(['onClick'])
   />
   <div class="details-header">
     <div v-if="video" class="details-video">
-      <video-player :src="video" :poster="videoPoster" controls fluid />
+      <video-player
+        :src="URL + video"
+        :poster="URL + videoPoster"
+        controls
+        fluid
+      />
     </div>
     <div class="details-description">
       <h1

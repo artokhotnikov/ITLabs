@@ -1,3 +1,5 @@
+import type Project from '~/types/Projects/Project'
+
 export default interface ProjectsCategory {
   id?: number
   image?: string
@@ -8,4 +10,5 @@ export default interface ProjectsCategory {
   videoPoster?: string
   firstBlock?: string
   secondBlock?: string
+  projects?: Project[]
 }

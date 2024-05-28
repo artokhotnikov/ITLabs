@@ -18,8 +18,16 @@ export const useContentStore = defineStore('contentStore', () => {
     const { data } = await useMyFetch('/api/project_categories')
     projectCategories.value = data.value as ProjectsCategory[]
   }
+  const getProjectCategory = async (id: number) => {
+    const { data } = await useMyFetch(`/api/project_categories/${id}`)
+    return data.value as ProjectsCategory
+  }
   const getProjects = async () => {
     const { data } = await useMyFetch('/api/projects')
+    projects.value = data.value as Project[]
+  }
+  const getProject = async (id: number) => {
+    const { data } = await useMyFetch(`/api/projects${id}`)
     projects.value = data.value as Project[]
   }
 
@@ -27,8 +35,10 @@ export const useContentStore = defineStore('contentStore', () => {
     URL,
     projectCategories,
     projects,
+    getProjectCategory,
     getProjectCategories,
     getProjects,
+    getProject,
     init
   }
 })

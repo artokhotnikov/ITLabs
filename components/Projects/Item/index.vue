@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type Project from '~/types/Projects/Project'
+import { useContentStore } from '~/store/contentStore'
 
 interface ProjectProps {
   project: Project
@@ -8,13 +9,14 @@ interface ProjectProps {
 
 defineProps<ProjectProps>()
 const emits = defineEmits(['onClick'])
+const { URL } = useContentStore()
 </script>
 
 <template>
   <div
     v-if="project"
     :class="['project', { small: small }]"
-    :style="{ backgroundImage: 'url(' + project.imageCard + ')' }"
+    :style="{ backgroundImage: 'url(' + URL + project.imageCard + ')' }"
   >
     <div class="project-content">
       <div class="project-type text text-md">
@@ -23,9 +25,11 @@ const emits = defineEmits(['onClick'])
       <div class="project-title title title-xxs">
         {{ project.title }}
       </div>
-      <div class="project-description text text-md">
-        {{ project.description }}
-      </div>
+      <div
+        v-if="project.description"
+        class="project-description text text-md"
+        v-html="project.description"
+      />
       <Button class="project-btn" :small="small" @click="emits('onClick')">
         Подробнее
       </Button>

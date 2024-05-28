@@ -1,24 +1,34 @@
 <script setup lang="ts">
+import { useContentStore } from '~/store/contentStore'
+
+const title = ref('Услуга')
 definePageMeta({
   title: 'Услуга'
 })
 useHead({
-  title: 'Услуга'
+  title
 })
-import projectsCategories from '~/data/projectsCategories'
-import projects from '~/data/projects'
 import type ProjectsCategory from '~/types/Projects/ProjectsCategory'
 import type Project from '~/types/Projects/Project'
+
+const contentStore = useContentStore()
 
 const route = useRoute()
 const projectCategory = ref<ProjectsCategory>()
 const projectsData = ref<Array<Project>>()
 
-onMounted(() => {
-  projectCategory.value = projectsCategories.find(
-    (item) => item.id === +route.params.id
-  )
-  projectsData.value = projects.slice(0, 4)
+onMounted(async () => {
+  await nextTick(async () => {
+    projectCategory.value = await contentStore.getProjectCategory(
+      +route.params.id
+    )
+    if ('title' in projectCategory.value) {
+      title.value = projectCategory.value.title
+    }
+  })
+  if (projectCategory.value?.projects) {
+    projectsData.value = projectCategory.value?.projects.slice(0, 4)
+  }
 })
 </script>
 
