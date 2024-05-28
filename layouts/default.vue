@@ -6,6 +6,7 @@ const modalsStore = useModalsStore()
 
 <template>
   <div class="app">
+    <NuxtLoadingIndicator />
     <Header />
     <slot></slot>
     <Footer />

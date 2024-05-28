@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type ProjectsCategory from '~/types/Projects/ProjectsCategory'
+import { useContentStore } from '~/store/contentStore'
 
 interface itemProps {
   item: ProjectsCategory
@@ -8,6 +9,7 @@ interface itemProps {
 defineProps<itemProps>()
 
 const router = useRouter()
+const contentStore = useContentStore()
 </script>
 
 <template>
@@ -18,7 +20,11 @@ const router = useRouter()
       </div>
     </div>
     <div class="item-img">
-      <img :src="item.image" loading="lazy" :alt="item.title" />
+      <img
+        :src="contentStore.URL + item.image"
+        :alt="item.title"
+        loading="lazy"
+      />
     </div>
   </div>
 </template>

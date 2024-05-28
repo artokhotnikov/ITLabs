@@ -1,13 +1,15 @@
 <script setup lang="ts">
-import projectsCategories from '~/data/projectsCategories'
+import { useContentStore } from '~/store/contentStore'
+
+const contentStore = useContentStore()
 </script>
 
 <template>
   <section class="categories section">
     <div class="container">
-      <div class="categories-list">
+      <div v-if="contentStore.projectCategories.length" class="categories-list">
         <HomeCategoriesItem
-          v-for="cat in projectsCategories"
+          v-for="cat in contentStore.projectCategories"
           :key="cat.id"
           :item="cat"
         />

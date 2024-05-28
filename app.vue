@@ -1,4 +1,9 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { useContentStore } from '~/store/contentStore'
+
+const contentStore = useContentStore()
+onMounted(() => nextTick(() => contentStore.init()))
+</script>
 <template>
   <NuxtLayout>
     <NuxtPage />
