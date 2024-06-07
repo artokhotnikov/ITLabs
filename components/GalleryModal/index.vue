@@ -37,7 +37,8 @@ const prevView = () => {
   currentView.value = props.gallery[currentViewIndex.value].media
 }
 
-const isVideoSlide = (slidePath: string): boolean => slidePath.includes('.mp4')
+const isVideoSlide = (slidePath: string): boolean =>
+  slidePath.includes('.mp4') || slidePath.includes('.webm')
 
 onMounted(() => {
   currentViewIndex.value = props.index
