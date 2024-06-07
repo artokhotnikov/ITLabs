@@ -60,7 +60,7 @@ onUnmounted(() => {
         v-if="isVideoSlide(currentView)"
         :src="URL + currentView"
         controls
-        fluid
+        fill
       />
       <img v-else :src="URL + currentView" loading="lazy" alt="Результат" />
     </div>
@@ -94,7 +94,7 @@ onUnmounted(() => {
     top: 40px;
     right: 40px;
     cursor: pointer;
-    z-index: 6;
+    z-index: 7;
 
     svg {
       width: 36px;

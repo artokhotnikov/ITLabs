@@ -4,6 +4,7 @@ import { useContentStore } from '~/store/contentStore'
 const active = ref(0)
 const router = useRouter()
 const contentStore = useContentStore()
+const sliced = computed(() => contentStore.projects.slice(0, 4))
 </script>
 
 <template>
@@ -12,7 +13,7 @@ const contentStore = useContentStore()
       <div class="title">проекты</div>
       <div class="projects-list">
         <HomeProjectsItem
-          v-for="(cat, idx) in contentStore.projects"
+          v-for="(cat, idx) in sliced"
           :key="cat.id"
           v-model:active="active"
           :item="cat"

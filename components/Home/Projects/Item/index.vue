@@ -140,7 +140,7 @@ span {
   transition-delay: 0.3s;
   transition: all 0.3s ease;
   position: relative;
-  max-width: 360px;
+  max-width: 60%;
   @media (max-width: $md3 + px) {
     max-width: 240px;
   }
