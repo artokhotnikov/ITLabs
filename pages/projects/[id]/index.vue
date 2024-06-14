@@ -12,6 +12,13 @@ useHead({
   title
 })
 
+const breadcrumbs = ref([
+  {
+    title: 'Проекты',
+    path: 'projects'
+  }
+])
+
 const contentStore = useContentStore()
 const { isOpen, open } = useOpen()
 const route = useRoute()
@@ -50,6 +57,10 @@ onMounted(async () => {
     project.value = await contentStore.getProject(+route.params.id)
     if ('title' in project.value) {
       title.value = project.value.title
+      breadcrumbs.value.push({
+        title: project.value.title,
+        path: `categories/${route.params.id}`
+      })
     }
   })
   // project.value = projects.find((pr) => pr.id === +route.params.id)
@@ -59,7 +70,7 @@ onMounted(async () => {
 <template>
   <div class="page">
     <div class="container">
-      <Breadcrumbs />
+      <Breadcrumbs :breadcrumbs="breadcrumbs" />
       <section v-if="project" class="project">
         <div class="project-img">
           <img

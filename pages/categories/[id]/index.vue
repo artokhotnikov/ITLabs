@@ -12,6 +12,12 @@ import type ProjectsCategory from '~/types/Projects/ProjectsCategory'
 import type Project from '~/types/Projects/Project'
 
 const contentStore = useContentStore()
+const breadcrumbs = ref([
+  {
+    title: 'Услуги',
+    path: 'categories'
+  }
+])
 
 const route = useRoute()
 const projectCategory = ref<ProjectsCategory>()
@@ -24,6 +30,10 @@ onMounted(async () => {
     )
     if ('title' in projectCategory.value) {
       title.value = projectCategory.value.title
+      breadcrumbs.value.push({
+        title: projectCategory.value.title,
+        path: `categories/${route.params.id}`
+      })
     }
   })
   if (projectCategory.value?.projects) {
@@ -35,7 +45,7 @@ onMounted(async () => {
 <template>
   <div class="page page-main">
     <div class="container">
-      <Breadcrumbs />
+      <Breadcrumbs :breadcrumbs="breadcrumbs" />
       <section v-if="projectCategory" class="category">
         <ClientOnly>
           <PageDetailsHeader

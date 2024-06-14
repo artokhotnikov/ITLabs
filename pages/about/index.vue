@@ -9,6 +9,13 @@ useHead({
   title: 'О нас'
 })
 
+const breadcrumbs = [
+  {
+    title: 'О компании',
+    path: 'about'
+  }
+]
+
 const { isOpen, open } = useOpen()
 
 const currentViewIndex = ref(0)
@@ -24,7 +31,7 @@ const gallery = computed(() => reviews.map((item) => item.image))
 <template>
   <div class="page about">
     <div class="container">
-      <Breadcrumbs />
+      <Breadcrumbs :breadcrumbs="breadcrumbs" />
       <div class="about-img">
         <img src="/img/about_page/main.png" alt="О компании" />
       </div>

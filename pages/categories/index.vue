@@ -10,12 +10,18 @@ useHead({
 
 const router = useRouter()
 const contentStore = useContentStore()
+const breadcrumbs = [
+  {
+    title: 'Услуги',
+    path: 'categories'
+  }
+]
 </script>
 
 <template>
   <div class="page categories">
     <div class="container">
-      <Breadcrumbs />
+      <Breadcrumbs :breadcrumbs="breadcrumbs" />
       <div v-if="contentStore.projectCategories.length" class="categories-list">
         <div
           v-for="category in contentStore.projectCategories"

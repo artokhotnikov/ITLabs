@@ -5,7 +5,12 @@ definePageMeta({
 useHead({
   title: 'Контакты'
 })
-
+const breadcrumbs = [
+  {
+    title: 'Контакты',
+    path: 'contacts'
+  }
+]
 const show = ref(false)
 onMounted(() => {
   setTimeout(() => {
@@ -17,7 +22,7 @@ onMounted(() => {
 <template>
   <div class="page">
     <div class="container">
-      <Breadcrumbs />
+      <Breadcrumbs :breadcrumbs="breadcrumbs" />
       <div class="page-title title">Контакты</div>
       <div v-show="show" class="map">
         <YandexMap />

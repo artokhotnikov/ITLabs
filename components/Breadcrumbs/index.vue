@@ -1,43 +1,27 @@
 <script lang="ts" setup>
-const route = useRoute()
-const router = useRouter()
-const getBreadcrumbs = () => {
-  const fullPath = route.path
-  const requestPath = fullPath.startsWith('/')
-    ? fullPath.substring(1)
-    : fullPath
-  const crumbs = requestPath.split('/')
-  const breadcrumbs: Array<any> = []
-  let path = ''
-  crumbs.forEach((crumb) => {
-    if (crumb) {
-      path = `${path}/${crumb}`
-      const breadcrumb = router.getRoutes().find((r) => r.path === path)
-      if (breadcrumb) {
-        breadcrumbs.push(breadcrumb)
-      }
-    }
-  })
-  return breadcrumbs
+interface BreadCrumb {
+  path: string
+  title: string
 }
-const ariaCurrent = (index: number) =>
-  index === getBreadcrumbs().length - 1 ? 'page' : 'false'
+interface Props {
+  breadcrumbs: BreadCrumb[]
+}
+
+defineProps<Props>()
 </script>
 
 <template>
   <nav id="breadcrumbs" class="breadcrumbs" aria-label="Breadcrumb">
     <ul class="breadcrumbs-list">
       <li class="breadcrumbs-link medium">
-        <NuxtLink to="/" :aria-current="ariaCurrent(-1)"> Главная </NuxtLink>
+        <NuxtLink to="/"> Главная </NuxtLink>
       </li>
       <li
-        v-for="(breadcrumb, index) in getBreadcrumbs()"
+        v-for="(breadcrumb, index) in breadcrumbs"
         :key="index"
         class="breadcrumbs-link medium"
       >
-        <NuxtLink :to="breadcrumb.path" :aria-current="ariaCurrent(index)">
-          {{ breadcrumb.meta.title || 'Не заполнен definePageMeta' }}
-        </NuxtLink>
+        <NuxtLink :to="breadcrumb.path"> {{ breadcrumb.title }} </NuxtLink>
       </li>
     </ul>
   </nav>

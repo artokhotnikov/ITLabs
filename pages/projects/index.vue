@@ -11,12 +11,18 @@ useHead({
 
 const router = useRouter()
 const contentStore = useContentStore()
+const breadcrumbs = [
+  {
+    title: 'Проекты',
+    path: 'projects'
+  }
+]
 </script>
 
 <template>
   <div class="page projects">
     <div class="container">
-      <Breadcrumbs />
+      <Breadcrumbs :breadcrumbs="breadcrumbs" />
       <h1 class="projects-title title">Проекты</h1>
       <div v-if="contentStore.projects.length" class="projects-list">
         <ProjectsItem
