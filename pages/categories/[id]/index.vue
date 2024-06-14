@@ -37,14 +37,16 @@ onMounted(async () => {
     <div class="container">
       <Breadcrumbs />
       <section v-if="projectCategory" class="category">
-        <PageDetailsHeader
-          :title="projectCategory.title"
-          :video="projectCategory.video"
-          :video-poster="projectCategory.videoPoster"
-          :description="projectCategory.description"
-          btn-title="Консультация с экспертом"
-          :subtitle="projectCategory.subtitle"
-        />
+        <ClientOnly>
+          <PageDetailsHeader
+            :title="projectCategory.title"
+            :video="projectCategory.video"
+            :video-poster="projectCategory.videoPoster"
+            :description="projectCategory.description"
+            btn-title="Консультация с экспертом"
+            :subtitle="projectCategory.subtitle"
+          />
+        </ClientOnly>
         <section
           v-if="projectCategory.firstBlock"
           class="category-block section"

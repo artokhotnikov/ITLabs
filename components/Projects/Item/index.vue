@@ -17,6 +17,7 @@ const { URL } = useContentStore()
     v-if="project"
     :class="['project', { small: small }]"
     :style="{ backgroundImage: 'url(' + URL + project.imageCard + ')' }"
+    @click="emits('onClick')"
   >
     <div class="project-content">
       <div class="project-type text text-md">
@@ -30,9 +31,7 @@ const { URL } = useContentStore()
         class="project-description text text-md"
         v-html="project.description"
       />
-      <Button class="project-btn" :small="small" @click="emits('onClick')">
-        Подробнее
-      </Button>
+      <Button class="project-btn" :small="small"> Подробнее </Button>
     </div>
   </div>
 </template>
