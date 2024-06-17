@@ -1,4 +1,8 @@
 <script setup lang="ts">
+import { useCallbackFormStore } from '~/store/callbackFormStore'
+
+const callbackFormStore = useCallbackFormStore()
+
 const estimate = ref({
   name: '',
   phone: '',
@@ -11,10 +15,10 @@ const estimate = ref({
   }
 })
 
-const callback = ref({
-  name: '',
-  phone: ''
-})
+const onSubmit = (args) => {
+  estimate.value = { ...estimate.value, ...args }
+  callbackFormStore.postForm(estimate.value)
+}
 </script>
 
 <template>
@@ -23,7 +27,7 @@ const callback = ref({
       <h2 class="prices-title title">Цены</h2>
       <div class="prices-list">
         <div class="prices-estimate">
-          <form class="estimate">
+          <Form class="estimate" @submit="onSubmit">
             <div class="estimate-title subtitle bold">
               Рассчитайте
               <mark>смету</mark>
@@ -31,23 +35,25 @@ const callback = ref({
             </div>
             <div class="estimate-row">
               <Input
-                v-model="estimate.name"
+                name="name"
                 placeholder="Имя"
                 type="text"
                 color="primary"
+                :rules="callbackFormStore.yupRuleName()"
               />
             </div>
             <div class="estimate-row">
               <Input
-                v-model="estimate.phone"
+                name="phone"
                 placeholder="Телефон"
                 type="text"
                 color="primary"
+                :rules="callbackFormStore.yupRulePhone()"
               />
             </div>
             <div class="estimate-row">
               <Input
-                v-model="estimate.email"
+                name="email"
                 placeholder="E-mail"
                 type="text"
                 color="primary"
@@ -85,10 +91,10 @@ const callback = ref({
               </div>
             </div>
             <Button class="estimate-btn">Отправить</Button>
-          </form>
+          </Form>
         </div>
         <div class="prices-callback">
-          <form class="callback">
+          <Form class="callback" @submit="onSubmit">
             <div class="callback-img">
               <img src="/img/home_prices/main.png" alt="" />
             </div>
@@ -99,20 +105,22 @@ const callback = ref({
             </div>
             <div class="callback-row">
               <Input
-                v-model="callback.name"
+                name="name"
                 placeholder="Имя"
                 type="text"
                 color="primary"
+                :rules="callbackFormStore.yupRuleName()"
               />
               <Input
-                v-model="callback.phone"
+                name="phone"
                 placeholder="Телефон"
                 type="text"
                 color="primary"
+                :rules="callbackFormStore.yupRulePhone()"
               />
             </div>
             <Button class="callback-btn">Записаться</Button>
-          </form>
+          </Form>
         </div>
       </div>
     </div>

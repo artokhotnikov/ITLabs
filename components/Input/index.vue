@@ -1,77 +1,31 @@
 <script setup lang="ts">
 interface InputProps {
-  modelValue: string
+  name: string
   placeholder?: string
-  validRegx?: RegExp
-  type: 'text' | 'password'
+  type?: string
   color: 'primary | secondary'
-  required?: boolean
   outlined?: boolean
   disabled?: boolean
-}
-
-interface InputEmits {
-  (eventName: 'update:modelValue', value: string): void
+  rules?: any
 }
 
 const props = defineProps<InputProps>()
-const emits = defineEmits<InputEmits>()
 
-const validState = ref(true)
-const focused = ref(false)
-const haveContent = computed(() => props.modelValue.length > 0)
-
-const checkValid = () => {
-  if (!props.validRegx) return
-  validState.value = props.validRegx.test(props.modelValue)
-}
-const onInput = (e: Event) => {
-  emits('update:modelValue', (e.target as HTMLInputElement).value)
-}
-const makeValid = () => {
-  validState.value = true
-}
-
-const onClear = () => {
-  emits('update:modelValue', '')
-  makeValid()
-}
-
-const focusIn = () => {
-  focused.value = true
-  makeValid()
-}
-const focusOut = () => {
-  focused.value = false
-  checkValid()
-}
+const { value, errorMessage } = useField(() => props.name, props.rules)
 </script>
 
 <template>
   <div class="input">
     <input
-      :class="[
-        color,
-        {
-          error: !validState
-        }
-      ]"
-      :type="type"
+      v-model="value"
+      :class="color"
+      :type="type || 'text'"
       :placeholder="placeholder"
-      :required="required"
       :disabled="disabled"
-      :value="modelValue"
-      @input="onInput"
-      @focusout="focusOut"
-      @focusin="focusIn"
     />
-    <Transition name="fade">
-      <IconsClose
-        v-show="haveContent && focused"
-        class="icon icon-close"
-        @click="onClear"
-      />
-    </Transition>
+    <p class="input-error">
+      {{ errorMessage }}
+    </p>
   </div>
 </template>
 
@@ -83,8 +37,11 @@ const focusOut = () => {
   width: 100%;
   min-height: 50px;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
+  gap: 8px;
+  &-error {
+    color: $text-red;
+  }
 }
 
 input {

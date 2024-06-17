@@ -9,7 +9,8 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@nuxt/image',
     '@vueuse/nuxt',
-    'vue-yandex-maps/nuxt'
+    'vue-yandex-maps/nuxt',
+    '@vee-validate/nuxt'
   ],
   alias: {
     assets: '/<rootDir>/assets',

@@ -15,12 +15,14 @@
     "@nuxt/image": "^1.5.0",
     "@pinia/nuxt": "^0.5.1",
     "@splidejs/vue-splide": "^0.6.12",
+    "@vee-validate/nuxt": "^4.13.1",
     "@videojs-player/vue": "^1.0.0",
     "nuxt": "^3.11.1",
     "video.js": "^8.10.0",
     "vue": "^3.4.21",
     "vue-router": "^4.3.0",
-    "vue-yandex-maps": "^2.1.1"
+    "vue-yandex-maps": "^2.1.1",
+    "yup": "^1.4.0"
   },
   "devDependencies": {
     "@nuxt/eslint-config": "^0.2.0",
