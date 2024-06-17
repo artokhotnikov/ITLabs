@@ -59,7 +59,7 @@ onMounted(async () => {
       title.value = project.value.title
       breadcrumbs.value.push({
         title: project.value.title,
-        path: `categories/${route.params.id}`
+        path: `projects/${route.params.id}`
       })
     }
   })

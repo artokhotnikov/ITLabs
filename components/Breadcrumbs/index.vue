@@ -21,7 +21,9 @@ defineProps<Props>()
         :key="index"
         class="breadcrumbs-link medium"
       >
-        <NuxtLink :to="breadcrumb.path"> {{ breadcrumb.title }} </NuxtLink>
+        <NuxtLink :to="'/' + breadcrumb.path">
+          {{ breadcrumb.title }}
+        </NuxtLink>
       </li>
     </ul>
   </nav>
