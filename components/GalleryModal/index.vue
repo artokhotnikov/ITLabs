@@ -7,7 +7,7 @@ interface GalleryModalProps {
   gallery: GalleryItem[]
   isActive: boolean
   index: number
-  local: boolean
+  local?: boolean
 }
 
 interface GalleryModalPropsEmits {

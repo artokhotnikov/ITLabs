@@ -49,7 +49,7 @@ const breadcrumbs = [
             />
             <Button
               class="category-btn"
-              @click="router.push(`/categories/${category.id}`)"
+              @click="router.push(`/categories/${category.slug}`)"
             >
               Подробнее
             </Button>

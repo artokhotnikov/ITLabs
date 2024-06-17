@@ -13,7 +13,7 @@ const contentStore = useContentStore()
 </script>
 
 <template>
-  <div class="item" @click="router.push(`/categories/${item.id}`)">
+  <div class="item" @click="router.push(`/categories/${item.slug}`)">
     <div class="item-content">
       <div class="text text-md bold">
         {{ item.title }}

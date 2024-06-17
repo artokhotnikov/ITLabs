@@ -29,7 +29,7 @@ const breadcrumbs = [
           v-for="project in contentStore.projects"
           :key="project.id"
           :project="project"
-          @on-click="router.push(`/projects/${project.id}`)"
+          @on-click="router.push(`/projects/${project.slug}`)"
         />
       </div>
     </div>

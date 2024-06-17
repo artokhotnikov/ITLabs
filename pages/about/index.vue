@@ -121,6 +121,11 @@ const gallery = computed(() => reviews.map((item) => item.image))
 
   .review {
     background: $bg-white-alpha-5;
+    &:hover {
+      .text {
+        color: $text-secondary;
+      }
+    }
   }
 }
 

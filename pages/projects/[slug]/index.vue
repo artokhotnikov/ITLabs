@@ -54,12 +54,12 @@ const isVideoSlide = (slidePath: string): boolean =>
 
 onMounted(async () => {
   await nextTick(async () => {
-    project.value = await contentStore.getProject(+route.params.id)
+    project.value = await contentStore.getProjectBySlug(route.params.slug)
     if ('title' in project.value) {
       title.value = project.value.title
       breadcrumbs.value.push({
         title: project.value.title,
-        path: `projects/${route.params.id}`
+        path: `projects/${route.params.slug}`
       })
     }
   })

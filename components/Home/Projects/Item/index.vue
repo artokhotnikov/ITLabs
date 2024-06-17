@@ -34,7 +34,7 @@ const { URL } = useContentStore()
       </span>
       <span class="card-footer">
         <span class="card-idx subtitle bold">{{ +idx + 1 }}</span>
-        <Button class="card-btn" @click="router.push(`/projects/${item.id}`)">
+        <Button class="card-btn" @click="router.push(`/projects/${item.slug}`)">
           Подробнее
         </Button>
       </span>

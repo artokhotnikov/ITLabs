@@ -14,4 +14,5 @@ export default interface Project {
   solutionLeft?: Array<string>
   solutionRight?: Array<string>
   resultGallery?: GalleryItem[]
+  slug?: string
 }

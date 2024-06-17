@@ -25,14 +25,14 @@ const projectsData = ref<Array<Project>>([])
 
 onMounted(async () => {
   await nextTick(async () => {
-    projectCategory.value = await contentStore.getProjectCategory(
-      +route.params.id
+    projectCategory.value = await contentStore.getProjectCategoryBySlug(
+      route.params.slug
     )
     if ('title' in projectCategory.value) {
       title.value = projectCategory.value.title
       breadcrumbs.value.push({
         title: projectCategory.value.title,
-        path: `categories/${route.params.id}`
+        path: `categories/${route.params.slug}`
       })
     }
   })
@@ -107,6 +107,7 @@ onMounted(async () => {
 
   &-content {
     color: $text-third;
+    line-height: 1.2;
 
     :deep(ul) {
       display: flex;

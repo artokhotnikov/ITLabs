@@ -10,5 +10,6 @@ export default interface ProjectsCategory {
   videoPoster?: string
   firstBlock?: string
   secondBlock?: string
+  slug?: string
   projects?: Project[]
 }

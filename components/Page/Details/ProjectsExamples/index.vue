@@ -23,7 +23,7 @@ const small = computed(() => width.value <= 768)
         :project="example"
         :small="small"
         class="example"
-        @on-click="router.push(`/projects/${example.id}`)"
+        @on-click="router.push(`/projects/${example.slug}`)"
       />
     </div>
     <ClientOnly>
