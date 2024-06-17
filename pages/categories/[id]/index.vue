@@ -77,10 +77,10 @@ onMounted(async () => {
         v-if="projectsData.length"
         :examples="projectsData"
       />
-      <HomeStages />
-      <HomePrices />
-      <ConctactSection />
     </div>
+    <HomeStages />
+    <HomePrices />
+    <ConctactSection />
   </div>
 </template>
 
