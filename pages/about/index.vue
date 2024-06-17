@@ -3,10 +3,10 @@ import clients from '~/data/clients'
 import reviews from '~/data/reviews'
 
 definePageMeta({
-  title: 'О нас'
+  title: 'О компании'
 })
 useHead({
-  title: 'О нас'
+  title: 'О компании'
 })
 
 const breadcrumbs = [
