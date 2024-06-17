@@ -81,7 +81,7 @@ const gallery = computed(() => reviews.map((item) => item.image))
             class="review"
           >
             <div class="review-img" @click="openGallery(index)">
-              <img :src="review.image" alt="" />
+              <img :src="review.image.image" alt="" />
               <div class="review-icon">
                 <IconsEye />
               </div>
@@ -100,6 +100,7 @@ const gallery = computed(() => reviews.map((item) => item.image))
               v-model:is-active="isOpen"
               :index="currentViewIndex"
               :gallery="gallery"
+              local
             />
           </transition>
         </ClientOnly>

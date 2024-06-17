@@ -7,6 +7,7 @@ interface GalleryModalProps {
   gallery: GalleryItem[]
   isActive: boolean
   index: number
+  local: boolean
 }
 
 interface GalleryModalPropsEmits {
@@ -59,11 +60,16 @@ onUnmounted(() => {
     <div v-if="currentView.length" class="view-content">
       <video-player
         v-if="isVideoSlide(currentView)"
-        :src="URL + currentView"
+        :src="local ? currentView : URL + currentView"
         controls
         fill
       />
-      <img v-else :src="URL + currentView" loading="lazy" alt="Результат" />
+      <img
+        v-else
+        :src="local ? currentView : URL + currentView"
+        loading="lazy"
+        alt="Результат"
+      />
     </div>
     <div class="view-controls">
       <button class="view-arrow view-arrow-prev" @click="prevView">
