@@ -10,6 +10,9 @@ const sm = computed(() => width.value <= 768)
   <SplideSlide>
     <div class="slide">
       <div class="slide-content">
+        <div class="slide-background">
+          <video src="/assets/img/slide.mp4" muted loop autoplay></video>
+        </div>
         <div class="text text-s medium">Desktop / Web</div>
         <h2 class="title title-s">ПО для интерактивного оборудования</h2>
         <div class="text text-md">
@@ -31,8 +34,7 @@ const sm = computed(() => width.value <= 768)
   padding: 56px 40px 84px;
   border-radius: 40px;
   color: $text-white;
-  background: $bg-blue url('/assets/img/home_slider/slide1.gif') center / cover
-    no-repeat;
+  position: relative;
 
   @media (max-width: $md4 + px) {
     padding: 64px 32px;
@@ -40,6 +42,24 @@ const sm = computed(() => width.value <= 768)
     display: flex;
     align-items: flex-end;
     border-radius: 20px;
+  }
+
+  &-background {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+
+    video {
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+    }
   }
 
   .text {
