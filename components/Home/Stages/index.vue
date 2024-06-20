@@ -43,7 +43,7 @@
             <div class="stage-content">
               <div class="stage-subtitle subtitle bold">Старт</div>
               <div class="stage-text text text-md">
-                Назначение отвественного менеджера, сбор и обработка
+                Назначение ответственного менеджера, сбор и обработка
                 дополнительной информации по проекту, своевременная отчетность
               </div>
             </div>
