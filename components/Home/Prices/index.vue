@@ -1,23 +1,33 @@
 <script setup lang="ts">
 import { useCallbackFormStore } from '~/store/callbackFormStore'
+import { useModalsStore } from '~/store/modalsStore'
 
 const callbackFormStore = useCallbackFormStore()
-
+const modalsStore = useModalsStore()
+const route = useRoute()
 const estimate = ref({
   name: '',
   phone: '',
   email: '',
+  title: '',
   connection: {
     telegram: true,
     whatsapp: false,
     email: false,
-    phone: false
+    phone: true
   }
 })
 
-const onSubmit = (args) => {
-  estimate.value = { ...estimate.value, ...args }
-  callbackFormStore.postForm(estimate.value)
+const onSubmit = async (args, e) => {
+  const title = e.evt.target.dataset.title + ' ' + route.fullPath
+  estimate.value = { ...estimate.value, ...args, title }
+  const res = await callbackFormStore.postForm(estimate.value)
+  e.resetForm()
+  if (res === 'success') {
+    modalsStore.open('resultSuccess')
+  } else {
+    modalsStore.open('resultError')
+  }
 }
 </script>
 
@@ -27,7 +37,7 @@ const onSubmit = (args) => {
       <h2 class="prices-title title">Цены</h2>
       <div class="prices-list">
         <div class="prices-estimate">
-          <Form class="estimate" @submit="onSubmit">
+          <Form class="estimate" data-title="Смета проекта" @submit="onSubmit">
             <div class="estimate-title subtitle bold">
               Рассчитайте
               <mark>смету</mark>
@@ -49,6 +59,7 @@ const onSubmit = (args) => {
                 type="text"
                 color="primary"
                 :rules="callbackFormStore.yupRulePhone()"
+                maska="+7 (###) ###-##-##"
               />
             </div>
             <div class="estimate-row">
@@ -57,6 +68,7 @@ const onSubmit = (args) => {
                 placeholder="E-mail"
                 type="text"
                 color="primary"
+                :rules="callbackFormStore.yupRuleEmail()"
               />
             </div>
             <div class="estimate-connection">
@@ -94,7 +106,7 @@ const onSubmit = (args) => {
           </Form>
         </div>
         <div class="prices-callback">
-          <Form class="callback" @submit="onSubmit">
+          <Form class="callback" data-title="Zoom" @submit="onSubmit">
             <div class="callback-img">
               <img src="/img/home_prices/main.png" alt="" />
             </div>
@@ -117,6 +129,7 @@ const onSubmit = (args) => {
                 type="text"
                 color="primary"
                 :rules="callbackFormStore.yupRulePhone()"
+                maska="+7 (###) ###-##-##"
               />
             </div>
             <Button class="callback-btn">Записаться</Button>

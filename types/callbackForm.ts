@@ -1,9 +1,9 @@
 export interface CallbackForm {
-  title?: string
+  title: string
   name: string
   phone: string
   email?: string
-  connection?: {
+  connection: {
     telegram: boolean
     whatsapp: boolean
     email: boolean

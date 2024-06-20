@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { MaskInputOptions } from 'maska'
+
 interface InputProps {
   name: string
   placeholder?: string
@@ -7,17 +9,22 @@ interface InputProps {
   outlined?: boolean
   disabled?: boolean
   rules?: any
+  maska?: string
 }
 
 const props = defineProps<InputProps>()
 
 const { value, errorMessage } = useField(() => props.name, props.rules)
+const options = reactive<MaskInputOptions>({
+  mask: props.maska || null
+})
 </script>
 
 <template>
   <div class="input">
     <input
       v-model="value"
+      v-maska="options"
       :class="color"
       :type="type || 'text'"
       :placeholder="placeholder"
@@ -41,6 +48,9 @@ const { value, errorMessage } = useField(() => props.name, props.rules)
   gap: 8px;
   &-error {
     color: $text-red;
+    position: absolute;
+    left: 0;
+    bottom: -20px;
   }
 }
 

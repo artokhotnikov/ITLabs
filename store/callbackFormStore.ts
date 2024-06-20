@@ -5,25 +5,44 @@ import type { CallbackForm } from '~/types/callbackForm'
 import * as yup from 'yup'
 
 export const useCallbackFormStore = defineStore('callbackFormStore', () => {
-  const phoneRegEx =
-    /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/
   const postForm = async (args: CallbackForm) => {
-    console.log(args)
-    return
-    const { data } = await useMyFetch('/api/forms')
+    const formData = new FormData()
+
+    for (const key in args) {
+      if (key === 'connection') {
+        const connection = toRaw(args[key])
+        const connectionString = Object.entries(connection)
+          .filter((item) => item[1])
+          .map((item) => item[0])
+          .join(' или ')
+
+        formData.append(key, connectionString)
+      }
+      // @ts-ignore
+      else formData.append(key, args[key])
+    }
+    const { status } = await useMyFetch('/api/forms', {
+      method: 'POST',
+      body: formData
+    })
+    return status.value
   }
 
   const yupRulePhone = () =>
     yup
       .string()
-      .matches(phoneRegEx, 'Поле заполненно не верно')
+      .min(18, 'Поле заполненно не верно')
       .required('Поле обязательно')
+
   const yupRuleName = () =>
-    yup.string().min(3, 'Минимум 3 символа').required('Поле обязательно')
+    yup.string().min(1, 'Минимум 1 символ').required('Поле обязательно')
+
+  const yupRuleEmail = () => yup.string().email('Поле заполненно не верно')
 
   return {
     postForm,
     yupRuleName,
-    yupRulePhone
+    yupRulePhone,
+    yupRuleEmail
   }
 })
