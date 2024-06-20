@@ -46,11 +46,13 @@ const options = reactive<MaskInputOptions>({
   display: flex;
   flex-direction: column;
   gap: 8px;
+
   &-error {
+    font-size: 10px;
     color: $text-red;
     position: absolute;
-    left: 0;
-    bottom: -20px;
+    left: 16px;
+    bottom: -14px;
   }
 }
 

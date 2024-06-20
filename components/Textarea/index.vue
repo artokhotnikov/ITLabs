@@ -1,10 +1,8 @@
 <script setup lang="ts">
 type TextareaProps = {
-  modelValue: string
   color: 'primary'
-  name?: string
+  name: string
   placeholder?: string
-  required?: boolean
 }
 
 type TextareaEmits = {
@@ -13,25 +11,17 @@ type TextareaEmits = {
 }
 const props = defineProps<TextareaProps>()
 const emits = defineEmits<TextareaEmits>()
-const state = ref(props.modelValue)
-const onChangeTextarea = (e: Event) => {
-  state.value = (e.target as HTMLTextAreaElement).value
-  emits('changeTextarea', state.value)
-  emits('update:modelValue', state.value)
-}
+const { value, errorMessage } = useField(() => props.name)
 </script>
 
 <template>
   <div :class="['textarea', color]">
     <textarea
-      :class="['textarea-field']"
-      :name="name"
+      v-model="value"
+      class="textarea-field"
       :placeholder="placeholder"
-      :required="required"
-      :value="state"
       autocomplete="on"
       spellcheck="true"
-      @input="onChangeTextarea"
     >
     </textarea>
     <section class="textarea-additional">

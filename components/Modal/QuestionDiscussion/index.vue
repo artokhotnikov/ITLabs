@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { useCallbackFormStore } from '~/store/callbackFormStore'
+import { useModalsStore } from '~/store/modalsStore'
+
 type QuestionDiscussionModalProps = {
   isActive: boolean
   type: 'question' | 'discussion'
@@ -13,19 +16,42 @@ interface QuestionDiscussionModalEmits {
 const emits = defineEmits<QuestionDiscussionModalEmits>()
 defineProps<QuestionDiscussionModalProps>()
 const isDark = useDark()
+const callbackFormStore = useCallbackFormStore()
+const modalsStore = useModalsStore()
 
+const route = useRoute()
 const form = ref({
-  name: '',
-  phone: '',
-  question: '',
-  files: null,
+  mediaFile: null,
   connection: {
     telegram: true,
     whatsapp: false,
     email: false,
-    phone: false
+    phone: true
   }
 })
+
+const onSubmit = async (args, e) => {
+  const title = e.evt.target.dataset.title + ' ' + route.fullPath
+  form.value = { ...form.value, ...args, title }
+  console.log(form.value)
+  const res = await callbackFormStore.postForm(form.value)
+  e.resetForm()
+  form.value = {
+    mediaFile: null,
+    connection: {
+      telegram: true,
+      whatsapp: false,
+      email: false,
+      phone: true
+    }
+  }
+  modalsStore.close('discussionQuestion')
+  if (res === 'success') {
+    modalsStore.open('resultSuccess')
+  } else {
+    modalsStore.open('resultError')
+  }
+}
 </script>
 
 <template>
@@ -43,82 +69,91 @@ const form = ref({
           </h3>
           <p class="text">Мы ответим вам в ближайшее время</p>
         </div>
-        <form class="content-form form">
+        <Form
+          class="content-form form"
+          @submit="onSubmit"
+          data-title="Задать вопрос"
+        >
           <fieldset>
             <Input
-              v-model="form.name"
+              name="name"
               type="text"
               class="form-field"
               color="primary"
               placeholder="Имя"
+              :rules="callbackFormStore.yupRuleName()"
             />
             <Input
-              v-model="form.phone"
+              name="phone"
               type="tel"
               class="form-field"
               color="primary"
               placeholder="Телефон"
+              :rules="callbackFormStore.yupRulePhone()"
+              maska="+7 (###) ###-##-##"
             />
             <div class="form-field form-double">
               <Textarea
-                v-model="form.question"
+                name="description"
                 placeholder="Дополнительная информация"
                 color="primary"
               >
-                <template #additional>
-                  <InputFile v-model="form.files" class="additional" />
-                </template>
+                <!--                <template #additional>-->
+                <!--                  <InputFile v-model="form.mediaFile" class="additional" />-->
+                <!--                </template>-->
               </Textarea>
             </div>
           </fieldset>
-        </form>
-        <div class="content-preferences">
-          <p class="text medium">Предпочтительный вид связи</p>
-          <form class="preferences-form">
-            <div class="preferences-field">
-              <Checkbox
-                v-model="form.connection.telegram"
-                type="checkbox"
-                label="Telegram"
-                color="secondary"
-              />
+
+          <div class="content-preferences">
+            <p class="text medium">Предпочтительный вид связи</p>
+            <div class="preferences-form">
+              <div class="preferences-field">
+                <Checkbox
+                  v-model="form.connection.telegram"
+                  type="checkbox"
+                  label="Telegram"
+                  color="secondary"
+                />
+              </div>
+              <div class="preferences-field">
+                <Checkbox
+                  v-model="form.connection.whatsapp"
+                  type="checkbox"
+                  label="Whatsapp"
+                  color="secondary"
+                />
+              </div>
+              <div class="preferences-field">
+                <Checkbox
+                  v-model="form.connection.email"
+                  type="checkbox"
+                  label="Email"
+                  color="secondary"
+                />
+              </div>
+              <div class="preferences-field">
+                <Checkbox
+                  v-model="form.connection.phone"
+                  type="checkbox"
+                  label="По телефону"
+                  color="secondary"
+                />
+              </div>
             </div>
-            <div class="preferences-field">
-              <Checkbox
-                v-model="form.connection.whatsapp"
-                type="checkbox"
-                label="Whatsapp"
-                color="secondary"
-              />
-            </div>
-            <div class="preferences-field">
-              <Checkbox
-                v-model="form.connection.email"
-                type="checkbox"
-                label="Email"
-                color="secondary"
-              />
-            </div>
-            <div class="preferences-field">
-              <Checkbox
-                v-model="form.connection.phone"
-                type="checkbox"
-                label="По телефону"
-                color="secondary"
-              />
-            </div>
-          </form>
-        </div>
-        <div class="content-actions">
-          <Button
-            outline
-            :color="isDark ? 'secondary' : 'primary'"
-            @click="emits('update:isActive', false)"
-          >
-            Отмена
-          </Button>
-          <Button @click="emits('confirm')">Отправить</Button>
-        </div>
+          </div>
+          <div class="content-actions">
+            <Button
+              outline
+              :color="isDark ? 'secondary' : 'primary'"
+              @click="emits('update:isActive', false)"
+              type="reset"
+            >
+              Отмена
+            </Button>
+            <Button type="submit">Отправить</Button>
+          </div>
+        </Form>
       </section>
     </template>
   </Modal>
@@ -167,6 +202,7 @@ const form = ref({
   }
 
   &-actions {
+    margin: 32px 0 0;
     display: flex;
     justify-content: center;
     align-items: center;

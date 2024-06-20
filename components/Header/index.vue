@@ -13,7 +13,7 @@ const sm = computed(() => width.value <= 768)
       <div class="header-container">
         <HeaderBurger />
         <HeaderNav />
-        <HeaderSearch />
+<!--        <HeaderSearch />-->
         <ClientOnly>
           <Button
             class="header-ask"
