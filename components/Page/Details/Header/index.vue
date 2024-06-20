@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { VideoPlayer } from '@videojs-player/vue'
 import { useContentStore } from '~/store/contentStore'
+import { useCallbackFormStore } from '~/store/callbackFormStore'
+import { useModalsStore } from '~/store/modalsStore'
 
 interface DetailsHeaderProps {
   title?: string
@@ -14,6 +16,12 @@ interface DetailsHeaderProps {
 defineProps<DetailsHeaderProps>()
 const emits = defineEmits(['onClick'])
 const { URL } = useContentStore()
+
+const modalsStore = useModalsStore()
+
+const onOpenModal = () => {
+  modalsStore.open('specialist')
+}
 </script>
 
 <template>
@@ -45,7 +53,7 @@ const { URL } = useContentStore()
         class="details-text text text-md"
         v-html="description"
       />
-      <Button v-if="btnTitle" class="details-btn" @click="emits('onClick')">
+      <Button v-if="btnTitle" class="details-btn" @click="onOpenModal">
         {{ btnTitle }}
       </Button>
     </div>

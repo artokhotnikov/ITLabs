@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { useCallbackFormStore } from '~/store/callbackFormStore'
+import { useModalsStore } from '~/store/modalsStore'
+
 type CallSpecialistModalProps = {
   isActive: boolean
 }
@@ -12,8 +15,22 @@ interface CallSpecialistModalEmits {
 const isDark = useDark()
 const emits = defineEmits<CallSpecialistModalEmits>()
 defineProps<CallSpecialistModalProps>()
+const callbackFormStore = useCallbackFormStore()
+const modalsStore = useModalsStore()
+const route = useRoute()
 
-const phone = ref('')
+const onSubmit = async (args, e) => {
+  const title = e.evt.target.dataset.title + ' ' + route.fullPath
+  const res = await callbackFormStore.postForm({ ...args, title })
+  e.resetForm()
+
+  modalsStore.close('specialist')
+  if (res === 'success') {
+    modalsStore.open('resultSuccess')
+  } else {
+    modalsStore.open('resultError')
+  }
+}
 </script>
 
 <template>
@@ -28,29 +45,49 @@ const phone = ref('')
             Специалисты свяжутся с вами и ответят на все интересующие вопросы
           </p>
         </div>
-        <form class="content-form" @submit.prevent>
+        <Form
+          @submit="onSubmit"
+          class="content-form"
+          data-title="Звонок специалиста"
+        >
           <fieldset>
             <Input
-              v-model="phone"
+              name="name"
+              type="text"
+              class="form-field"
+              color="primary"
+              placeholder="Имя"
+              :rules="callbackFormStore.yupRuleName()"
+            />
+            <Input
+              name="phone"
               type="text"
               color="primary"
               placeholder="Номер телефона"
+              :rules="callbackFormStore.yupRulePhone()"
+              maska="+7 (###) ###-##-##"
             />
           </fieldset>
-        </form>
-        <div class="content-actions">
-          <Button
-            class="action action-cancel"
-            outline
-            :color="isDark ? 'secondary' : 'primary'"
-            @click="emits('update:isActive', false)"
-          >
-            Отмена
-          </Button>
-          <Button class="action action-send" @click="emits('confirm')">
-            Жду звонка
-          </Button>
-        </div>
+
+          <div class="content-actions">
+            <Button
+              class="action action-cancel"
+              outline
+              :color="isDark ? 'secondary' : 'primary'"
+              @click="emits('update:isActive', false)"
+              type="reset"
+            >
+              Отмена
+            </Button>
+            <Button
+              class="action action-send"
+              @click="emits('confirm')"
+              type="submit"
+            >
+              Жду звонка
+            </Button>
+          </div>
+        </Form>
       </section>
     </template>
   </Modal>
@@ -71,7 +108,7 @@ const phone = ref('')
   text-align: center;
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 32px;
 
   &-head {
     display: flex;
@@ -98,6 +135,11 @@ const phone = ref('')
     width: 100%;
     margin: 0 auto;
     max-width: 290px;
+
+    fieldset {
+      display: grid;
+      gap: 16px;
+    }
   }
 
   &-actions {
@@ -105,6 +147,7 @@ const phone = ref('')
     justify-content: center;
     align-content: center;
     gap: 10px;
+    margin: 32px 0 0;
     @media (max-width: $md5 + px) {
       flex-direction: column;
       align-items: center;

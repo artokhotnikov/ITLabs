@@ -33,7 +33,6 @@ const form = ref({
 const onSubmit = async (args, e) => {
   const title = e.evt.target.dataset.title + ' ' + route.fullPath
   form.value = { ...form.value, ...args, title }
-  console.log(form.value)
   const res = await callbackFormStore.postForm(form.value)
   e.resetForm()
   form.value = {
