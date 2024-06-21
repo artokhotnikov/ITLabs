@@ -92,12 +92,12 @@ const small = computed(() => width.value <= 768)
   flex: 1 1 20%;
   max-width: 25%;
   @media (max-width: $md1 + px) {
-    flex: 1 0 30%;
-    max-width: 33%;
+    flex: 1 0 40%;
+    max-width: 40%;
   }
   @media (max-width: $md3 + px) {
-    flex-basis: 50%;
-    max-width: 50%;
+    flex-basis: 80%;
+    max-width: 80%;
   }
 }
 </style>

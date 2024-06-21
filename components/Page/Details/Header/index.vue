@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { VideoPlayer } from '@videojs-player/vue'
 import { useContentStore } from '~/store/contentStore'
-import { useCallbackFormStore } from '~/store/callbackFormStore'
 import { useModalsStore } from '~/store/modalsStore'
+import type GalleryItem from '~/types/GalleryItem'
+import { Splide, SplideSlide } from '@splidejs/vue-splide'
 
 interface DetailsHeaderProps {
   title?: string
@@ -11,6 +12,7 @@ interface DetailsHeaderProps {
   subtitle?: string
   description?: string
   btnTitle?: string
+  images?: GalleryItem[]
 }
 
 defineProps<DetailsHeaderProps>()
@@ -22,6 +24,14 @@ const modalsStore = useModalsStore()
 const onOpenModal = () => {
   modalsStore.open('specialist')
 }
+const options = {
+  perPage: 1,
+  arrows: false,
+  autoplay: true,
+  progress: true,
+  type: 'loop',
+  gap: 20
+}
 </script>
 
 <template>
@@ -31,7 +41,16 @@ const onOpenModal = () => {
     v-html="title"
   />
   <div class="details-header">
-    <div v-if="video" class="details-video">
+    <div v-if="images?.length" class="details-images">
+      <Splide ref="splide" class="splider-slider" :options="options">
+        <SplideSlide v-for="slide in images" :key="slide.id">
+          <div class="slide">
+            <img :src="URL + slide.image" alt="Image" />
+          </div>
+        </SplideSlide>
+      </Splide>
+    </div>
+    <div v-if="video && !images?.length" class="details-video">
       <video-player
         :src="URL + video"
         :poster="URL + videoPoster"
@@ -62,6 +81,7 @@ const onOpenModal = () => {
 
 <style scoped lang="scss">
 @import '/assets/scss/variables';
+@import '/assets/scss/mixins';
 
 .dark {
   .details {
@@ -80,9 +100,13 @@ const onOpenModal = () => {
     @media (max-width: $md2 + px) {
       flex-direction: column;
     }
+    @media (max-width: $md3 + px) {
+      gap: 40px;
+    }
   }
 
-  &-video {
+  &-video,
+  &-images {
     border-radius: 16px;
     overflow: hidden;
     position: relative;
@@ -97,6 +121,12 @@ const onOpenModal = () => {
     }
     @media (max-width: $md4 + px) {
       border-radius: 8px;
+    }
+  }
+
+  &-images {
+    @media (min-width: $md2 + px) {
+      flex: 1 1 604px;
     }
   }
 
@@ -128,6 +158,7 @@ const onOpenModal = () => {
       display: none;
       @media (max-width: $md2 + px) {
         display: block;
+        margin: 0 0 12px;
       }
     }
   }
@@ -135,12 +166,16 @@ const onOpenModal = () => {
   &-subtitle {
     color: $text-secondary;
     margin: 0 0 40px;
+    @media (max-width: $md3 + px) {
+      margin: 0 0 24px;
+    }
   }
 
   &-text {
     color: $text-third;
     @media (max-width: $md2 + px) {
       max-width: 600px;
+      margin: 0 auto;
     }
   }
 
@@ -154,6 +189,73 @@ const onOpenModal = () => {
     @media (max-width: $md4 + px) {
       margin: 40px 0 0;
       max-width: 100%;
+    }
+  }
+}
+
+.splider {
+  &-slider {
+    max-height: 420px;
+    border-radius: 40px;
+    overflow: hidden;
+    @media (max-width: $md4 + px) {
+      border-radius: 20px;
+      max-height: 440px;
+    }
+  }
+}
+
+:deep(.splide__pagination) {
+  position: absolute;
+  left: 40px;
+  bottom: 40px;
+  gap: 8px;
+  justify-content: flex-start;
+  padding: 0;
+  @media (max-width: $md4 + px) {
+    left: 32px;
+    bottom: 32px;
+  }
+}
+
+:deep(.splide__pagination__page) {
+  width: 20px;
+  height: 4px;
+  background: $bg-white-alpha-20;
+  border-radius: 16px;
+  margin: 0;
+  opacity: 1;
+
+  &.is-active {
+    width: 60px;
+    background: $bg-white;
+    transform: scale(1);
+  }
+
+  @media (max-width: $md4 + px) {
+    width: 14px;
+    &.is-active {
+      width: 44px;
+    }
+  }
+}
+
+.slide {
+  max-height: 420px;
+  text-align: center;
+  overflow: hidden;
+  height: 100%;
+  @media (max-width: $md4 + px) {
+    max-height: 440px;
+  }
+
+  img {
+    border-radius: 40px;
+    max-width: 100%;
+    max-height: 100%;
+    aspect-ratio: 16/9;
+    @media (max-width: $md4 + px) {
+      border-radius: 20px;
     }
   }
 }

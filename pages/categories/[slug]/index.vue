@@ -39,6 +39,7 @@ onMounted(async () => {
   if (projectCategory.value?.projects) {
     projectsData.value = projectCategory.value?.projects.slice(0, 4)
   }
+  console.log(projectCategory.value)
 })
 </script>
 
@@ -55,6 +56,7 @@ onMounted(async () => {
             :description="projectCategory.description"
             btn-title="Консультация с экспертом"
             :subtitle="projectCategory.subtitle"
+            :images="projectCategory.images"
           />
         </ClientOnly>
         <section

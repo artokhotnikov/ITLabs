@@ -22,7 +22,7 @@ const options = {
   </div>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import '/assets/scss/variables';
 
 .splider {
@@ -37,7 +37,7 @@ const options = {
   }
 }
 
-.splide__pagination {
+:deep(.splide__pagination) {
   position: absolute;
   left: 40px;
   bottom: 40px;
@@ -50,7 +50,7 @@ const options = {
   }
 }
 
-.splide__pagination__page {
+:deep(.splide__pagination__page) {
   width: 20px;
   height: 4px;
   background: $bg-white-alpha-20;
