@@ -3,7 +3,7 @@ import { VideoPlayer } from '@videojs-player/vue'
 import { useContentStore } from '~/store/contentStore'
 import { useModalsStore } from '~/store/modalsStore'
 import type GalleryItem from '~/types/GalleryItem'
-import { Splide, SplideSlide } from '@splidejs/vue-splide'
+import { Splide, SplideSlide, SplideTrack } from '@splidejs/vue-splide'
 
 interface DetailsHeaderProps {
   title?: string
@@ -20,15 +20,21 @@ const emits = defineEmits(['onClick'])
 const { URL } = useContentStore()
 
 const modalsStore = useModalsStore()
+const { isOpen, open } = useOpen()
+const currentViewIndex = ref(0)
 
 const onOpenModal = () => {
   modalsStore.open('specialist')
 }
+const openView = (index: number) => {
+  currentViewIndex.value = index
+  open()
+}
 const options = {
   perPage: 1,
-  arrows: false,
+  arrows: true,
   autoplay: true,
-  progress: true,
+  pagination: false,
   type: 'loop',
   gap: 20
 }
@@ -42,12 +48,27 @@ const options = {
   />
   <div class="details-header">
     <div v-if="images?.length" class="details-images">
-      <Splide ref="splide" class="splider-slider" :options="options">
-        <SplideSlide v-for="slide in images" :key="slide.id">
-          <div class="slide">
-            <img :src="URL + slide.image" alt="Image" />
-          </div>
-        </SplideSlide>
+      <Splide
+        ref="splide"
+        class="splider-slider"
+        :options="options"
+        :has-track="false"
+      >
+        <SplideTrack>
+          <SplideSlide v-for="(slide, index) in images" :key="slide.id">
+            <div class="slide" @click="openView(index)">
+              <img :src="URL + slide.media" alt="Image" />
+            </div>
+          </SplideSlide>
+        </SplideTrack>
+        <div class="splide__arrows">
+          <button class="splide__arrow splide__arrow--prev">
+            <IconsArrowLeft />
+          </button>
+          <button class="splide__arrow splide__arrow--next">
+            <IconsArrowRight />
+          </button>
+        </div>
       </Splide>
     </div>
     <div v-if="video && !images?.length" class="details-video">
@@ -76,6 +97,14 @@ const options = {
         {{ btnTitle }}
       </Button>
     </div>
+    <transition name="fade">
+      <GalleryModal
+        v-if="isOpen && images?.length"
+        v-model:is-active="isOpen"
+        :index="currentViewIndex"
+        :gallery="images"
+      />
+    </transition>
   </div>
 </template>
 
@@ -127,6 +156,10 @@ const options = {
   &-images {
     @media (min-width: $md2 + px) {
       flex: 1 1 604px;
+    }
+    @media (max-width: $md2 + px) {
+      max-width: 750px;
+      margin: 0 auto;
     }
   }
 
@@ -205,46 +238,12 @@ const options = {
   }
 }
 
-:deep(.splide__pagination) {
-  position: absolute;
-  left: 40px;
-  bottom: 40px;
-  gap: 8px;
-  justify-content: flex-start;
-  padding: 0;
-  @media (max-width: $md4 + px) {
-    left: 32px;
-    bottom: 32px;
-  }
-}
-
-:deep(.splide__pagination__page) {
-  width: 20px;
-  height: 4px;
-  background: $bg-white-alpha-20;
-  border-radius: 16px;
-  margin: 0;
-  opacity: 1;
-
-  &.is-active {
-    width: 60px;
-    background: $bg-white;
-    transform: scale(1);
-  }
-
-  @media (max-width: $md4 + px) {
-    width: 14px;
-    &.is-active {
-      width: 44px;
-    }
-  }
-}
-
 .slide {
   max-height: 420px;
   text-align: center;
   overflow: hidden;
   height: 100%;
+  cursor: pointer;
   @media (max-width: $md4 + px) {
     max-height: 440px;
   }
@@ -257,6 +256,37 @@ const options = {
     @media (max-width: $md4 + px) {
       border-radius: 20px;
     }
+  }
+}
+
+.splide__arrow {
+  width: 36px;
+  height: 36px;
+  color: $text-white;
+  background: $bg-dark;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  &[disabled] {
+    color: $text-white-alpha;
+  }
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  &--prev {
+    left: 0;
+  }
+
+  &--next {
+    right: 0;
   }
 }
 </style>

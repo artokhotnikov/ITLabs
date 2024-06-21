@@ -57,7 +57,7 @@ onUnmounted(() => {
     <div class="view-close" @click="closeView">
       <IconsClose />
     </div>
-    <div v-if="currentView.length" class="view-content">
+    <div v-if="currentView" class="view-content">
       <video-player
         v-if="isVideoSlide(currentView)"
         :src="local ? currentView : URL + currentView"

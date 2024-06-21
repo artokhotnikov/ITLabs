@@ -39,7 +39,6 @@ onMounted(async () => {
   if (projectCategory.value?.projects) {
     projectsData.value = projectCategory.value?.projects.slice(0, 4)
   }
-  console.log(projectCategory.value)
 })
 </script>
 
