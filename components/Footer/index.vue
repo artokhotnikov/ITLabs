@@ -1,4 +1,8 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const openLink = (url: string) => {
+  window.open(url, '_blank')
+}
+</script>
 
 <template>
   <footer class="footer">
@@ -41,10 +45,20 @@
           <div class="text text-md bold">Офис</div>
           <div class="text text-md">Ул. Холмогорова, 85, Ижевск, 426011</div>
           <div class="footer-social">
-            <Button color="secondary" class="footer-icon" outline>
+            <Button
+              color="secondary"
+              class="footer-icon"
+              outline
+              @click="openLink('https://t.me/your_itlabs')"
+            >
               <IconsTelegram />
             </Button>
-            <Button color="secondary" class="footer-icon" outline>
+            <Button
+              color="secondary"
+              class="footer-icon"
+              outline
+              @click="openLink('https://vk.com/your_itlabs')"
+            >
               <IconsVK />
             </Button>
           </div>
