@@ -180,6 +180,7 @@ onMounted(async () => {
           </div>
         </ClientOnly>
       </section>
+      <HomePrices />
     </div>
   </div>
 </template>
