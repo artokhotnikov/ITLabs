@@ -70,8 +70,8 @@ const onSubmit = async (args, e) => {
         </div>
         <Form
           class="content-form form"
-          @submit="onSubmit"
           data-title="Задать вопрос"
+          @submit="onSubmit"
         >
           <fieldset>
             <Input
@@ -145,8 +145,8 @@ const onSubmit = async (args, e) => {
             <Button
               outline
               :color="isDark ? 'secondary' : 'primary'"
-              @click="emits('update:isActive', false)"
               type="reset"
+              @click="emits('update:isActive', false)"
             >
               Отмена
             </Button>

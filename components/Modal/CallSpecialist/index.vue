@@ -46,9 +46,9 @@ const onSubmit = async (args, e) => {
           </p>
         </div>
         <Form
-          @submit="onSubmit"
           class="content-form"
           data-title="Звонок специалиста"
+          @submit="onSubmit"
         >
           <fieldset>
             <Input
@@ -74,15 +74,15 @@ const onSubmit = async (args, e) => {
               class="action action-cancel"
               outline
               :color="isDark ? 'secondary' : 'primary'"
-              @click="emits('update:isActive', false)"
               type="reset"
+              @click="emits('update:isActive', false)"
             >
               Отмена
             </Button>
             <Button
               class="action action-send"
-              @click="emits('confirm')"
               type="submit"
+              @click="emits('confirm')"
             >
               Жду звонка
             </Button>

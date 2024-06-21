@@ -10,7 +10,18 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@vueuse/nuxt',
     'vue-yandex-maps/nuxt',
-    '@vee-validate/nuxt'
+    '@vee-validate/nuxt',
+    [
+      'yandex-metrika-module-nuxt3',
+      {
+        id: '97636091',
+        webvisor: true,
+        clickmap: true,
+        trackLinks: true,
+        accurateTrackBounce: true,
+        ecommerce: 'dataLayer'
+      }
+    ]
   ],
   alias: {
     assets: '/<rootDir>/assets',
