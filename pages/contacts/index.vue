@@ -51,7 +51,9 @@ onMounted(() => {
           <div class="contact-row">
             <span> Telegtam </span>
             <span>
-              <a href="https://t.me/your_itlabs" target="_blank">t.me/your_itlabs</a>
+              <a href="https://t.me/your_itlabs" target="_blank">
+                t.me/your_itlabs
+              </a>
             </span>
           </div>
           <div class="contact-row">
