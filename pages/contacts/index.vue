@@ -37,9 +37,7 @@ onMounted(() => {
           <div class="contact-row">
             <span> Офис </span>
             <span>
-              <a href="tel:+7(3412) 000-000" target="_blank">
-                +7(3412) 000-000
-              </a>
+              <a href="tel:+79511929402" target="_blank"> +7(951) 192-94-02 </a>
             </span>
           </div>
           <div class="contact-row">
@@ -53,13 +51,15 @@ onMounted(() => {
           <div class="contact-row">
             <span> Telegtam </span>
             <span>
-              <a href="https://@itlabs" target="_blank">@itlabs</a>
+              <a href="https://t.me/your_itlabs" target="_blank">t.me/your_itlabs</a>
             </span>
           </div>
           <div class="contact-row">
             <span> VK </span>
             <span>
-              <a href="https://your_itlabs" target="_blank">your_itlabs</a>
+              <a href="https://vk.com/your_itlabs" target="_blank">
+                vk.com/your_itlabs
+              </a>
             </span>
           </div>
           <div class="contact-link medium">
