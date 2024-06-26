@@ -16,6 +16,8 @@ useHead({
     <HomeProjects />
     <HomeStages />
     <HomePrices />
+    <SectionClients />
+    <SectionReviews />
     <ConctactSection />
   </div>
 </template>

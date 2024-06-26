@@ -1,0 +1,157 @@
+<script setup lang="ts">
+import reviews from '~/data/reviews'
+
+const { isOpen, open } = useOpen()
+
+const currentViewIndex = ref(0)
+
+const openGallery = (index: number) => {
+  currentViewIndex.value = index
+  open()
+}
+
+const gallery = computed(() => reviews.map((item) => item.image))
+</script>
+
+<template>
+  <section class="section reviews">
+    <h2 class="section-title title title-s">Отзывы и рекомендации</h2>
+    <div class="reviews-list">
+      <div v-for="(review, index) in reviews" :key="review.id" class="review">
+        <div class="review-img" @click="openGallery(index)">
+          <img :src="review.image.image" alt="" />
+          <div class="review-icon">
+            <IconsEye />
+          </div>
+        </div>
+        <div class="review-title text text-md" v-html="review.title" />
+        <div
+          class="review-subtitle text text-md bold"
+          v-html="review.subtitle"
+        />
+      </div>
+    </div>
+    <ClientOnly>
+      <transition name="fade">
+        <GalleryModal
+          v-if="isOpen"
+          v-model:is-active="isOpen"
+          :index="currentViewIndex"
+          :gallery="gallery"
+          local
+        />
+      </transition>
+    </ClientOnly>
+  </section>
+</template>
+
+<style scoped lang="scss">
+@import '@/assets/scss/variables';
+@import '@/assets/scss/mixins';
+
+.dark {
+  .review {
+    background: $bg-white-alpha-5;
+
+    &:hover {
+      .text {
+        color: $text-secondary;
+      }
+    }
+  }
+  .text,
+  .subtitle {
+    color: $text-white;
+  }
+}
+
+.reviews {
+  &-list {
+    @include no-scroll;
+    display: flex;
+    gap: 20px;
+    max-width: 1020px;
+    margin: 0 auto;
+    @media (max-width: $md1 + px) {
+      max-width: 100%;
+      overflow-x: auto;
+      overflow-y: visible;
+    }
+  }
+}
+
+.review {
+  flex: 0 0 188px;
+  padding: 16px;
+  border-radius: 20px;
+  background: $bg-white-alpha-20;
+  transition: background 0.3s ease;
+  cursor: pointer;
+
+  &-img {
+    @include img;
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  &-icon {
+    color: $text-white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+
+    svg {
+      width: 32px;
+      height: 32px;
+    }
+  }
+
+  &-title {
+    text-align: left;
+    margin: 20px 0 8px;
+  }
+
+  &-subtitle {
+    text-align: left;
+  }
+
+  @media (min-width: $md2 + px) {
+    &:hover {
+      background: $bg-white;
+    }
+    .review-img:before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(45, 55, 68, 0.2);
+      display: block;
+      z-index: 1;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      border-radius: 20px;
+    }
+    .review-img:hover {
+      &:before {
+        opacity: 1;
+      }
+
+      .review-icon {
+        opacity: 1;
+        z-index: 2;
+      }
+    }
+  }
+}
+
+.title {
+  color: $text-blue;
+  text-align: center;
+  margin: 0 0 40px;
+}
+</style>
