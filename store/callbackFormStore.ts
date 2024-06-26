@@ -7,7 +7,7 @@ import * as yup from 'yup'
 export const useCallbackFormStore = defineStore('callbackFormStore', () => {
   const postForm = async (args: CallbackForm) => {
     const formData = new FormData()
-
+    const formatted = document.title
     for (const key in args) {
       if (key === 'connection') {
         const connection = toRaw(args[key])
@@ -21,6 +21,7 @@ export const useCallbackFormStore = defineStore('callbackFormStore', () => {
       // @ts-ignore
       else formData.append(key, args[key])
     }
+    formData.append('formatted', formatted)
     const { status } = await useMyFetch('/api/forms', {
       method: 'POST',
       body: formData

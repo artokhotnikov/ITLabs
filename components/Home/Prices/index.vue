@@ -4,7 +4,6 @@ import { useModalsStore } from '~/store/modalsStore'
 
 const callbackFormStore = useCallbackFormStore()
 const modalsStore = useModalsStore()
-const route = useRoute()
 const estimate = ref({
   name: '',
   phone: '',
@@ -19,7 +18,7 @@ const estimate = ref({
 })
 
 const onSubmit = async (args, e) => {
-  const title = e.evt.target.dataset.title + ' ' + route.fullPath
+  const title = e.evt.target.dataset.title
   estimate.value = { ...estimate.value, ...args, title }
   const res = await callbackFormStore.postForm(estimate.value)
   e.resetForm()
