@@ -1,7 +1,6 @@
 // @ts-ignore
 import { defineStore } from 'pinia'
 import type ProjectsCategory from '~/types/Projects/ProjectsCategory'
-import { useMyFetch } from '~/utils/useMyFetch'
 import type Project from '~/types/Projects/Project'
 
 export const useContentStore = defineStore('contentStore', () => {
@@ -15,28 +14,28 @@ export const useContentStore = defineStore('contentStore', () => {
   }
 
   const getProjectCategories = async () => {
-    const { data } = await useMyFetch('/api/project_categories')
-    projectCategories.value = data.value as ProjectsCategory[]
+    const data = await $fetch(URL + '/api/project_categories')
+    projectCategories.value = data as ProjectsCategory[]
   }
   const getProjectCategory = async (id: number) => {
-    const { data } = await useMyFetch(`/api/project_categories/${id}`)
-    return data.value as ProjectsCategory
+    const data = await $fetch(URL + `/api/project_categories/${id}`)
+    return data as ProjectsCategory
   }
   const getProjectCategoryBySlug = async (slug: string) => {
-    const { data } = await useMyFetch(`/project_categories/slug?slug=${slug}`)
-    return data.value as ProjectsCategory
+    const data = await $fetch(URL + `/project_categories/slug?slug=${slug}`)
+    return data as ProjectsCategory
   }
   const getProjects = async () => {
-    const { data } = await useMyFetch('/api/projects')
-    projects.value = data.value as Project[]
+    const data = await $fetch(URL + '/api/projects')
+    projects.value = data as Project[]
   }
   const getProject = async (id: number) => {
-    const { data } = await useMyFetch(`/api/projects/${id}`)
-    return data.value as Project
+    const data = await $fetch(URL + `/api/projects/${id}`)
+    return data as Project
   }
   const getProjectBySlug = async (slug: string) => {
-    const { data } = await useMyFetch(`/projects/slug?slug=${slug}`)
-    return data.value as Project
+    const data = await $fetch(URL + `/projects/slug?slug=${slug}`)
+    return data as Project
   }
 
   return {

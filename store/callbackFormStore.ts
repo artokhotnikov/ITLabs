@@ -5,8 +5,16 @@ import type { CallbackForm } from '~/types/callbackForm'
 import * as yup from 'yup'
 
 export const useCallbackFormStore = defineStore('callbackFormStore', () => {
+  const config = useRuntimeConfig()
+  const formData = new FormData()
+
+  const { status, execute } = useMyFetch('/api/forms', {
+    method: 'POST',
+    body: formData,
+    immediate: false
+  })
+
   const postForm = async (args: CallbackForm) => {
-    const formData = new FormData()
     const formatted = document.title
     for (const key in args) {
       if (key === 'connection') {
@@ -22,10 +30,7 @@ export const useCallbackFormStore = defineStore('callbackFormStore', () => {
       else formData.append(key, args[key])
     }
     formData.append('formatted', formatted)
-    const { status } = await useMyFetch('/api/forms', {
-      method: 'POST',
-      body: formData
-    })
+    await execute()
     return status.value
   }
 

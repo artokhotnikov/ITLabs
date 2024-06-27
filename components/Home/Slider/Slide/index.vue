@@ -11,13 +11,13 @@ const sm = computed(() => width.value <= 768)
     <div class="slide">
       <div class="slide-content">
         <div class="slide-background">
-          <video
-            src="/assets/img/slide.mp4"
-            muted
-            loop
-            autoplay
-            playsinline
-          ></video>
+          <!--          <video-->
+          <!--            src="/assets/img/slide.mp4"-->
+          <!--            muted-->
+          <!--            loop-->
+          <!--            autoplay-->
+          <!--            playsinline-->
+          <!--          ></video>-->
         </div>
         <div class="text text-s medium">Desktop / Web</div>
         <h2 class="title title-s">ПО для интерактивного оборудования</h2>

@@ -2,7 +2,7 @@
 import { useContentStore } from '~/store/contentStore'
 
 const contentStore = useContentStore()
-onMounted(() => nextTick(() => contentStore.init()))
+onMounted(async () => await contentStore.init())
 </script>
 <template>
   <NuxtLayout>
