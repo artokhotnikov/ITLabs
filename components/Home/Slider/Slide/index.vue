@@ -67,6 +67,7 @@ const onOpenModal = () => {
   border-radius: 40px;
   color: $text-white;
   position: relative;
+  height: 100%;
 
   @media (max-width: $md4 + px) {
     padding: 64px 32px;
@@ -98,6 +99,13 @@ const onOpenModal = () => {
     &-s {
       text-transform: uppercase;
     }
+
+    &-md {
+      margin: 0 0 40px;
+      @media (max-width: $md4 + px) {
+        margin: 0 0 32px;
+      }
+    }
   }
 
   .title {
@@ -109,13 +117,16 @@ const onOpenModal = () => {
 
   &-content {
     max-width: 460px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
     @media (max-width: $md2 + px) {
       max-width: 370px;
     }
   }
 
   &-btn {
-    margin: 40px 0 0;
+    margin: auto 0 0;
     width: 250px;
     @media (max-width: $md4 + px) {
       margin: 32px 0 0;
