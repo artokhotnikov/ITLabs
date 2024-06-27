@@ -5,9 +5,7 @@ import type { CallbackForm } from '~/types/callbackForm'
 import * as yup from 'yup'
 
 export const useCallbackFormStore = defineStore('callbackFormStore', () => {
-  const config = useRuntimeConfig()
   const formData = new FormData()
-
   const { status, execute } = useMyFetch('/api/forms', {
     method: 'POST',
     body: formData,

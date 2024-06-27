@@ -4,7 +4,8 @@ import type ProjectsCategory from '~/types/Projects/ProjectsCategory'
 import type Project from '~/types/Projects/Project'
 
 export const useContentStore = defineStore('contentStore', () => {
-  const URL = 'https://api.itlabs.top'
+  const config = useRuntimeConfig()
+  const URL = config.public.API
   const projectCategories = ref<ProjectsCategory[]>([])
   const projects = ref<Project[]>([])
 
