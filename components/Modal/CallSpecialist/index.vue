@@ -46,6 +46,7 @@ const onSubmit = async (args, e) => {
           </p>
         </div>
         <Form
+          id="callSpecialistForm"
           class="content-form"
           data-title="Звонок специалиста"
           @submit="onSubmit"

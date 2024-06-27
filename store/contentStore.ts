@@ -2,16 +2,19 @@
 import { defineStore } from 'pinia'
 import type ProjectsCategory from '~/types/Projects/ProjectsCategory'
 import type Project from '~/types/Projects/Project'
+import type HomeSlide from '~/types/HomeSlide'
 
 export const useContentStore = defineStore('contentStore', () => {
   const config = useRuntimeConfig()
   const URL = config.public.API
   const projectCategories = ref<ProjectsCategory[]>([])
   const projects = ref<Project[]>([])
+  const homeSlides = ref<HomeSlide[]>([])
 
   const init = async () => {
     await getProjectCategories()
     await getProjects()
+    await getHomeSlides()
   }
 
   const getProjectCategories = async () => {
@@ -38,17 +41,28 @@ export const useContentStore = defineStore('contentStore', () => {
     const data = await $fetch(URL + `/projects/slug?slug=${slug}`)
     return data as Project
   }
+  const getHomeSlides = async () => {
+    const data: HomeSlide[] = await $fetch(URL + '/api/slider')
+    const mappedData: HomeSlide[] = data.map((item) => ({
+      ...item,
+      media: URL + item.media
+    }))
+    homeSlides.value = mappedData
+    return mappedData
+  }
 
   return {
     URL,
     projectCategories,
     projects,
+    homeSlides,
     getProjectCategory,
     getProjectCategories,
     getProjectCategoryBySlug,
     getProjects,
     getProject,
     getProjectBySlug,
+    getHomeSlides,
     init
   }
 })

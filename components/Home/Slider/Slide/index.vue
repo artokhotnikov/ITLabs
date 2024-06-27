@@ -1,9 +1,31 @@
-<script setup>
+<script setup lang="ts">
 import { SplideSlide } from '@splidejs/vue-splide'
+import type HomeSlide from '~/types/HomeSlide'
+import { useModalsStore } from '~/store/modalsStore'
 
 const { width } = useWindowSize()
+const modalsStore = useModalsStore()
 
+interface SlideProps {
+  slide: HomeSlide
+}
+
+const props = defineProps<SlideProps>()
+
+const slideVideo = ref<HTMLVideoElement>()
 const sm = computed(() => width.value <= 768)
+
+const onOpenModal = () => {
+  modalsStore.open('specialist')
+  setTimeout(() => {
+    const formSpecialist: HTMLFormElement = document.querySelector(
+      '#callSpecialistForm'
+    )
+    if (formSpecialist) {
+      formSpecialist.dataset.title = props.slide.title
+    }
+  }, 1000)
+}
 </script>
 
 <template>
@@ -11,21 +33,25 @@ const sm = computed(() => width.value <= 768)
     <div class="slide">
       <div class="slide-content">
         <div class="slide-background">
-          <!--          <video-->
-          <!--            src="/assets/img/slide.mp4"-->
-          <!--            muted-->
-          <!--            loop-->
-          <!--            autoplay-->
-          <!--            playsinline-->
-          <!--          ></video>-->
+          <video
+            ref="slideVideo"
+            :src="slide.media"
+            autoplay
+            muted
+            playsinline
+            loop
+          ></video>
         </div>
-        <div class="text text-s medium">Desktop / Web</div>
-        <h2 class="title title-s">ПО для интерактивного оборудования</h2>
-        <div class="text text-md">
-          Индивидуальная разработка и готовые решения для всех видов
-          интерактивных устройств
-        </div>
-        <Button class="slide-btn" color="secondary" outline :small="sm">
+        <div class="text text-s medium">{{ slide.type }}</div>
+        <h2 class="title title-s">{{ slide.title }}</h2>
+        <div class="text text-md" v-html="slide.description" />
+        <Button
+          class="slide-btn"
+          color="secondary"
+          outline
+          :small="sm"
+          @click="onOpenModal"
+        >
           Рассчитать стоимость
         </Button>
       </div>

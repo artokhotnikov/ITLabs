@@ -1,11 +1,15 @@
 <script setup>
 import { Splide } from '@splidejs/vue-splide'
+import { useContentStore } from '~/store/contentStore'
+
+const contentStore = useContentStore()
 
 const splide = ref()
 const options = {
   perPage: 1,
   arrows: false,
   autoplay: true,
+  interval: 10000,
   progress: true,
   type: 'loop',
   gap: 20
@@ -13,10 +17,14 @@ const options = {
 </script>
 
 <template>
-  <div class="splider">
+  <div v-if="contentStore.homeSlides.length" class="splider">
     <div class="container">
       <Splide ref="splide" class="splider-slider" :options="options">
-        <HomeSliderSlide v-for="n in 4" :key="n" />
+        <HomeSliderSlide
+          v-for="slide in contentStore.homeSlides"
+          :key="slide.id"
+          :slide="slide"
+        />
       </Splide>
     </div>
   </div>
