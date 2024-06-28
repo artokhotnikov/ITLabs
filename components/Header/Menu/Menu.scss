@@ -1,0 +1,167 @@
+@import '/assets/scss/variables';
+@import '/assets/scss/mixins';
+
+.menu {
+	position: absolute;
+	width: 100%;
+	padding: 40px;
+	border-radius: 40px;
+	background: $bg-white;
+	box-shadow: 0 50px 50px 0 rgba(88, 104, 124, 0.2);
+	left: 0;
+	top: calc(100% + 20px);
+	color: $text-third;
+
+	&-header {
+		display: flex;
+		gap: 40px;
+
+		.title {
+			color: $text-blue;
+			margin: 0 0 20px;
+
+			&:not(:first-child) {
+				margin: 26px 0 20px;
+			}
+		}
+
+		.menu-col {
+			flex: 0 1 198px;
+
+			&:nth-child(2) {
+				display: flex;
+				align-items: flex-end;
+			}
+		}
+	}
+
+	&-links {
+		display: flex;
+		flex-direction: column;
+		gap: 12px;
+	}
+
+	&-link {
+		font-size: 14px;
+		font-weight: 500;
+		line-height: 120%;
+	}
+
+	&-footer {
+		display: flex;
+		gap: 32px;
+		margin: 40px 0 0;
+
+		.subtitle {
+			color: $text-secondary;
+			margin: 0 0 16px;
+		}
+
+		.text {
+			color: $text-secondary;
+		}
+
+		.menu-col {
+			&:last-child {
+				display: flex;
+				align-items: flex-end;
+			}
+
+			@media (min-width: $md2 + px) {
+				flex: 0 1 204px;
+			}
+		}
+	}
+
+	&-social {
+		display: flex;
+		gap: 16px;
+	}
+
+	&-icon {
+		height: 32px !important;
+		width: 32px !important;
+		padding: 0 !important;
+		border-radius: 8px !important;
+
+		svg {
+			flex: 0 0 20px;
+			height: 20px;
+		}
+	}
+
+	&-feedback {
+		width: 100%;
+	}
+}
+
+@media (max-width: $md1 + px) {
+	.menu {
+		&-header {
+			flex-wrap: wrap;
+
+			.menu-col {
+				flex-basis: 245px;
+
+				&:nth-child(2) {
+				}
+			}
+		}
+
+		&-footer {
+			flex-wrap: wrap;
+			gap: 40px;
+
+			.menu-col {
+				flex-basis: 245px;
+
+				&:last-child {
+					flex-basis: 214px;
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: $md3 + px) {
+	.menu {
+		@include no-scroll;
+		position: fixed;
+		width: 240px;
+		padding: 24px 16px;
+		border-radius: 0;
+		left: 0;
+		top: 0;
+		bottom: 0;
+		z-index: 6;
+		overflow: auto;
+
+		&-footer {
+			gap: 24px;
+			margin: 32px 0 0;
+
+			.subtitle {
+				margin: 0 0 8px;
+			}
+
+			.menu-col {
+				flex-basis: 100%;
+			}
+		}
+
+		&-social {
+			gap: 16px;
+		}
+	}
+}
+
+.dark .menu {
+	background: $text-secondary;
+	color: $text-white;
+	&-footer {
+		.subtitle,
+		.text {
+			color: $text-white;
+		}
+	}
+}

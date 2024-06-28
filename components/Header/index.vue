@@ -1,17 +1,31 @@
 <script setup lang="ts">
 import { useModalsStore } from '~/store/modalsStore'
+import { useGlobalStore } from '~/store/globalStore'
 
 const modalsStore = useModalsStore()
+const globalStore = useGlobalStore()
+const { lock, unlock } = useBodyLock()
 const { width } = useWindowSize()
 
 const sm = computed(() => width.value <= 768)
+const toggleMenu = () => {
+  globalStore.toggleMenu()
+  if (globalStore.isOpenMenu) {
+    lock()
+  } else {
+    unlock()
+  }
+}
 </script>
 
 <template>
   <header class="header">
     <div class="container">
       <div class="header-container">
-        <HeaderBurger />
+        <HeaderBurger
+          :is-open="globalStore.isOpenMenu"
+          @click-handler="toggleMenu"
+        />
         <HeaderNav />
         <!--        <HeaderSearch />-->
         <ClientOnly>
@@ -23,6 +37,12 @@ const sm = computed(() => width.value <= 768)
             <span v-else>Задать вопрос</span>
           </Button>
         </ClientOnly>
+        <transition :name="sm ? 'slide-left' : 'fade-top'">
+          <HeaderMenu v-if="globalStore.isOpenMenu" />
+        </transition>
+        <transition name="fade">
+          <PageOverlay v-if="globalStore.isOpenMenu" @on-click="toggleMenu" />
+        </transition>
       </div>
     </div>
   </header>
