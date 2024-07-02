@@ -11,7 +11,7 @@
         </h3>
         <div class="contact-links">
           <div class="subtitle bold">
-            <a href="tel:+79511929402">+7 951 192 94 02</a>
+            <a href="tel:+79952964335">+7 995 296 4335</a>
           </div>
           <div class="subtitle bold">
             <a href="mailto:info@itlabs.top"> info@itlabs.top</a>

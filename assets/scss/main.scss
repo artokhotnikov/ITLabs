@@ -8,6 +8,7 @@
 @import 'dark';
 
 body {
+	@include no-scroll;
 	background: $bg-secondary;
 
 	&.lock {

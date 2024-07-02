@@ -37,7 +37,7 @@ onMounted(() => {
           <div class="contact-row">
             <span> Офис </span>
             <span>
-              <a href="tel:+79511929402" target="_blank"> +7(951) 192-94-02 </a>
+              <a href="tel:+79952964335" target="_blank"> +7 995 296 4335 </a>
             </span>
           </div>
           <div class="contact-row">

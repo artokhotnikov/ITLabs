@@ -67,7 +67,7 @@ const openLink = (url: string) => {
     <section class="menu-footer">
       <div class="menu-col">
         <h5 class="subtitle">
-          <a href="tel:+79511929402">8 951 192 94 02</a>
+          <a href="tel:+79952964335">+7 995 296 4335</a>
         </h5>
         <div class="text text-md">Многоконтактный телефон</div>
       </div>
