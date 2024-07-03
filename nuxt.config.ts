@@ -1,7 +1,15 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   app: {
-    pageTransition: { name: 'fade', mode: 'out-in' }
+    pageTransition: { name: 'fade', mode: 'out-in' },
+    head: {
+      script: [
+        {
+          src: 'https://code-ya.jivosite.com/widget/ovogGKNOZk',
+          async: true
+        }
+      ]
+    }
   },
   devtools: { enabled: true },
   modules: [
