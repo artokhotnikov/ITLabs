@@ -1,15 +1,16 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   app: {
-    pageTransition: { name: 'fade', mode: 'out-in' }
-    // head: {
-    //   script: [
-    //     {
-    //       src: 'https://code-ya.jivosite.com/widget/ovogGKNOZk',
-    //       async: true
-    //     }
-    //   ]
-    // }
+    pageTransition: { name: 'fade', mode: 'out-in' },
+    head: {
+      meta: [{ name: 'yandex-verification', content: 'd9b6cb0a1d4d42c9' }]
+      // script: [
+      //   {
+      //     src: 'https://code-ya.jivosite.com/widget/ovogGKNOZk',
+      //     async: true
+      //   }
+      // ]
+    }
   },
   devtools: { enabled: true },
   modules: [
