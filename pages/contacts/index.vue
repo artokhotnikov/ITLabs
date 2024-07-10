@@ -49,18 +49,18 @@ onMounted(() => {
             </span>
           </div>
           <div class="contact-row">
-            <span> Telegtam </span>
+            <span> Telegram </span>
             <span>
-              <a href="https://t.me/your_itlabs" target="_blank">
-                t.me/your_itlabs
+              <a href="https://t.me/ITLabs_top" target="_blank">
+                t.me/ITLabs_top
               </a>
             </span>
           </div>
           <div class="contact-row">
             <span> VK </span>
             <span>
-              <a href="https://vk.com/your_itlabs" target="_blank">
-                vk.com/your_itlabs
+              <a href="https://vk.com/itlabs_top" target="_blank">
+                vk.com/itlabs_top
               </a>
             </span>
           </div>

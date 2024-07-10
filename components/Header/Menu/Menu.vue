@@ -87,14 +87,14 @@ const openLink = (url: string) => {
           <Button
             class="menu-icon"
             outline
-            @click="openLink('https://t.me/your_itlabs')"
+            @click="openLink('https://t.me/ITLabs_top')"
           >
             <IconsTelegram />
           </Button>
           <Button
             class="menu-icon"
             outline
-            @click="openLink('https://vk.com/your_itlabs')"
+            @click="openLink('https://vk.com/itlabs_top')"
           >
             <IconsVK />
           </Button>
