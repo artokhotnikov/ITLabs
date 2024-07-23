@@ -40,16 +40,6 @@ const reviews: Array<Review> = [
     },
     title: 'Генеральный директор ООО «Интэч Инкорпорейтед»',
     subtitle: 'Ковалева Ю.В.'
-  },
-  {
-    id: 5,
-    image: {
-      image: 'img/about_page/Intechirs.png',
-      media: 'img/about_page/Intechirs.png',
-      id: 1
-    },
-    title: 'Отзыв от «СОШ №22 им. Героя Советского Союза  А.П.Иванова» г.Луга',
-    subtitle: 'Гавриловой А.М.'
   }
 ]
 
