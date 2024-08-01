@@ -43,6 +43,13 @@
 	}
 }
 
+
+@mixin centerPositionAbsolute() {
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
+
 @mixin gradientAnimation($start, $end, $transTime) {
 	background-size: 100%;
 	//background-image: linear-gradient(to left, $start, $end);

@@ -112,6 +112,9 @@ const options = {
 @import '/assets/scss/variables';
 @import '/assets/scss/mixins';
 
+::v-deep(.vjs-big-play-button) {
+  @include centerPositionAbsolute();
+}
 .dark {
   .details {
     &-subtitle {
