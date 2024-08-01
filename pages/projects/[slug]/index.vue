@@ -138,7 +138,10 @@ onMounted(async () => {
                     :key="slide"
                   >
                     <div class="slide" @click="openView(index)">
-                      <div v-if="isVideoSlide(slide.media!)" class="slide-video">
+                      <div
+                        v-if="isVideoSlide(slide.media!)"
+                        class="slide-video"
+                      >
                         <img
                           :src="contentStore.URL + slide.image"
                           alt="Результат"

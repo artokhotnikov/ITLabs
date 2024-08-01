@@ -1,7 +1,8 @@
 @font-face {
   font-family: 'TT Norms';
-  src: url('../fonts/TTNorms-Bold.woff2') format('woff2'),
-  url('../fonts/TTNorms-Bold.woff') format('woff');
+  src:
+    url('../fonts/TTNorms-Bold.woff2') format('woff2'),
+    url('../fonts/TTNorms-Bold.woff') format('woff');
   font-weight: bold;
   font-style: normal;
   font-display: swap;
@@ -9,8 +10,9 @@
 
 @font-face {
   font-family: 'TT Norms';
-  src: url('../fonts/TTNorms-Medium.woff2') format('woff2'),
-  url('../fonts/TTNorms-Medium.woff') format('woff');
+  src:
+    url('../fonts/TTNorms-Medium.woff2') format('woff2'),
+    url('../fonts/TTNorms-Medium.woff') format('woff');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -18,18 +20,9 @@
 
 @font-face {
   font-family: 'TT Norms';
-  src: url('../fonts/TTNorms-Regular.woff2') format('woff2'),
-  url('../fonts/TTNorms-Regular.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-
-@font-face {
-  font-family: 'EuropeExt';
-  src: url('../fonts/EuropeExtNormal.woff2') format('woff2'),
-  url('../fonts/EuropeExtNormal.woff') format('woff');
+  src:
+    url('../fonts/TTNorms-Regular.woff2') format('woff2'),
+    url('../fonts/TTNorms-Regular.woff') format('woff');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -37,8 +30,19 @@
 
 @font-face {
   font-family: 'EuropeExt';
-  src: url('../fonts/EuropeExtBold.woff2') format('woff2'),
-  url('../fonts/EuropeExtBold.woff') format('woff');
+  src:
+    url('../fonts/EuropeExtNormal.woff2') format('woff2'),
+    url('../fonts/EuropeExtNormal.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'EuropeExt';
+  src:
+    url('../fonts/EuropeExtBold.woff2') format('woff2'),
+    url('../fonts/EuropeExtBold.woff') format('woff');
   font-weight: bold;
   font-style: normal;
   font-display: swap;

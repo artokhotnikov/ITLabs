@@ -1,28 +1,28 @@
 @import '/assets/scss/variables';
 
 .burger {
-	height: 50px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	gap: 12px;
-	border-radius: 12px;
-	background: $bg-blue;
-	padding: 10px 12px;
-	color: $text-white;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  border-radius: 12px;
+  background: $bg-blue;
+  padding: 10px 12px;
+  color: $text-white;
 
-	svg {
-		cursor: pointer;
-	}
+  svg {
+    cursor: pointer;
+  }
 
-	&-icon {
-		@media(min-width: $md3 + px) {
-			display: none;
-		}
-	}
+  &-icon {
+    @media (min-width: $md3 + px) {
+      display: none;
+    }
+  }
 }
 
 .logo {
-	display: flex;
-	align-items: center;
+  display: flex;
+  align-items: center;
 }
