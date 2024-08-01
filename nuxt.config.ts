@@ -3,11 +3,36 @@ export default defineNuxtConfig({
   app: {
     pageTransition: { name: 'fade', mode: 'out-in' },
     head: {
-      meta: [{ name: 'yandex-verification', content: 'd9b6cb0a1d4d42c9' }]
+      meta: [{ name: 'yandex-verification', content: 'd9b6cb0a1d4d42c9' }],
+      script: [
+        {
+          children:
+            '(function(a, m, o, c, r, m) {\n' +
+            '  a[m] = {\n' +
+            "    id: '412792',\n" +
+            "    hash: 'af583ea793de0d5db048702c5e221d6881865c504fc8689ee5624b4c24d47694',\n" +
+            "    locale: 'ru',\n" +
+            '    inline: false,\n' +
+            '    setMeta: function(p) {\n' +
+            '      this.params = (this.params || []).concat([p])\n' +
+            '    }\n' +
+            '  }\n' +
+            '  a[o] = a[o] || function() {\n' +
+            '    (a[o].q = a[o].q || []).push(arguments)\n' +
+            '  }\n' +
+            "  var d = a.document, s = d.createElement('script')\n" +
+            '  s.async = true\n' +
+            "  s.id = m + '_script'\n" +
+            "  s.src = 'https://gso.amocrm.ru/js/button.js'\n" +
+            '  d.head && d.head.appendChild(s)\n' +
+            "}(window, 0, 'amoSocialButton', 0, 0, 'amo_social_button'))"
+        }
+      ]
       // script: [
       //   {
-      //     src: 'https://code-ya.jivosite.com/widget/ovogGKNOZk',
-      //     async: true
+      //     src: 'https://gso.amocrm.ru/js/button.js',
+      //     async: true,
+      //     id: 'amo_social_button_script'
       //   }
       // ]
     }
@@ -61,7 +86,13 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
-      API: process.env.API // this is public
+      API: process.env.API,
+      BASE_URL: process.env.BASE_URL
+    }
+  },
+  nitro: {
+    prerender: {
+      routes: ['/sitemap.xml', '/robots.txt']
     }
   }
 })
