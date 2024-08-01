@@ -85,6 +85,11 @@ onUnmounted(() => {
 
 <style scoped lang="scss">
 @import '/assets/scss/variables';
+@import '/assets/scss/mixins';
+
+::v-deep(.vjs-big-play-button) {
+  @include centerPositionAbsolute();
+}
 
 .view {
   position: fixed;

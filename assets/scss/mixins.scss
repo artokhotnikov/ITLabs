@@ -1,74 +1,79 @@
 @import 'variables';
 
 @mixin ibg {
-	position: relative;
-	img {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-	}
+  position: relative;
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 }
 
 @mixin img {
-	img {
-		width: 100%;
-		height: 100%;
-	}
+  img {
+    width: 100%;
+    height: 100%;
+  }
 }
 
-
 @mixin scrollbar() {
-	&::-webkit-scrollbar {
-		height: 6px;
-		width: 6px;
-	}
+  &::-webkit-scrollbar {
+    height: 6px;
+    width: 6px;
+  }
 
-	&::-webkit-scrollbar-thumb {
-		background: $text-blue;
-		border: 0;
-		border-radius: 20px;
-	}
+  &::-webkit-scrollbar-thumb {
+    background: $text-blue;
+    border: 0;
+    border-radius: 20px;
+  }
 
-	&::-webkit-scrollbar-track {
-		background: transparent;
-	}
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
 }
 
 @mixin no-scroll() {
-	&::-webkit-scrollbar {
-		display: none;
-	}
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@mixin centerPositionAbsolute() {
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
 @mixin gradientAnimation($start, $end, $transTime) {
-	background-size: 100%;
-	//background-image: linear-gradient(to left, $start, $end);
-	position: relative;
-	z-index: 1;
-	&:before {
-		background-image: linear-gradient(to right, $end, $start);
-		content: '';
-		display: block;
-		height: 100%;
-		position: absolute;
-		top: 0;
-		left: 0;
-		opacity: 0;
-		width: 100%;
-		z-index: -100;
-		transition: opacity $transTime;
-	}
-	&:hover {
-		&:before {
-			opacity: 1;
-		}
-	}
-	&:active {
-		&:before {
-			opacity: 0;
-		}
-	}
+  background-size: 100%;
+  //background-image: linear-gradient(to left, $start, $end);
+  position: relative;
+  z-index: 1;
+  &:before {
+    background-image: linear-gradient(to right, $end, $start);
+    content: '';
+    display: block;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    width: 100%;
+    z-index: -100;
+    transition: opacity $transTime;
+  }
+  &:hover {
+    &:before {
+      opacity: 1;
+    }
+  }
+  &:active {
+    &:before {
+      opacity: 0;
+    }
+  }
 }

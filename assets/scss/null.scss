@@ -2,34 +2,34 @@
 @import 'mixins';
 
 * {
-	padding: 0;
-	margin: 0;
-	border: 0;
-	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  padding: 0;
+  margin: 0;
+  border: 0;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 
-	//&::-webkit-scrollbar {
-	//  display: none;
-	//}
+  //&::-webkit-scrollbar {
+  //  display: none;
+  //}
 }
 
 *,
 *:before,
 *:after {
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 :focus,
 :active {
-	outline: none;
+  outline: none;
 }
 
 button {
-	outline: none !important;
+  outline: none !important;
 }
 
 a:focus,
 a:active {
-	outline: none;
+  outline: none;
 }
 
 aside,
@@ -37,66 +37,66 @@ nav,
 footer,
 header,
 section {
-	display: block;
+  display: block;
 }
 
 html {
-	font-size: $font-size;
+  font-size: $font-size;
 }
 
 html,
 body {
-	min-height: 100%;
-	min-width: $minWidth;
-	color: $text-primary;
+  min-height: 100%;
+  min-width: $minWidth;
+  color: $text-primary;
 }
 
 body {
-	line-height: 1;
-	font-family: $font;
-	-ms-text-size-adjust: 100%;
-	-moz-text-size-adjust: 100%;
-	-webkit-text-size-adjust: 100%;
+  line-height: 1;
+  font-family: $font;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
 }
 
 input,
 button,
 textarea {
-	font-family: $font, serif;
-	font-size: inherit;
+  font-family: $font, serif;
+  font-size: inherit;
 }
 
 input::-ms-clear {
-	display: none;
+  display: none;
 }
 
 button {
-	cursor: pointer;
-	background-color: inherit;
+  cursor: pointer;
+  background-color: inherit;
 }
 
 button::-moz-focus-inner {
-	padding: 0;
-	border: 0;
+  padding: 0;
+  border: 0;
 }
 
 a,
 a:visited {
-	text-decoration: none;
+  text-decoration: none;
 }
 
 a {
-	color: inherit;
+  color: inherit;
 }
 
 a:hover {
-	text-decoration: none;
+  text-decoration: none;
 }
 
 img {
-	vertical-align: top;
+  vertical-align: top;
 }
 
 ul li {
-	list-style: none;
+  list-style: none;
 }

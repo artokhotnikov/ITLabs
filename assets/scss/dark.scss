@@ -1,8 +1,7 @@
-@import "variables";
+@import 'variables';
 
 .dark {
-	body {
-		background: $bg-dark;
-	}
-
+  body {
+    background: $bg-dark;
+  }
 }

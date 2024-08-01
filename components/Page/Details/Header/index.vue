@@ -112,6 +112,10 @@ const options = {
 @import '/assets/scss/variables';
 @import '/assets/scss/mixins';
 
+::v-deep(.vjs-big-play-button) {
+  @include centerPositionAbsolute();
+}
+
 .dark {
   .details {
     &-subtitle {
@@ -139,7 +143,6 @@ const options = {
     border-radius: 16px;
     overflow: hidden;
     position: relative;
-
     @media (min-width: $md2 + px) {
       flex: 0 1 604px;
     }
