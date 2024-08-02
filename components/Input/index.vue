@@ -5,7 +5,7 @@ interface InputProps {
   name: string
   placeholder?: string
   type?: string
-  color: 'primary | secondary'
+  color: 'primary' | 'secondary'
   outlined?: boolean
   disabled?: boolean
   rules?: any
@@ -18,17 +18,23 @@ const { value, errorMessage } = useField(() => props.name, props.rules)
 const options = reactive<MaskInputOptions>({
   mask: props.maska || null
 })
+const inputRef = ref<HTMLInputElement | null>(null)
+defineExpose({
+  inputRef
+})
 </script>
 
 <template>
   <div class="input">
     <input
+      ref="inputRef"
       v-model="value"
       v-maska="options"
       :class="color"
       :type="type || 'text'"
       :placeholder="placeholder"
       :disabled="disabled"
+      @input="$emit('update:modelValue', value)"
     />
     <p class="input-error">
       {{ errorMessage }}

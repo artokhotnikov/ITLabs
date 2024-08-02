@@ -22,7 +22,7 @@ const openLink = (url: string) => {
         <img src="@/assets/img/logo-blue.svg" alt="Логотип" />
       </NuxtLink>
       <div class="spoiler">
-        <div class="spoiler-title title title-xs" @click="toggleSpoiler">
+        <div class="spoiler-title title title-xxs" @click="toggleSpoiler">
           Услуги
           <IconsArrowDown />
         </div>
@@ -38,7 +38,7 @@ const openLink = (url: string) => {
         </div>
       </div>
       <div class="spoiler">
-        <div class="spoiler-title title title-xs" @click="toggleSpoiler">
+        <div class="spoiler-title title title-xxs" @click="toggleSpoiler">
           Проекты
           <IconsArrowDown />
         </div>
@@ -54,7 +54,7 @@ const openLink = (url: string) => {
         </div>
       </div>
       <div class="spoiler">
-        <div class="spoiler-title title title-xs" @click="toggleSpoiler">
+        <div class="spoiler-title title title-xxs" @click="toggleSpoiler">
           О компании
           <IconsArrowDown />
         </div>

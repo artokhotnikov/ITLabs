@@ -7,7 +7,7 @@ const globalStore = useGlobalStore()
 const { lock, unlock } = useBodyLock()
 const { width } = useWindowSize()
 
-const sm = computed(() => width.value <= 768)
+const sm = computed(() => width.value <= 992)
 const toggleMenu = () => {
   globalStore.toggleMenu()
   if (globalStore.isOpenMenu) {
@@ -27,7 +27,7 @@ const toggleMenu = () => {
           @click-handler="toggleMenu"
         />
         <HeaderNav />
-        <!--        <HeaderSearch />-->
+        <HeaderSearch />
         <ClientOnly>
           <Button
             class="header-ask"

@@ -11,6 +11,7 @@
 	left: 0;
 	top: calc(100% + 20px);
 	color: $text-third;
+	z-index: 6;
 
 	&-header {
 		display: flex;
@@ -123,11 +124,11 @@
 	}
 }
 
-@media (max-width: $md3 + px) {
+@media (max-width: 840px) {
 	.menu {
 		@include no-scroll;
 		position: fixed;
-		width: 240px;
+		width: 290px;
 		padding: 24px 16px;
 		border-radius: 0;
 		left: 0;
