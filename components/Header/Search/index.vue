@@ -1,7 +1,14 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const emit = defineEmits<{
+  (e: 'toggleSearch', value: boolean): void
+}>()
+const onOpen = () => {
+  emit('toggleSearch', true)
+}
+</script>
 
 <template>
-  <div class="search">
+  <div class="search" @click="onOpen">
     <IconsSearch />
   </div>
 </template>
@@ -20,6 +27,11 @@
   background: $bg-white;
   border-radius: 16px;
   cursor: pointer;
+
+  svg {
+    flex-shrink: 0;
+    pointer-events: none;
+  }
 }
 
 .dark .search {

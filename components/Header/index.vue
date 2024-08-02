@@ -16,6 +16,10 @@ const toggleMenu = () => {
     unlock()
   }
 }
+const [isOpenSearch, toggleIsOpenSearch] = useToggle()
+const toggleSearch = (value: boolean) => {
+  toggleIsOpenSearch(value)
+}
 </script>
 
 <template>
@@ -27,7 +31,11 @@ const toggleMenu = () => {
           @click-handler="toggleMenu"
         />
         <HeaderNav />
-        <HeaderSearch />
+        <HeaderSearch @toggle-search="toggleSearch" />
+        <HeaderSearchMenu
+          :is-open="isOpenSearch"
+          @toggle-search="toggleSearch"
+        />
         <ClientOnly>
           <Button
             class="header-ask"
