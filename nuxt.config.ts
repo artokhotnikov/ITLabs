@@ -3,7 +3,10 @@ export default defineNuxtConfig({
   app: {
     pageTransition: { name: 'fade', mode: 'out-in' },
     head: {
-      meta: [{ name: 'yandex-verification', content: 'd9b6cb0a1d4d42c9' }],
+      meta: [
+        { name: 'yandex-verification', content: 'd9b6cb0a1d4d42c9' },
+        { name: 'zen-verification', content: 'Xu4iw98LvynrHGRkZ265C8qXVYEQO76X52dOoo49xrhmKOJXNtbPS5tywLTybXH6' }
+      ],
       script: [
         {
           children:
