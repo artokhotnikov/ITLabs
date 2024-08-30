@@ -158,7 +158,7 @@ onUnmounted(() => {
   &-arrow {
     width: 64px;
     height: 64px;
-    background: $bg-white-alpha-20;
+    background: $bg-dark;
     border-radius: 50%;
     display: flex;
     align-items: center;

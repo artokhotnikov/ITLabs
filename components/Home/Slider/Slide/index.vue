@@ -126,7 +126,7 @@ const onOpenModal = () => {
   }
 
   &-btn {
-    margin: auto 0 0;
+    // margin: auto 0 0;
     width: 250px;
     @media (max-width: $md4 + px) {
       margin: 32px 0 0;
