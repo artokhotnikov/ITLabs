@@ -5,7 +5,31 @@ export default defineNuxtConfig({
     head: {
       meta: [
         { name: 'yandex-verification', content: 'd9b6cb0a1d4d42c9' },
-        { name: 'zen-verification', content: 'Xu4iw98LvynrHGRkZ265C8qXVYEQO76X52dOoo49xrhmKOJXNtbPS5tywLTybXH6' }
+        {
+          name: 'zen-verification',
+          content:
+            'Xu4iw98LvynrHGRkZ265C8qXVYEQO76X52dOoo49xrhmKOJXNtbPS5tywLTybXH6'
+        },
+        {
+          name: 'og:image',
+          content: 'https://itlabs.top/img/og.png'
+        },
+        {
+          name: 'og:type',
+          content: 'website'
+        },
+        {
+          name: 'og:url',
+          content: 'https://itlabs.top'
+        },
+        {
+          name: 'og:title',
+          content: 'ITLabs - разработка программного обеспечения'
+        },
+        {
+          name: 'og:description',
+          content: 'ITLabs - разработка программного обеспечения'
+        }
       ],
       script: [
         {
