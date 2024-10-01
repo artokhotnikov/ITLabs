@@ -19,31 +19,33 @@ export const useContentStore = defineStore('contentStore', () => {
   }
 
   const getProjectCategories = async () => {
-    const data = await $api('/api/project_categories')
-    projectCategories.value = data as ProjectsCategory[]
+    const data = await $api<ProjectsCategory[]>('/api/project_categories')
+    projectCategories.value = data
   }
   const getProjectCategory = async (id: number) => {
-    const data = await $api(`/api/project_categories/${id}`)
-    return data as ProjectsCategory
+    const data = await $api<ProjectsCategory>(`/api/project_categories/${id}`)
+    return data
   }
   const getProjectCategoryBySlug = async (slug: string) => {
-    const data = await $api(`/project_categories/slug?slug=${slug}`)
-    return data as ProjectsCategory
+    const data = await $api<ProjectsCategory>(
+      `/project_categories/slug?slug=${slug}`
+    )
+    return data
   }
   const getProjects = async () => {
-    const data = await $api('/api/projects')
-    projects.value = data as Project[]
+    const data = await $api<Project[]>('/api/projects')
+    projects.value = data
   }
   const getProject = async (id: number) => {
-    const data = await $api(`/api/projects/${id}`)
-    return data as Project
+    const data = await $api<Project>(`/api/projects/${id}`)
+    return data
   }
   const getProjectBySlug = async (slug: string) => {
-    const data = await $api(`/projects/slug?slug=${slug}`)
-    return data as Project
+    const data = await $api<Project>(`/projects/slug?slug=${slug}`)
+    return data
   }
   const getHomeSlides = async () => {
-    const data: HomeSlide[] = await $api('/api/slider')
+    const data = await $api<HomeSlide[]>('/api/slider')
     const mappedData: HomeSlide[] = data.map((item) => ({
       ...item,
       media: URL + item.media
