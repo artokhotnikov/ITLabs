@@ -111,7 +111,7 @@ export default defineNuxtConfig({
     quality: 70,
     format: ['avif', 'webp'],
     domains: ['api.itlabs.top'],
-    densities: [1, 2, 3]
+    densities: [1, 2]
   },
   yandexMaps: {
     apikey: '3c893c7f-a06c-4af0-906f-79e9f2815e28'
