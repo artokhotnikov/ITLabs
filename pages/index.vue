@@ -9,9 +9,14 @@ useHead({
 
 <template>
   <div class="page page-main">
-    <ClientOnly>
-      <HomeSlider />
-    </ClientOnly>
+    <div class="page-slider">
+      <ClientOnly>
+        <HomeSlider />
+        <template #fallback>
+          <p>loading..</p>
+        </template>
+      </ClientOnly>
+    </div>
     <HomeCategories />
     <HomeProjects />
     <HomeStages />
@@ -22,4 +27,14 @@ useHead({
   </div>
 </template>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+@import '/assets/scss/variables';
+.page-slider {
+  height: 420px;
+  overflow: hidden;
+
+  @media (max-width: ($md4 + px)) {
+    height: 440px;
+  }
+}
+</style>
