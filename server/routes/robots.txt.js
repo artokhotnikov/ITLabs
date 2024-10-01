@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+
 export default defineEventHandler(async (event) => {
   event.node.res.setHeader('content-type', 'text-plain')
 

@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import projects from '~/data/projects'
 import { useContentStore } from '~/store/contentStore'
 
 definePageMeta({
@@ -43,7 +42,7 @@ const breadcrumbs = [
   &-title {
     color: $text-blue;
     margin: 0 0 40px;
-    @media (max-width: $md3 + px) {
+    @media (max-width: ($md3 + px)) {
       margin: 0 0 32px;
     }
   }
@@ -53,12 +52,12 @@ const breadcrumbs = [
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  @media (max-width: $md2 + px) {
+  @media (max-width: ($md2 + px)) {
     gap: 24px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
   }
-  @media (max-width: $md3 + px) {
+  @media (max-width: ($md3 + px)) {
     grid-template-columns: 1fr;
   }
 }
@@ -71,38 +70,38 @@ const breadcrumbs = [
     max-width: 440px;
   }
 
-  @media (max-width: $md1 + px) {
+  @media (max-width: ($md1 + px)) {
     max-width: 300px;
   }
-  @media (max-width: $md2 + px) {
+  @media (max-width: ($md2 + px)) {
     max-width: 100% !important;
   }
 }
 
 .project:nth-child(5n + 2) {
   max-width: 293px;
-  @media (max-width: $md1 + px) {
+  @media (max-width: ($md1 + px)) {
     max-width: 275px;
   }
 }
 
 .project:nth-child(5n + 3) {
   max-width: 500px;
-  @media (max-width: $md1 + px) {
+  @media (max-width: ($md1 + px)) {
     max-width: 280px;
   }
 }
 
 .project:nth-child(5n + 4) {
   max-width: 500px;
-  @media (max-width: $md1 + px) {
+  @media (max-width: ($md1 + px)) {
     max-width: 380px;
   }
 }
 
 .project:nth-child(5n + 5) {
   max-width: 708px;
-  @media (max-width: $md1 + px) {
+  @media (max-width: ($md1 + px)) {
     max-width: 496px;
   }
 }

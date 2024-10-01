@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type Project from '~/types/Projects/Project'
-import projects from '~/data/projects'
+// @ts-ignore
 import { Splide, SplideSlide, SplideTrack } from '@splidejs/vue-splide'
 import { useContentStore } from '~/store/contentStore'
 
@@ -55,10 +55,10 @@ const isVideoSlide = (slidePath: string): boolean =>
 onMounted(async () => {
   await nextTick(async () => {
     project.value = await contentStore.getProjectBySlug(route.params.slug)
-    if ('title' in project.value) {
-      title.value = project.value.title
+    if (project.value && 'title' in project.value) {
+      title.value = project.value.title!
       breadcrumbs.value.push({
-        title: project.value.title,
+        title: project.value.title!,
         path: `projects/${route.params.slug}`
       })
     }
@@ -138,7 +138,10 @@ onMounted(async () => {
                     :key="slide"
                   >
                     <div class="slide" @click="openView(index)">
-                      <div v-if="isVideoSlide(slide.media!)" class="slide-video">
+                      <div
+                        v-if="isVideoSlide(slide.media!)"
+                        class="slide-video"
+                      >
                         <img
                           :src="contentStore.URL + slide.image"
                           alt="Результат"
@@ -198,14 +201,14 @@ onMounted(async () => {
 }
 
 .project {
-  @media (min-width: $md1 + px) {
+  @media (min-width: ($md1 + px)) {
     max-width: 812px;
     margin: 0 auto;
   }
 
   &-img {
     @include img;
-    @media (max-width: $md3 + px) {
+    @media (max-width: ($md3 + px)) {
       & + .project-subtitle {
         text-transform: uppercase;
       }
@@ -215,14 +218,14 @@ onMounted(async () => {
   &-subtitle {
     margin: 40px 0 0;
     color: $text-secondary;
-    @media (max-width: $md3 + px) {
+    @media (max-width: ($md3 + px)) {
       margin: 32px 0 0;
     }
   }
 
   &-section {
     margin: 40px 0 0;
-    @media (max-width: $md3 + px) {
+    @media (max-width: ($md3 + px)) {
       margin: 64px 0 0;
     }
   }
@@ -241,7 +244,7 @@ onMounted(async () => {
       flex-basis: 50%;
     }
 
-    @media (max-width: $md3 + px) {
+    @media (max-width: ($md3 + px)) {
       margin: 32px 0 0;
       flex-direction: column;
       gap: 16px;
@@ -289,10 +292,10 @@ onMounted(async () => {
   overflow: hidden;
   cursor: pointer;
 
-  @media (max-width: $md1 + px) {
+  @media (max-width: ($md1 + px)) {
     width: 199px;
   }
-  @media (max-width: $md2 + px) {
+  @media (max-width: ($md2 + px)) {
     width: 100%;
   }
 
@@ -336,7 +339,7 @@ onMounted(async () => {
     inset: 0;
   }
 
-  @media (min-width: $md2 + px) {
+  @media (min-width: ($md2 + px)) {
     &:hover {
       .slide-photo:before,
       .slide-video:before,
@@ -417,7 +420,7 @@ onMounted(async () => {
       height: 36px;
     }
 
-    @media (max-width: $md3 + px) {
+    @media (max-width: ($md3 + px)) {
       width: 32px;
       height: 32px;
       top: 20px;
@@ -436,7 +439,7 @@ onMounted(async () => {
     display: flex;
     align-items: center;
     justify-content: center;
-    @media (max-width: $md3 + px) {
+    @media (max-width: ($md3 + px)) {
       aspect-ratio: 9/16;
       max-height: 100dvh;
     }
@@ -448,7 +451,7 @@ onMounted(async () => {
       object-fit: contain;
     }
 
-    @media (max-width: $md3 + px) {
+    @media (max-width: ($md3 + px)) {
       img,
       video {
         height: auto;
@@ -470,7 +473,7 @@ onMounted(async () => {
     top: 50%;
     transform: translateY(-50%);
     cursor: pointer;
-    @media (max-width: $md3 + px) {
+    @media (max-width: ($md3 + px)) {
       width: 32px;
       height: 32px;
       svg {
@@ -482,14 +485,14 @@ onMounted(async () => {
 
   &-arrow-prev {
     left: 40px;
-    @media (max-width: $md3 + px) {
+    @media (max-width: ($md3 + px)) {
       left: 10px;
     }
   }
 
   &-arrow-next {
     right: 40px;
-    @media (max-width: $md3 + px) {
+    @media (max-width: ($md3 + px)) {
       right: 10px;
     }
   }

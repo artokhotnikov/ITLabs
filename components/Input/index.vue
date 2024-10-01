@@ -11,8 +11,12 @@ interface InputProps {
   rules?: any
   maska?: string
 }
+type InputEmits = {
+  (eventName: 'update:modelValue', value: string): void
+}
 
 const props = defineProps<InputProps>()
+const emits = defineEmits<InputEmits>()
 
 const { value, errorMessage } = useField(() => props.name, props.rules)
 const options = reactive<MaskInputOptions>({
@@ -34,7 +38,7 @@ defineExpose({
       :type="type || 'text'"
       :placeholder="placeholder"
       :disabled="disabled"
-      @input="$emit('update:modelValue', value)"
+      @input="$emit('update:modelValue', value as string)"
     />
     <p class="input-error">
       {{ errorMessage }}

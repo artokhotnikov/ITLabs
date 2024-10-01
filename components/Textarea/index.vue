@@ -17,7 +17,7 @@ const { value, errorMessage } = useField(() => props.name)
 <template>
   <div :class="['textarea', color]">
     <textarea
-      v-model="value"
+      v-model="value as string"
       class="textarea-field"
       :placeholder="placeholder"
       autocomplete="on"

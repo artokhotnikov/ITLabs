@@ -23,7 +23,8 @@ module.exports = {
     'no-var': ['error'],
     'vue/no-v-html': 'off',
     ident: 'off',
-    'prettier/prettier': ['error', { endOfLine: 'auto' }]
+    'prettier/prettier': ['error', { endOfLine: 'auto' }],
+    '@typescript-eslint/no-unused-vars': 'off',
+    'vue/attributes-order': 'off'
   }
 }
-

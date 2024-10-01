@@ -32,14 +32,14 @@ const router = useRouter()
     flex-wrap: wrap;
     justify-content: center;
     gap: 16px;
-    @media (max-width: $md4 + px) {
+    @media (max-width: ($md4 + px)) {
       flex-direction: column;
     }
   }
 
   &-btn {
     margin: 32px auto 0;
-    @media (max-width: $md2 + px) {
+    @media (max-width: ($md2 + px)) {
       width: 100%;
     }
   }
