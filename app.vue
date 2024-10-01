@@ -2,7 +2,11 @@
 import { useContentStore } from '~/store/contentStore'
 
 const contentStore = useContentStore()
-onMounted(async () => await contentStore.init())
+await useAsyncData('projectCategories', () =>
+  contentStore.getProjectCategories()
+)
+await useAsyncData('projects', () => contentStore.getProjects())
+await useAsyncData('homeSlides', () => contentStore.getHomeSlides())
 </script>
 <template>
   <NuxtLayout>

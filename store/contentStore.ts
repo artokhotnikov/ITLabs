@@ -12,12 +12,6 @@ export const useContentStore = defineStore('contentStore', () => {
   const projects = ref<Project[]>([])
   const homeSlides = ref<HomeSlide[]>([])
 
-  const init = async () => {
-    await getProjectCategories()
-    await getProjects()
-    await getHomeSlides()
-  }
-
   const getProjectCategories = async () => {
     const data = await $api<ProjectsCategory[]>('/api/project_categories')
     projectCategories.value = data
@@ -65,7 +59,6 @@ export const useContentStore = defineStore('contentStore', () => {
     getProjects,
     getProject,
     getProjectBySlug,
-    getHomeSlides,
-    init
+    getHomeSlides
   }
 })
