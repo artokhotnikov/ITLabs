@@ -7,6 +7,7 @@ import type HomeSlide from '~/types/HomeSlide'
 export const useContentStore = defineStore('contentStore', () => {
   const config = useRuntimeConfig()
   const URL = config.public.API
+  const { $api } = useNuxtApp()
   const projectCategories = ref<ProjectsCategory[]>([])
   const projects = ref<Project[]>([])
   const homeSlides = ref<HomeSlide[]>([])
@@ -18,31 +19,31 @@ export const useContentStore = defineStore('contentStore', () => {
   }
 
   const getProjectCategories = async () => {
-    const data = await $fetch(URL + '/api/project_categories')
+    const data = await $api('/api/project_categories')
     projectCategories.value = data as ProjectsCategory[]
   }
   const getProjectCategory = async (id: number) => {
-    const data = await $fetch(URL + `/api/project_categories/${id}`)
+    const data = await $api(`/api/project_categories/${id}`)
     return data as ProjectsCategory
   }
   const getProjectCategoryBySlug = async (slug: string) => {
-    const data = await $fetch(URL + `/project_categories/slug?slug=${slug}`)
+    const data = await $api(`/project_categories/slug?slug=${slug}`)
     return data as ProjectsCategory
   }
   const getProjects = async () => {
-    const data = await $fetch(URL + '/api/projects')
+    const data = await $api('/api/projects')
     projects.value = data as Project[]
   }
   const getProject = async (id: number) => {
-    const data = await $fetch(URL + `/api/projects/${id}`)
+    const data = await $api(`/api/projects/${id}`)
     return data as Project
   }
   const getProjectBySlug = async (slug: string) => {
-    const data = await $fetch(URL + `/projects/slug?slug=${slug}`)
+    const data = await $api(`/projects/slug?slug=${slug}`)
     return data as Project
   }
   const getHomeSlides = async () => {
-    const data: HomeSlide[] = await $fetch(URL + '/api/slider')
+    const data: HomeSlide[] = await $api('/api/slider')
     const mappedData: HomeSlide[] = data.map((item) => ({
       ...item,
       media: URL + item.media
