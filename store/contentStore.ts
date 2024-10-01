@@ -15,6 +15,7 @@ export const useContentStore = defineStore('contentStore', () => {
   const getProjectCategories = async () => {
     const data = await $api<ProjectsCategory[]>('/api/project_categories')
     projectCategories.value = data
+    return data
   }
   const getProjectCategory = async (id: number) => {
     const data = await $api<ProjectsCategory>(`/api/project_categories/${id}`)
@@ -29,6 +30,7 @@ export const useContentStore = defineStore('contentStore', () => {
   const getProjects = async () => {
     const data = await $api<Project[]>('/api/projects')
     projects.value = data
+    return data
   }
   const getProject = async (id: number) => {
     const data = await $api<Project>(`/api/projects/${id}`)
