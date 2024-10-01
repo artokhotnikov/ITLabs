@@ -102,12 +102,16 @@ export default defineNuxtConfig({
   image: {
     // The screen sizes predefined by `@nuxt/image`:
     screens: {
-      xs: 420,
+      xs: 320,
       sm: 440,
       md: 768,
       lg: 960,
       xl: 1260
-    }
+    },
+    quality: 70,
+    format: ['avif', 'webp'],
+    domains: ['api.itlabs.top'],
+    densities: [1, 2, 3]
   },
   yandexMaps: {
     apikey: '3c893c7f-a06c-4af0-906f-79e9f2815e28'

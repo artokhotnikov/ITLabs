@@ -38,7 +38,7 @@ const options = {
     max-height: 420px;
     border-radius: 40px;
     overflow: hidden;
-    @media (max-width: $md4 + px) {
+    @media (max-width: ($md4 + px)) {
       border-radius: 20px;
       max-height: 440px;
     }
@@ -52,7 +52,7 @@ const options = {
   gap: 8px;
   justify-content: flex-start;
   padding: 0;
-  @media (max-width: $md4 + px) {
+  @media (max-width: ($md4 + px)) {
     left: 32px;
     bottom: 32px;
   }
@@ -72,7 +72,7 @@ const options = {
     transform: scale(1);
   }
 
-  @media (max-width: $md4 + px) {
+  @media (max-width: ($md4 + px)) {
     width: 14px;
     &.is-active {
       width: 44px;

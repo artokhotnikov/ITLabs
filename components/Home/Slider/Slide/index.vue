@@ -1,4 +1,5 @@
 <script setup lang="ts">
+// @ts-ignore
 import { SplideSlide } from '@splidejs/vue-splide'
 import type HomeSlide from '~/types/HomeSlide'
 import { useModalsStore } from '~/store/modalsStore'
@@ -18,7 +19,7 @@ const sm = computed(() => width.value <= 768)
 const onOpenModal = () => {
   modalsStore.open('specialist')
   setTimeout(() => {
-    const formSpecialist: HTMLFormElement = document.querySelector(
+    const formSpecialist: HTMLFormElement | null = document.querySelector(
       '#callSpecialistForm'
     )
     if (formSpecialist) {
@@ -69,7 +70,7 @@ const onOpenModal = () => {
   position: relative;
   height: 100%;
 
-  @media (max-width: $md4 + px) {
+  @media (max-width: ($md4 + px)) {
     padding: 64px 32px;
     height: 440px;
     display: flex;
@@ -102,7 +103,7 @@ const onOpenModal = () => {
 
     &-md {
       margin: 0 0 40px;
-      @media (max-width: $md4 + px) {
+      @media (max-width: ($md4 + px)) {
         margin: 0 0 32px;
       }
     }
@@ -110,7 +111,7 @@ const onOpenModal = () => {
 
   .title {
     margin: 16px 0;
-    @media (max-width: $md4 + px) {
+    @media (max-width: ($md4 + px)) {
       margin: 8px 0;
     }
   }
@@ -120,7 +121,7 @@ const onOpenModal = () => {
     height: 100%;
     display: flex;
     flex-direction: column;
-    @media (max-width: $md2 + px) {
+    @media (max-width: ($md2 + px)) {
       max-width: 370px;
     }
   }
@@ -128,7 +129,7 @@ const onOpenModal = () => {
   &-btn {
     // margin: auto 0 0;
     width: 250px;
-    @media (max-width: $md4 + px) {
+    @media (max-width: ($md4 + px)) {
       margin: 32px 0 0;
       width: 190px;
     }

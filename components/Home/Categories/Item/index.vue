@@ -20,11 +20,7 @@ const contentStore = useContentStore()
       </div>
     </div>
     <div class="item-img">
-      <img
-        :src="contentStore.URL + item.image"
-        :alt="item.title"
-        loading="lazy"
-      />
+      <NuxtPicture :src="contentStore.URL + item.image" :alt="item.title" />
     </div>
   </div>
 </template>
@@ -68,12 +64,12 @@ const contentStore = useContentStore()
     width: 150px;
     flex-shrink: 0;
 
-    img {
+    :deep(img) {
       width: 100%;
     }
   }
 
-  @media (min-width: $md2 + px) {
+  @media (min-width: ($md2 + px)) {
     &:nth-child(1) {
       flex-basis: 300px;
     }
@@ -100,7 +96,7 @@ const contentStore = useContentStore()
     }
   }
 
-  @media (min-width: $md3 + px) {
+  @media (min-width: ($md3 + px)) {
     &:hover {
       background: none;
 
@@ -114,7 +110,7 @@ const contentStore = useContentStore()
       }
     }
   }
-  @media (max-width: $md3 + px) {
+  @media (max-width: ($md3 + px)) {
     flex: 1 1 40%;
   }
 }
