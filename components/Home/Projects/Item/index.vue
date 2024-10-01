@@ -20,13 +20,16 @@ const { URL } = useContentStore()
 
 <template>
   <div class="item">
-    <input :id="item.id" type="radio" name="slide" :checked="active === idx" />
-    <label
-      :for="item.id"
-      class="card"
-      :style="{ backgroundImage: 'url(' + URL + item.imageCard + ')' }"
-      @mouseenter="onMouseEnter"
-    >
+    <div class="item-img">
+      <NuxtPicture :src="URL + item.imageCard" :alt="item.title" />
+    </div>
+    <input
+      :id="String(item.id)"
+      type="radio"
+      name="slide"
+      :checked="active === idx"
+    />
+    <label :for="String(item.id)" class="card" @mouseenter="onMouseEnter">
       <span class="description">
         <span class="card-subtitle text text-md">{{ item.type }}</span>
         <span class="title title-xs">{{ item.title }}</span>
@@ -45,6 +48,30 @@ const { URL } = useContentStore()
 <style scoped lang="scss">
 @import '/assets/scss/variables';
 
+.item {
+  position: relative;
+  border-radius: 40px;
+  overflow: hidden;
+  @media (max-width: 959px) {
+    border-radius: 16px;
+  }
+  &-img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    :deep(img) {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      object-fit: cover;
+    }
+  }
+}
+
 span {
   display: block;
 }
@@ -52,7 +79,6 @@ span {
 .card {
   height: 100%;
   padding: 40px 17px;
-  border-radius: 40px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -62,15 +88,11 @@ span {
   overflow: hidden;
   transition: 0.6s cubic-bezier(0.28, -0.03, 0, 0.99);
   flex-grow: 1;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
   position: relative;
   @media (max-width: 959px) {
     padding: 24px 24px 17px;
     width: 100%;
     height: 84px;
-    border-radius: 16px;
   }
 
   &:before {
@@ -141,7 +163,7 @@ span {
   transition: all 0.3s ease;
   position: relative;
   max-width: 60%;
-  @media (max-width: $md3 + px) {
+  @media (max-width: ($md3 + px)) {
     max-width: 240px;
   }
 }
@@ -154,7 +176,7 @@ input:checked {
   & + .card {
     padding: 40px;
     width: 812px;
-    @media (max-width: $md1 + px) {
+    @media (max-width: ($md1 + px)) {
       width: 480px;
     }
     @media (max-width: 959px) {
