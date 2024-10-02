@@ -4,30 +4,30 @@
   max-width: 1228px;
   margin: 0 auto;
   width: 100%;
-  @media (max-width: $md1 + px) {
+  @media (max-width: ($md1 + px)) {
     max-width: 896px;
   }
-  @media (max-width: $md2 + px) {
+  @media (max-width: ($md2 + px)) {
     max-width: 100%;
     padding: 0 32px;
   }
-  @media (max-width: $md3 + px) {
+  @media (max-width: ($md3 + px)) {
     padding: 0 16px;
   }
-  @media (max-width: $md4 + px) {
+  @media (max-width: ($md4 + px)) {
   }
 }
 
 .section {
   padding: 60px 0;
-  @media (max-width: $md3 + px) {
+  @media (max-width: ($md3 + px)) {
     padding: 32px 0;
   }
 }
 
 .section-md {
   padding: 40px 0;
-  @media (max-width: $md3 + px) {
+  @media (max-width: ($md3 + px)) {
     padding: 32px 0;
   }
 }

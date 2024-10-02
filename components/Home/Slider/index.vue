@@ -18,15 +18,13 @@ const options = {
 
 <template>
   <div v-if="contentStore.homeSlides.length" class="splider">
-    <div class="container">
-      <Splide ref="splide" class="splider-slider" :options="options">
-        <HomeSliderSlide
-          v-for="slide in contentStore.homeSlides"
-          :key="slide.id"
-          :slide="slide"
-        />
-      </Splide>
-    </div>
+    <Splide ref="splide" class="splider-slider" :options="options">
+      <HomeSliderSlide
+        v-for="slide in contentStore.homeSlides"
+        :key="slide.id"
+        :slide="slide"
+      />
+    </Splide>
   </div>
 </template>
 

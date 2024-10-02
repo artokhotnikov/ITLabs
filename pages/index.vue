@@ -9,13 +9,17 @@ useHead({
 
 <template>
   <div class="page page-main">
-    <div class="page-slider">
-      <ClientOnly>
-        <HomeSlider />
-        <template #fallback>
-          <p>loading..</p>
-        </template>
-      </ClientOnly>
+    <div class="container">
+      <div class="page-slider">
+        <ClientOnly>
+          <HomeSlider />
+          <template #fallback>
+            <div class="page-slider-skeleton">
+              <Skeleton />
+            </div>
+          </template>
+        </ClientOnly>
+      </div>
     </div>
     <HomeCategories />
     <HomeProjects />
@@ -35,6 +39,10 @@ useHead({
 
   @media (max-width: ($md4 + px)) {
     height: 440px;
+  }
+
+  &-skeleton {
+    height: 100%;
   }
 }
 </style>
