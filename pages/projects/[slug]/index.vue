@@ -4,24 +4,14 @@ import type Project from '~/types/Projects/Project'
 import { Splide, SplideSlide, SplideTrack } from '@splidejs/vue-splide'
 import { useContentStore } from '~/store/contentStore'
 
-const title = ref('Проект')
-definePageMeta({
-  title: 'Проект'
-})
-useHead({
-  title
-})
+const title = ref('')
 
-const breadcrumbs = ref([
-  {
-    title: 'Проекты',
-    path: 'projects'
-  }
-])
+const route = useRoute()
+const slug = route.params.slug
 
 const contentStore = useContentStore()
 const { isOpen, open } = useOpen()
-const route = useRoute()
+
 const project = ref<Project>()
 const currentViewIndex = ref(0)
 const openView = (index: number) => {
@@ -49,21 +39,25 @@ const options = {
   }
 }
 
+const { data } = await useAsyncData<Project>('project', () =>
+  contentStore.getProjectBySlug(slug)
+)
+project.value = data.value!
+title.value = project.value.title!
+
+const breadcrumbs = [
+  {
+    title: 'Проекты',
+    path: 'projects'
+  },
+  { title: title.value, path: `projects/${slug}` }
+]
+
 const isVideoSlide = (slidePath: string): boolean =>
   slidePath.includes('.mp4') || slidePath.includes('.webm')
 
-onMounted(async () => {
-  await nextTick(async () => {
-    project.value = await contentStore.getProjectBySlug(route.params.slug)
-    if (project.value && 'title' in project.value) {
-      title.value = project.value.title!
-      breadcrumbs.value.push({
-        title: project.value.title!,
-        path: `projects/${route.params.slug}`
-      })
-    }
-  })
-  // project.value = projects.find((pr) => pr.id === +route.params.id)
+useHead({
+  title
 })
 </script>
 
@@ -73,7 +67,7 @@ onMounted(async () => {
       <Breadcrumbs :breadcrumbs="breadcrumbs" />
       <section v-if="project" class="project">
         <div class="project-img">
-          <img
+          <NuxtPicture
             :src="contentStore.URL + project.imageMain"
             :alt="project.title"
           />
@@ -151,10 +145,11 @@ onMounted(async () => {
                         </div>
                       </div>
                       <div v-else class="slide-photo">
-                        <img
+                        <NuxtPicture
                           :src="contentStore.URL + slide.media"
                           alt="Результат"
                         />
+
                         <div class="slide-icon">
                           <IconsEye />
                         </div>
@@ -207,7 +202,9 @@ onMounted(async () => {
   }
 
   &-img {
-    @include img;
+    :deep(img) {
+      width: 100%;
+    }
     @media (max-width: ($md3 + px)) {
       & + .project-subtitle {
         text-transform: uppercase;
@@ -284,13 +281,22 @@ onMounted(async () => {
 }
 
 .slide {
-  @include ibg;
   width: 178px;
   aspect-ratio: 1 / 1;
   height: 100%;
   border-radius: 20px;
   overflow: hidden;
   cursor: pointer;
+  position: relative;
+
+  :deep(img) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 
   @media (max-width: ($md1 + px)) {
     width: 199px;
