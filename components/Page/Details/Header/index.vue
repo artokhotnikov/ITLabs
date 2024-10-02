@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { VideoPlayer } from '@videojs-player/vue'
 import { useContentStore } from '~/store/contentStore'
 import { useModalsStore } from '~/store/modalsStore'
 import type GalleryItem from '~/types/GalleryItem'
+// @ts-ignore
 import { Splide, SplideSlide, SplideTrack } from '@splidejs/vue-splide'
 
 interface DetailsHeaderProps {
@@ -47,38 +47,37 @@ const options = {
     v-html="title"
   />
   <div class="details-header">
-    <div v-if="images?.length" class="details-images">
-      <Splide
-        ref="splide"
-        class="splider-slider"
-        :options="options"
-        :has-track="false"
-      >
-        <SplideTrack>
-          <SplideSlide v-for="(slide, index) in images" :key="slide.id">
-            <div class="slide" @click="openView(index)">
-              <img :src="URL + slide.media" alt="Image" />
-            </div>
-          </SplideSlide>
-        </SplideTrack>
-        <div class="splide__arrows">
-          <button class="splide__arrow splide__arrow--prev">
-            <IconsArrowLeft />
-          </button>
-          <button class="splide__arrow splide__arrow--next">
-            <IconsArrowRight />
-          </button>
+    <ClientOnly>
+      <div v-if="images?.length" class="details-images">
+        <Splide
+          ref="splide"
+          class="splider-slider"
+          :options="options"
+          :has-track="false"
+        >
+          <SplideTrack>
+            <SplideSlide v-for="(slide, index) in images" :key="slide.id">
+              <div class="slide" @click="openView(index)">
+                <NuxtPicture :src="URL + slide.media" alt="Image" />
+              </div>
+            </SplideSlide>
+          </SplideTrack>
+          <div class="splide__arrows">
+            <button class="splide__arrow splide__arrow--prev">
+              <IconsArrowLeft />
+            </button>
+            <button class="splide__arrow splide__arrow--next">
+              <IconsArrowRight />
+            </button>
+          </div>
+        </Splide>
+      </div>
+      <template #fallback>
+        <div class="details-images">
+          <Skeleton />
         </div>
-      </Splide>
-    </div>
-    <div v-if="video && !images?.length" class="details-video">
-      <video-player
-        :src="URL + video"
-        :poster="URL + videoPoster"
-        controls
-        fluid
-      />
-    </div>
+      </template>
+    </ClientOnly>
     <div class="details-description">
       <h1
         v-if="title"
@@ -128,53 +127,54 @@ const options = {
     display: flex;
     gap: 64px;
     justify-content: space-between;
-    align-items: flex-start;
-    @media (max-width: $md2 + px) {
+    // align-items: flex-start;
+    @media (max-width: ($md2 + px)) {
       flex-direction: column;
     }
-    @media (max-width: $md3 + px) {
+    @media (max-width: ($md3 + px)) {
       gap: 40px;
     }
   }
 
-  &-video,
   &-images {
-    border-radius: 16px;
-    overflow: hidden;
     position: relative;
+    max-height: 420px;
+    border-radius: 40px;
+    overflow: hidden;
 
-    @media (min-width: $md2 + px) {
+    @media (min-width: ($md2 + px)) {
       flex: 0 1 604px;
     }
 
-    @media (max-width: $md2 + px) {
+    @media (max-width: ($md2 + px)) {
       border-radius: 20px;
       width: 100%;
     }
-    @media (max-width: $md4 + px) {
-      border-radius: 8px;
+    @media (max-width: ($md4 + px)) {
+      border-radius: 20px;
+      max-height: 440px;
     }
   }
 
   &-images {
-    @media (min-width: $md2 + px) {
+    @media (min-width: ($md2 + px)) {
       flex: 1 1 604px;
     }
-    @media (max-width: $md2 + px) {
+    @media (max-width: ($md2 + px)) {
       max-width: 750px;
       margin: 0 auto;
     }
   }
 
   &-description {
-    @media (min-width: $md2 + px) {
+    @media (min-width: ($md2 + px)) {
       flex: 0 1 395px;
     }
-    @media (max-width: $md2 + px) {
+    @media (max-width: ($md2 + px)) {
       text-align: center;
       margin: 0 auto;
     }
-    @media (max-width: $md4 + px) {
+    @media (max-width: ($md4 + px)) {
       text-align: left;
     }
   }
@@ -184,7 +184,7 @@ const options = {
 
     &-lg {
       display: none;
-      @media (min-width: $md2 + px) {
+      @media (min-width: ($md2 + px)) {
         display: block;
         margin: 0 0 40px;
       }
@@ -192,7 +192,7 @@ const options = {
 
     &-md {
       display: none;
-      @media (max-width: $md2 + px) {
+      @media (max-width: ($md2 + px)) {
         display: block;
         margin: 0 0 12px;
       }
@@ -202,14 +202,14 @@ const options = {
   &-subtitle {
     color: $text-secondary;
     margin: 0 0 40px;
-    @media (max-width: $md3 + px) {
+    @media (max-width: ($md3 + px)) {
       margin: 0 0 24px;
     }
   }
 
   &-text {
     color: $text-third;
-    @media (max-width: $md2 + px) {
+    @media (max-width: ($md2 + px)) {
       max-width: 600px;
       margin: 0 auto;
     }
@@ -219,10 +219,10 @@ const options = {
     margin: 40px 0 0;
     max-width: 290px;
     width: 100%;
-    @media (max-width: $md2 + px) {
+    @media (max-width: ($md2 + px)) {
       margin: 40px auto 0;
     }
-    @media (max-width: $md4 + px) {
+    @media (max-width: ($md4 + px)) {
       margin: 40px 0 0;
       max-width: 100%;
     }
@@ -231,13 +231,6 @@ const options = {
 
 .splider {
   &-slider {
-    max-height: 420px;
-    border-radius: 40px;
-    overflow: hidden;
-    @media (max-width: $md4 + px) {
-      border-radius: 20px;
-      max-height: 440px;
-    }
   }
 }
 
@@ -247,16 +240,16 @@ const options = {
   overflow: hidden;
   height: 100%;
   cursor: pointer;
-  @media (max-width: $md4 + px) {
+  @media (max-width: ($md4 + px)) {
     max-height: 440px;
   }
 
-  img {
+  :deep(img) {
     border-radius: 40px;
     max-width: 100%;
     max-height: 100%;
     aspect-ratio: 16/9;
-    @media (max-width: $md4 + px) {
+    @media (max-width: ($md4 + px)) {
       border-radius: 20px;
     }
   }
