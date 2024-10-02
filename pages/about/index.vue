@@ -23,7 +23,7 @@ const openHH = () => {
     <div class="container">
       <Breadcrumbs :breadcrumbs="breadcrumbs" />
       <div class="about-img">
-        <img src="/img/about_page/main.png" alt="О компании" />
+        <NuxtPicture src="/img/about_page/main.png" alt="О компании" />
       </div>
       <h1 class="about-title title title-s">
         ITL Лаборатория Информационных технологий
@@ -130,10 +130,13 @@ const openHH = () => {
 
 .about {
   &-img {
-    @include img;
     max-width: 1020px;
     margin: 0 auto 40px;
-    @media (max-width: $md3 + px) {
+
+    :deep(img) {
+      width: 100%;
+    }
+    @media (max-width: ($md3 + px)) {
       margin: 0 auto 64px;
     }
   }
@@ -144,7 +147,7 @@ const openHH = () => {
 
   &-subtitle {
     margin: 0 0 40px;
-    @media (max-width: $md3 + px) {
+    @media (max-width: ($md3 + px)) {
       font-weight: 700;
       margin: 0 0 32px;
     }
@@ -155,7 +158,7 @@ const openHH = () => {
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
     margin: 0 0 65px;
-    @media (max-width: $md3 + px) {
+    @media (max-width: ($md3 + px)) {
       grid-template-columns: 1fr;
       gap: 16px;
       margin: 0 0 32px;
