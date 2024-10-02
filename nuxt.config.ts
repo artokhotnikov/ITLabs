@@ -4,6 +4,9 @@ export default defineNuxtConfig({
   app: {
     pageTransition: { name: 'fade', mode: 'out-in' },
     head: {
+      htmlAttrs: {
+        lang: 'ru'
+      },
       meta: [
         { name: 'yandex-verification', content: 'd9b6cb0a1d4d42c9' },
         {
