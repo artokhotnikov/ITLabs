@@ -33,7 +33,7 @@ import clients from '~/data/clients'
     gap: 64px;
     justify-content: center;
     align-items: center;
-    @media (max-width: $md3 + px) {
+    @media (max-width: ($md3 + px)) {
       gap: 32px;
     }
   }
@@ -46,7 +46,7 @@ import clients from '~/data/clients'
   display: flex;
   align-items: center;
   justify-content: center;
-  @media (max-width: $md3 + px) {
+  @media (max-width: ($md3 + px)) {
     max-width: 150px;
     &:nth-child(7) {
       max-width: 196px;

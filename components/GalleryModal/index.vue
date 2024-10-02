@@ -30,12 +30,12 @@ const closeView = () => {
 const nextView = () => {
   if (currentViewIndex.value + 1 === props.gallery.length) return
   currentViewIndex.value = currentViewIndex.value + 1
-  currentView.value = props.gallery[currentViewIndex.value].media
+  currentView.value = props.gallery[currentViewIndex.value].media!
 }
 const prevView = () => {
   if (currentViewIndex.value === 0) return
   currentViewIndex.value = currentViewIndex.value - 1
-  currentView.value = props.gallery[currentViewIndex.value].media
+  currentView.value = props.gallery[currentViewIndex.value].media!
 }
 
 const isVideoSlide = (slidePath: string): boolean =>
@@ -43,7 +43,7 @@ const isVideoSlide = (slidePath: string): boolean =>
 
 onMounted(() => {
   currentViewIndex.value = props.index
-  currentView.value = props.gallery[currentViewIndex.value].media
+  currentView.value = props.gallery[currentViewIndex.value].media!
   lock()
 })
 
@@ -64,10 +64,9 @@ onUnmounted(() => {
         controls
         fill
       />
-      <img
+      <NuxtPicture
         v-else
         :src="local ? currentView : URL + currentView"
-        loading="lazy"
         alt="Результат"
       />
     </div>
@@ -113,7 +112,7 @@ onUnmounted(() => {
       height: 36px;
     }
 
-    @media (max-width: $md3 + px) {
+    @media (max-width: ($md3 + px)) {
       width: 32px;
       height: 32px;
       top: 20px;
@@ -134,20 +133,21 @@ onUnmounted(() => {
     justify-content: center;
     position: relative;
     z-index: 6;
-    @media (max-width: $md3 + px) {
+    @media (max-width: ($md3 + px)) {
       aspect-ratio: 9/16;
       max-height: 100dvh;
     }
 
-    img,
+    :deep(picture),
+    :deep(img),
     video {
       width: 100%;
       height: 100%;
       object-fit: contain;
     }
 
-    @media (max-width: $md3 + px) {
-      img,
+    @media (max-width: ($md3 + px)) {
+      :deep(img),
       video {
         height: auto;
         max-height: 100dvh;
@@ -169,7 +169,7 @@ onUnmounted(() => {
     transform: translateY(-50%);
     cursor: pointer;
     z-index: 6;
-    @media (max-width: $md3 + px) {
+    @media (max-width: ($md3 + px)) {
       width: 32px;
       height: 32px;
       svg {
@@ -181,14 +181,14 @@ onUnmounted(() => {
 
   &-arrow-prev {
     left: 40px;
-    @media (max-width: $md3 + px) {
+    @media (max-width: ($md3 + px)) {
       left: 10px;
     }
   }
 
   &-arrow-next {
     right: 40px;
-    @media (max-width: $md3 + px) {
+    @media (max-width: ($md3 + px)) {
       right: 10px;
     }
   }

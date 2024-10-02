@@ -19,7 +19,7 @@ const gallery = computed(() => reviews.map((item) => item.image))
     <div class="reviews-list">
       <div v-for="(review, index) in reviews" :key="review.id" class="review">
         <div class="review-img" @click="openGallery(index)">
-          <img :src="review.image.image" alt="" />
+          <NuxtPicture :src="review.image.image!" :alt="review.title" />
           <div class="review-icon">
             <IconsEye />
           </div>
@@ -72,7 +72,7 @@ const gallery = computed(() => reviews.map((item) => item.image))
     gap: 20px;
     max-width: 1020px;
     margin: 0 auto;
-    @media (max-width: $md1 + px) {
+    @media (max-width: ($md1 + px)) {
       max-width: 100%;
       overflow-x: auto;
       overflow-y: visible;
@@ -89,10 +89,12 @@ const gallery = computed(() => reviews.map((item) => item.image))
   cursor: pointer;
 
   &-img {
-    @include img;
     border-radius: 16px;
     overflow: hidden;
     position: relative;
+    :deep(img) {
+      width: 100%;
+    }
   }
 
   &-icon {
@@ -119,7 +121,7 @@ const gallery = computed(() => reviews.map((item) => item.image))
     text-align: left;
   }
 
-  @media (min-width: $md2 + px) {
+  @media (min-width: ($md2 + px)) {
     &:hover {
       background: $bg-white;
     }
