@@ -147,6 +147,7 @@ onUnmounted(() => {
     }
 
     @media (max-width: ($md3 + px)) {
+      :deep(picture),
       :deep(img),
       video {
         height: auto;

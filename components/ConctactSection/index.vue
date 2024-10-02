@@ -18,7 +18,7 @@
           </div>
         </div>
         <div class="contact-img">
-          <img src="@/assets/img/callback.png" alt="" />
+          <NuxtPicture src="img/callback.png" alt="Вопросы?" />
         </div>
       </div>
     </div>
@@ -44,7 +44,7 @@
 .contact {
   padding: 160px 0;
   overflow: hidden;
-  @media (max-width: $md2 + px) {
+  @media (max-width: ($md2 + px)) {
     padding: 45px 0;
     text-align: center;
   }
@@ -60,7 +60,7 @@
     display: flex;
     gap: 20px;
     color: $text-secondary;
-    @media (max-width: $md2 + px) {
+    @media (max-width: ($md2 + px)) {
       flex-direction: column;
       justify-content: center;
       align-items: center;
@@ -70,10 +70,12 @@
   }
 
   &-img {
-    @include img;
     max-width: 320px;
     display: none;
-    @media (min-width: $md2 + px) {
+    :deep(img) {
+      width: 100%;
+    }
+    @media (min-width: ($md2 + px)) {
       display: block;
       max-width: 604px;
       position: absolute;
@@ -81,7 +83,7 @@
       top: -167px;
     }
 
-    @media (min-width: $md1 + px) {
+    @media (min-width: ($md1 + px)) {
       right: 0;
     }
   }
@@ -89,14 +91,14 @@
   .title-md {
     color: $text-blue;
     margin: 0 0 8px;
-    @media (max-width: $md4 + px) {
+    @media (max-width: ($md4 + px)) {
       font-size: 22px;
     }
   }
 
   .title-xs {
     color: $text-secondary;
-    @media (min-width: $md3 + px) {
+    @media (min-width: ($md3 + px)) {
       br {
         display: none;
       }
@@ -114,7 +116,7 @@
     border-radius: 16px;
     background: $bg-white;
     text-align: center;
-    @media (max-width: $md2 + px) {
+    @media (max-width: ($md2 + px)) {
       width: auto;
       padding: 8px 16px;
       text-transform: uppercase;
