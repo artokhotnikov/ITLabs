@@ -16,9 +16,11 @@ const { URL } = useContentStore()
   <div
     v-if="project"
     :class="['project', { small: small }]"
-    :style="{ backgroundImage: 'url(' + URL + project.imageCard + ')' }"
     @click="emits('onClick')"
   >
+    <div class="project-img">
+      <NuxtPicture :src="URL + project.imageCard" :alt="project.title" />
+    </div>
     <div class="project-content">
       <div class="project-type text text-md">
         {{ project.type }}
@@ -48,9 +50,22 @@ const { URL } = useContentStore()
   position: relative;
   overflow: hidden;
   cursor: pointer;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+
+  &-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    :deep(img) {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  }
 
   &.small {
     padding: 16px;
@@ -61,7 +76,7 @@ const { URL } = useContentStore()
     }
   }
 
-  @media (min-width: $md2 + px) {
+  @media (min-width: ($md2 + px)) {
     &:hover {
       .project-content {
         opacity: 1;
@@ -73,7 +88,7 @@ const { URL } = useContentStore()
     }
   }
 
-  @media (max-width: $md3 + px) {
+  @media (max-width: ($md3 + px)) {
     min-height: 330px;
   }
 
@@ -88,7 +103,7 @@ const { URL } = useContentStore()
       rgba(45, 55, 68, 1) 0%,
       rgba(45, 55, 68, 0.6) 100%
     );
-    @media (min-width: $md2 + px) {
+    @media (min-width: ($md2 + px)) {
       opacity: 0;
     }
   }
@@ -97,7 +112,7 @@ const { URL } = useContentStore()
     margin-top: auto;
     position: relative;
     transition: opacity 0.3s linear;
-    @media (min-width: $md2 + px) {
+    @media (min-width: ($md2 + px)) {
       opacity: 0;
     }
   }
@@ -110,7 +125,7 @@ const { URL } = useContentStore()
   &-title {
     color: $text-blue;
     margin: 8px 0 20px;
-    @media (max-width: $md3 + px) {
+    @media (max-width: ($md3 + px)) {
       margin: 2px 0 10px;
     }
   }
@@ -122,7 +137,7 @@ const { URL } = useContentStore()
   &-btn {
     margin: 40px 0 0;
     width: 170px;
-    @media (max-width: $md3 + px) {
+    @media (max-width: ($md3 + px)) {
       margin: 20px 0 0;
     }
   }
