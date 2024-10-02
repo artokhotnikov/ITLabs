@@ -29,7 +29,7 @@ const breadcrumbs = [
           class="category"
         >
           <div class="category-img">
-            <img
+            <NuxtPicture
               :src="contentStore.URL + category.image"
               :alt="category.title"
             />
@@ -90,7 +90,7 @@ const breadcrumbs = [
   gap: 20px;
   align-items: center;
 
-  @media (max-width: $md4 + px) {
+  @media (max-width: ($md4 + px)) {
     padding: 32px;
     border-radius: 20px;
     flex-direction: column;
@@ -100,14 +100,14 @@ const breadcrumbs = [
     width: 100%;
     max-width: 396px;
     flex-shrink: 0;
-    @media (max-width: $md2 + px) {
+    @media (max-width: ($md2 + px)) {
       max-width: 300px;
     }
-    @media (max-width: $md3 + px) {
+    @media (max-width: ($md3 + px)) {
       max-width: 250px;
     }
 
-    img {
+    :deep(img) {
       width: 100%;
     }
   }
@@ -121,7 +121,7 @@ const breadcrumbs = [
 
   &-subtitle {
     margin: 20px 0 0;
-    @media (max-width: $md4 + px) {
+    @media (max-width: ($md4 + px)) {
       margin: 8px 0 0;
     }
   }
@@ -129,7 +129,7 @@ const breadcrumbs = [
   &-text {
     margin: 40px 0 0;
     color: $text-third;
-    @media (max-width: $md4 + px) {
+    @media (max-width: ($md4 + px)) {
       margin: 32px 0 0;
     }
   }
@@ -137,7 +137,7 @@ const breadcrumbs = [
   &-btn {
     margin: 40px 0 0;
     width: 180px;
-    @media (max-width: $md4 + px) {
+    @media (max-width: ($md4 + px)) {
       margin: 32px 0 0;
       width: 100%;
     }

@@ -6,11 +6,15 @@ import * as yup from 'yup'
 export const useCallbackFormStore = defineStore('callbackFormStore', () => {
   const { $api } = useNuxtApp()
   const formData = new FormData()
-  const { execute, status } = useAsyncData(() =>
-    $api('/api/forms', {
-      method: 'POST',
-      body: formData
-    })
+  const { execute, status } = useAsyncData(
+    () =>
+      $api('/api/forms', {
+        method: 'POST',
+        body: formData
+      }),
+    {
+      immediate: false
+    }
   )
 
   const postForm = async (args: CallbackForm) => {
