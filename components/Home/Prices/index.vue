@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import { useCallbackFormStore } from '~/store/callbackFormStore'
 import { useModalsStore } from '~/store/modalsStore'
+import type { CallbackForm } from '~/types/callbackForm'
 
 const callbackFormStore = useCallbackFormStore()
 const modalsStore = useModalsStore()
-const estimate = ref({
+const estimate = ref<CallbackForm>({
   name: '',
   phone: '',
   email: '',
@@ -16,7 +17,7 @@ const estimate = ref({
     phone: true
   }
 })
-
+// @ts-ignore
 const onSubmit = async (args, e) => {
   const title = e.evt.target.dataset.title
   estimate.value = { ...estimate.value, ...args, title }
@@ -107,7 +108,7 @@ const onSubmit = async (args, e) => {
         <div class="prices-callback">
           <Form class="callback" data-title="Zoom" @submit="onSubmit">
             <div class="callback-img">
-              <img src="/img/home_prices/main.png" alt="" />
+              <NuxtPicture src="/img/home_prices/main.png" alt="Изображение" />
             </div>
             <div class="callback-title subtitle bold">
               Или запишитесь на
@@ -149,7 +150,7 @@ const onSubmit = async (args, e) => {
   &-title {
     color: $text-blue;
     text-align: center;
-    @media (max-width: $md3 + px) {
+    @media (max-width: ($md3 + px)) {
       margin: 0 0 16px;
     }
   }
@@ -161,7 +162,7 @@ const onSubmit = async (args, e) => {
     justify-content: space-between;
     max-width: 1020px;
     margin: 0 auto;
-    @media (max-width: $md3 + px) {
+    @media (max-width: ($md3 + px)) {
       flex-direction: column;
       align-items: center;
       gap: 64px;
@@ -171,10 +172,10 @@ const onSubmit = async (args, e) => {
   &-estimate {
     max-width: 292px;
     width: 100%;
-    @media (max-width: $md1 + px) {
+    @media (max-width: ($md1 + px)) {
       max-width: 283px;
     }
-    @media (max-width: $md3 + px) {
+    @media (max-width: ($md3 + px)) {
       max-width: 540px;
       margin: 0 auto;
     }
@@ -183,10 +184,10 @@ const onSubmit = async (args, e) => {
   &-callback {
     max-width: 604px;
     width: 100%;
-    @media (max-width: $md1 + px) {
+    @media (max-width: ($md1 + px)) {
       max-width: 589px;
     }
-    @media (max-width: $md3 + px) {
+    @media (max-width: ($md3 + px)) {
       max-width: 540px;
       margin: 0 auto;
     }
@@ -196,7 +197,7 @@ const onSubmit = async (args, e) => {
 .estimate {
   &-title {
     margin: 0 0 40px;
-    @media (max-width: $md3 + px) {
+    @media (max-width: ($md3 + px)) {
       text-align: center;
       text-transform: uppercase;
     }
@@ -214,7 +215,7 @@ const onSubmit = async (args, e) => {
 
   &-subtitle {
     margin: 0 0 20px;
-    @media (max-width: $md3 + px) {
+    @media (max-width: ($md3 + px)) {
       text-align: center;
       margin: 0 0 40px;
     }
@@ -224,7 +225,7 @@ const onSubmit = async (args, e) => {
     display: flex;
     flex-wrap: wrap;
     gap: 20px 40px;
-    @media (max-width: $md3 + px) {
+    @media (max-width: ($md3 + px)) {
       max-width: 280px;
       margin: 0 auto;
       justify-content: center;
@@ -234,24 +235,26 @@ const onSubmit = async (args, e) => {
   &-btn {
     width: 164px;
     margin: 40px 0 0;
-    @media (max-width: $md3 + px) {
+    @media (max-width: ($md3 + px)) {
       margin: 40px auto 0;
     }
   }
 }
 
 .callback {
-  @media (min-width: $md1 + px) {
+  @media (min-width: ($md1 + px)) {
     margin: -60px 0 0;
   }
 
   &-img {
-    @include img;
+    :deep(img) {
+      width: 100%;
+    }
   }
 
   &-title {
     margin: 0 0 40px;
-    @media (max-width: $md3 + px) {
+    @media (max-width: ($md3 + px)) {
       text-transform: uppercase;
       text-align: center;
     }
@@ -260,7 +263,7 @@ const onSubmit = async (args, e) => {
   &-row {
     display: flex;
     gap: 20px;
-    @media (max-width: $md3 + px) {
+    @media (max-width: ($md3 + px)) {
       flex-direction: column;
     }
   }
@@ -268,7 +271,7 @@ const onSubmit = async (args, e) => {
   &-btn {
     width: 168px;
     margin: 40px 0 0;
-    @media (max-width: $md3 + px) {
+    @media (max-width: ($md3 + px)) {
       margin: 40px auto 0;
     }
   }
