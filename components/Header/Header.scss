@@ -1,29 +1,29 @@
 @import '/assets/scss/variables';
 
 .header {
-	margin: 20px 0;
+  margin: 20px 0;
 
-	&-container {
-		display: flex;
-		gap: 20px;
-		align-items: center;
-		position: relative;
-		justify-content: space-between;
-	}
+  &-container {
+    display: flex;
+    gap: 20px;
+    // align-items: center;
+    position: relative;
+    justify-content: space-between;
+  }
 
-	&-ask {
-		flex-basis: 50px;
-		padding: 0 !important;
-		flex-grow: 1;
-		@media (max-width: $md2 + px) {
-			flex-grow: 0;
-		}
-	}
+  &-ask {
+    flex-basis: 50px;
+    padding: 0 !important;
+    flex-grow: 1;
+    @media (max-width: ($md2 + px)) {
+      flex-grow: 0;
+    }
+  }
 }
 
 .container {
-	position: relative;
-	@media(min-width: $md3 + px) {
-		z-index: 6;
-	}
+  position: relative;
+  @media (min-width: ($md3 + px)) {
+    z-index: 6;
+  }
 }

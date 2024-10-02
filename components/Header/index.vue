@@ -44,6 +44,11 @@ const toggleSearch = (value: boolean) => {
             <IconsQuestion v-if="sm" />
             <span v-else>Задать вопрос</span>
           </Button>
+          <template #fallback>
+            <div class="header-ask">
+              <Skeleton />
+            </div>
+          </template>
         </ClientOnly>
         <transition :name="sm ? 'slide-left' : 'fade-top'">
           <HeaderMenu v-if="globalStore.isOpenMenu" />
