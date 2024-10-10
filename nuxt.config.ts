@@ -38,34 +38,9 @@ export default defineNuxtConfig({
       script: [
         {
           children:
-            '(function(a, m, o, c, r, m) {\n' +
-            '  a[m] = {\n' +
-            "    id: '412792',\n" +
-            "    hash: 'af583ea793de0d5db048702c5e221d6881865c504fc8689ee5624b4c24d47694',\n" +
-            "    locale: 'ru',\n" +
-            '    inline: false,\n' +
-            '    setMeta: function(p) {\n' +
-            '      this.params = (this.params || []).concat([p])\n' +
-            '    }\n' +
-            '  }\n' +
-            '  a[o] = a[o] || function() {\n' +
-            '    (a[o].q = a[o].q || []).push(arguments)\n' +
-            '  }\n' +
-            "  var d = a.document, s = d.createElement('script')\n" +
-            '  s.async = true\n' +
-            "  s.id = m + '_script'\n" +
-            "  s.src = 'https://gso.amocrm.ru/js/button.js'\n" +
-            '  d.head && d.head.appendChild(s)\n' +
-            "}(window, 0, 'amoSocialButton', 0, 0, 'amo_social_button'))"
+            '(function(a,m,o,c,r,m){a[m]={id:"416934",hash:"cd6b40183e4314da3ccfb8af1ecec763b3682c33191e008828b503e7f0a5a0ef",locale:"ru",inline:true,setMeta:function(p){this.params=(this.params||[]).concat([p])}};a[o]=a[o]||function(){(a[o].q=a[o].q||[]).push(arguments)};var d=a.document,s=d.createElement("script");s.async=true;s.id=m+"_script";s.src="https://gso.amocrm.ru/js/button.js";d.head&&d.head.appendChild(s)}(window,0,"amoSocialButton",0,0,"amo_social_button"))'
         }
       ]
-      // script: [
-      //   {
-      //     src: 'https://gso.amocrm.ru/js/button.js',
-      //     async: true,
-      //     id: 'amo_social_button_script'
-      //   }
-      // ]
     }
   },
   devtools: { enabled: true },
