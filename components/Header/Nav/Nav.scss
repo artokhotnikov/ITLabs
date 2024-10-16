@@ -3,7 +3,7 @@
 .nav {
   display: flex;
   justify-content: center;
-  padding: 0 52px;
+  padding: 0 28px;
   gap: 80px;
   background: $bg-white;
   border-radius: 16px;
@@ -42,7 +42,7 @@
     flex: 1 1 380px;
   }
   @media (min-width: $md1 + px) {
-    flex: 0 1 724px;
+    flex: 0 1 740px;
   }
   @media (max-width: $md1 + px) {
     justify-content: space-between;

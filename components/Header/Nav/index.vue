@@ -1,4 +1,5 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+</script>
 
 <template>
   <nav class="nav">
@@ -6,6 +7,7 @@
     <NuxtLink href="/projects" class="nav-link medium">Проекты</NuxtLink>
     <NuxtLink href="/about" class="nav-link medium">О компании</NuxtLink>
     <NuxtLink href="/contacts" class="nav-link medium">Контакты</NuxtLink>
+    <NuxtLink href="/recruite" class="nav-link medium">Рекрутинг</NuxtLink>
   </nav>
 </template>
 
