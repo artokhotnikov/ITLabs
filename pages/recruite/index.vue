@@ -12,10 +12,11 @@ const breadcrumbs = [
     <div class="page-container container">
       <Breadcrumbs :breadcrumbs="breadcrumbs" />
       <div class="page-content">
-        <SectionAdvantages />
-        <SectionCarierHeight />
-        <SectionCommand />
-        <SectionDepartamentCare />
+<!--        <SectionAdvantages />-->
+<!--        <SectionCarierHeight />-->
+<!--        <SectionCommand />-->
+<!--        <SectionDepartamentCare />-->
+        <SectionGoToTeam />
       </div>
     </div>
   </div>
@@ -31,6 +32,8 @@ const breadcrumbs = [
 }
 
 .page {
+  padding: 0;
+
   &-content {
     display: flex;
     flex-direction: column;

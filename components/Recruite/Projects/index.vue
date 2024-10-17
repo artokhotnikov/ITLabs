@@ -35,21 +35,10 @@ const sliced = computed(() => contentStore.projects.slice(0, 4))
     padding-right: 104px;
     position: relative;
     @media (max-width: 959px) {
-      flex-direction: column;
-      height: auto;
       padding: 0;
     }
-  }
-
-  &-btn {
-    @media (min-width: 960px) {
-      transform: rotate(-90deg) translate(-158px, 158px);
-      position: absolute !important;
-      top: 0;
-      right: 0;
-      width: 400px;
-      height: 84px;
-      border-radius: 40px;
+    @media (max-width: $md3 + px) {
+      overflow-x: auto;
     }
   }
 

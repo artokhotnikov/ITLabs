@@ -84,6 +84,12 @@ const rows = [
   flex-direction: column;
   gap: 40px;
 
+  &-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   &-title {
     text-align: center;
     color: $text-blue;
@@ -93,10 +99,17 @@ const rows = [
     display: flex;
     flex-direction: column;
     gap: 20px;
+    @media (max-width: $md3 + px) {
+      gap: 8px;
+    }
 
     .row {
       display: flex;
       gap: 20px;
+      @media (max-width: $md3 + px) {
+        flex-direction: column;
+        gap: 8px;
+      }
     }
   }
 
@@ -108,13 +121,31 @@ const rows = [
     border-radius: 40px;
     background-color: rgba(255, 255, 255, 0.5);
     line-height: normal;
+    @media (max-width: $md1 + px) {
+      padding: 32px;
+    }
+    @media (max-width: $md3 + px) {
+      border-radius: 20px;
+    }
 
     &.md {
       min-height: 292px;
+      @media (max-width: $md1 + px) {
+        min-height: 372px;
+      }
+      @media (max-width: $md3 + px) {
+        min-height: 139px;
+      }
     }
 
     &.sm {
       min-height: 229px;
+      @media (max-width: $md1 + px) {
+        min-height: 291px;
+      }
+      @media (max-width: $md3 + px) {
+        min-height: 139px;
+      }
     }
   }
 }

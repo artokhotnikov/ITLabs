@@ -44,7 +44,7 @@ const advantages = [
     <div class="advantages-list">
       <article v-for="advantage in advantages" class="advantages-item">
         <section class="item-image">
-          <NuxtPicture :src="advantage.image" alt="advantage" />
+          <NuxtImg :src="advantage.image" alt="advantage" fit="cover" />
         </section>
         <section class="item-content">
           <p class="item-title">{{ advantage.title }}</p>
@@ -78,6 +78,9 @@ const advantages = [
   &-list {
     display: flex;
     gap: 20px;
+    @media (max-width: $md1 + px) {
+      flex-direction: column;
+    }
   }
 
   &-item {
@@ -85,11 +88,18 @@ const advantages = [
     width: 100%;
     height: 100%;
     max-width: 292px;
-    min-height: 398px;
+    min-height: 468px;
     padding: 0 40px 60px 40px;
     border-radius: 40px;
     background-color: rgba(255, 255, 255, 0.5);
     line-height: normal;
+    @media (max-width: $md1 + px) {
+      display: flex;
+      max-width: none;
+      min-height: 200px;
+      align-items: center;
+      gap: 20px;
+    }
   }
 }
 
@@ -97,10 +107,11 @@ const advantages = [
   &-image {
     display: flex;
     justify-content: center;
+    align-items: center;
 
     picture {
-      width: 129px;
-      height: 129px;
+      width: 200px;
+      height: 200px;
     }
   }
 
@@ -110,6 +121,10 @@ const advantages = [
     gap: 13px;
     text-align: center;
     max-width: 212px;
+    @media (max-width: $md1 + px) {
+      max-width: none;
+      text-align: left;
+    }
   }
 
   &-title {

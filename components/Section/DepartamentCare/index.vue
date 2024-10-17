@@ -7,28 +7,28 @@ const careList = [
   },
   {
     id: 2,
-    icon: '/icons/care_corporate.png',
+    icon: '/icons/system_corporate.png',
     title:
       'Индивидуальные условия: гибкая\n система выплат, возможность\n совмещения с учебой'
   },
   {
     id: 3,
-    icon: '/icons/care_corporate.png',
+    icon: '/icons/arenda_corporate.png',
     title: 'Компенсация аренды жилья '
   },
   {
     id: 4,
-    icon: '/icons/care_corporate.png',
+    icon: '/icons/photo_corporate.png',
     title: 'Насыщенная корпоративная жизнь'
   },
   {
     id: 5,
-    icon: '/icons/care_corporate.png',
+    icon: '/icons/trip_corporate.png',
     title: 'Регулярные командировки по всей\n России и за рубеж'
   },
   {
     id: 6,
-    icon: '/icons/care_corporate.png',
+    icon: '/icons/credit_corporate.png',
     title: 'Индивидуальные кредитные линии'
   }
 ]
@@ -42,7 +42,7 @@ const careList = [
     <div class="care-list">
       <article v-for="care in careList" :key="care.id" class="care-item">
         <div class="item-icon">
-          <NuxtPicture :src="care.icon" />
+          <NuxtImg :src="care.icon" />
         </div>
         <p class="item-title">{{ care.title }}</p>
       </article>
@@ -69,6 +69,13 @@ const careList = [
     flex-wrap: wrap;
     gap: 25px;
     margin: 0 auto;
+    @media (max-width: $md1 + px) {
+      max-width: 896px;
+      gap: 20px;
+    }
+    @media (max-width: $md1 + px) {
+      justify-content: center;
+    }
   }
 
   &-item {
@@ -79,15 +86,28 @@ const careList = [
     gap: 24px;
     line-height: normal;
     max-width: 495px;
+    @media (max-width: $md1 + px) {
+      max-width: 436px;
+      gap: 20px;
+    }
   }
 }
 
 .item {
   &-icon {
-    max-width: 100px;
-    max-height: 100px;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: #fff;
     border-radius: 100%;
+
+    img {
+      width: 84px;
+      height: 84px;
+      object-fit: cover;
+    }
   }
 
   &-title {

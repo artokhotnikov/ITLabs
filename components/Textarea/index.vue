@@ -40,6 +40,7 @@ const { value, errorMessage } = useField(() => props.name)
 
   textarea {
     color: $text-white;
+
     &::placeholder {
       color: $text-white;
     }
@@ -61,11 +62,7 @@ const { value, errorMessage } = useField(() => props.name)
   }
 
   &-additional {
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    position: relative;
+    position: absolute;
     bottom: 10px;
     right: 10px;
   }

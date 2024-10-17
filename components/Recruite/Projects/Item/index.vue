@@ -49,6 +49,10 @@ const { URL } = useContentStore()
   @media (max-width: 959px) {
     border-radius: 16px;
   }
+  @media (max-width: $md3 + px) {
+    width: 500px;
+    overflow: visible;
+  }
 
   &-img {
     position: absolute;
@@ -88,7 +92,6 @@ span {
   @media (max-width: 959px) {
     padding: 24px 24px 17px;
     width: 100%;
-    height: 84px;
   }
 
   &:before {
