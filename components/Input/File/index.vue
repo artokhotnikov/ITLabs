@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Ref } from 'vue'
+import { onMounted, type Ref } from 'vue'
 
 type FileInputProps = {
   modelValue: FileList | null
@@ -21,6 +21,7 @@ const onClearFiles = () => {
   files.value = null
   emits('update:modelValue', null)
 }
+onMounted(()=> console.log('mounted'))
 </script>
 
 <template>
@@ -81,7 +82,6 @@ const onClearFiles = () => {
       opacity: 0;
       width: 100%;
       height: 100%;
-      z-index: -1;
     }
   }
 

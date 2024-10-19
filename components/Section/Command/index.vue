@@ -52,7 +52,7 @@ const rows = [
 <template>
   <section class="command">
     <div class="command-title">
-      <p class="title">Команада</p>
+      <p class="title title-md">Команада</p>
     </div>
     <div class="command-image">
       <NuxtPicture src="/img/recruite/command.png" class="img" />
@@ -88,6 +88,13 @@ const rows = [
     display: flex;
     justify-content: center;
     align-items: center;
+
+    picture {
+      width: 100%;
+      :deep(img) {
+        width: 100%;
+      }
+    }
   }
 
   &-title {

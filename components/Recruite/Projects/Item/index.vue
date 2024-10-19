@@ -44,14 +44,9 @@ const { URL } = useContentStore()
 .item {
   position: relative;
   border-radius: 40px;
-  text-align: left;
   overflow: hidden;
   @media (max-width: 959px) {
     border-radius: 16px;
-  }
-  @media (max-width: $md3 + px) {
-    width: 500px;
-    overflow: visible;
   }
 
   &-img {
@@ -82,6 +77,7 @@ span {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  text-align: left;
   width: 84px;
   transition-delay: 0.3s;
   cursor: pointer;
@@ -92,6 +88,7 @@ span {
   @media (max-width: 959px) {
     padding: 24px 24px 17px;
     width: 100%;
+    height: 84px;
   }
 
   &:before {

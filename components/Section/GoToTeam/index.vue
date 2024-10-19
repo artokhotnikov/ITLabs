@@ -45,6 +45,11 @@ const workTypes = ref([
 ])
 const textarea = ref('')
 const file = ref(null)
+const description =
+  'Если ты чувствуешь, что можешь дополнить нашу команду – заполняй ' +
+  'форму и мы с тобой свяжемся. А если еще выбираешь – подпишись на ' +
+  'наши вакансии\n' +
+  'на hh — будь в курсе поисков.'
 </script>
 
 <template>
@@ -52,12 +57,9 @@ const file = ref(null)
     <div class="team-form">
       <form class="form" @submit.prevent>
         <div class="form-title">
-          <p class="title">Стань частью команды!</p>
+          <p class="title title-md">Стань частью команды!</p>
           <p class="description">
-            Если ты чувствуешь, что можешь дополнить нашу команду – заполняй
-            форму и мы с тобой свяжемся. А если еще выбираешь – подпишись на
-            наши вакансии <br />
-            на hh — будь в курсе поисков.
+            {{ description }}
           </p>
         </div>
         <div class="form-links">
@@ -89,7 +91,7 @@ const file = ref(null)
                 />
               </div>
             </div>
-            <client-only>
+            <lazy-client-only>
               <Textarea
                 v-model="textarea"
                 name="textarea"
@@ -97,9 +99,11 @@ const file = ref(null)
                 placeholder="Сопроводительное письмо"
                 class="user-message"
               >
-                <template #additional><InputFile v-model="file" /></template>
+                <template #additional>
+                  <InputFile v-model="file" />
+                </template>
               </Textarea>
-            </client-only>
+            </lazy-client-only>
           </div>
           <Button color="primary" class="form-send">Отправить</Button>
         </div>
@@ -123,15 +127,25 @@ const file = ref(null)
   &-form {
     width: 100%;
     max-width: 604px;
+    @media (max-width: $md1 + px) {
+      margin: 0 0 100px 0;
+    }
+    @media (max-width: $md3 + px) {
+      margin: 0;
+    }
   }
 
   &-people {
-    max-width: 584px;
-    max-height: 866px;
+    width: 584px;
+    height: 866px;
     @media (max-width: $md1 + px) {
       margin: 0 auto;
-      max-width: 436px;
-      max-height: 645px;
+      width: 436px;
+      height: 645px;
+    }
+    @media (max-width: $md3 + px) {
+      width: 340px;
+      height: 485px;
     }
   }
 }
@@ -148,12 +162,15 @@ const file = ref(null)
     gap: 8px;
 
     .title {
-      font-size: 38px;
       color: $text-blue;
     }
 
     .description {
       white-space: pre-wrap;
+      @media (max-width: $md3 + px) {
+        font-size: 14px;
+        white-space: normal;
+      }
     }
   }
 

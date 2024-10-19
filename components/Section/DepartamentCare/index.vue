@@ -95,8 +95,8 @@ const careList = [
 
 .item {
   &-icon {
-    width: 100px;
-    height: 100px;
+    width: 84px;
+    height: 84px;
     display: flex;
     align-items: center;
     justify-content: center;

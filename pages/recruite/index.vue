@@ -12,10 +12,10 @@ const breadcrumbs = [
     <div class="page-container container">
       <Breadcrumbs :breadcrumbs="breadcrumbs" />
       <div class="page-content">
-<!--        <SectionAdvantages />-->
-<!--        <SectionCarierHeight />-->
-<!--        <SectionCommand />-->
-<!--        <SectionDepartamentCare />-->
+        <SectionAdvantages />
+        <SectionCarierHeight />
+        <SectionCommand />
+        <SectionDepartamentCare />
         <SectionGoToTeam />
       </div>
     </div>
@@ -38,6 +38,9 @@ const breadcrumbs = [
     display: flex;
     flex-direction: column;
     gap: 120px;
+    @media (max-width: $md3 + px) {
+      gap: 64px;
+    }
   }
 }
 </style>

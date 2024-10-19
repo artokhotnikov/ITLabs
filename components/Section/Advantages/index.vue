@@ -24,7 +24,7 @@ const advantages = [
   {
     id: 4,
     image: '/img/recruite/rocket.png',
-    title: 'Креативный  подход',
+    title: 'Креативный подход',
     description:
       'Главное для нас — качественный результат, а не способ решения\n задачи'
   }
@@ -42,9 +42,13 @@ const advantages = [
       </p>
     </div>
     <div class="advantages-list">
-      <article v-for="advantage in advantages" class="advantages-item">
+      <article
+        v-for="advantage in advantages"
+        :key="advantage.id"
+        class="advantages-item"
+      >
         <section class="item-image">
-          <NuxtImg :src="advantage.image" alt="advantage" fit="cover" />
+          <NuxtPicture :src="advantage.image" alt="advantage" fit="cover" />
         </section>
         <section class="item-content">
           <p class="item-title">{{ advantage.title }}</p>
@@ -100,6 +104,10 @@ const advantages = [
       align-items: center;
       gap: 20px;
     }
+    @media (max-width: $md3 + px) {
+      padding: 20px 0;
+      gap: 13px;
+    }
   }
 }
 
@@ -112,6 +120,15 @@ const advantages = [
     picture {
       width: 200px;
       height: 200px;
+
+      :deep(img) {
+        width: 100%;
+      }
+
+      @media (max-width: $md3 + px) {
+        width: 100px;
+        height: 100px;
+      }
     }
   }
 
